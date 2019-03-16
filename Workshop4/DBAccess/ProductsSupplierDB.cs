@@ -121,8 +121,8 @@ namespace DBAccess {
             // Execute the select command and start the reading process from DB
             try {
                 connection.Open();
-                SqlDataReader dr = selectCmd.ExecuteReader(CommandBehavior.SingleRow);
-                if (dr.Read()) { // if customer exists
+                SqlDataReader dr = selectCmd.ExecuteReader();
+                while (dr.Read()) {
                     ProductsSupplier prodSuppObj = new ProductsSupplier();
                     prodSuppObj.ProductSupplierId = (int)dr["ProductSupplierId"];
 
@@ -168,8 +168,8 @@ namespace DBAccess {
             // Execute the select command and start the reading process from DB
             try {
                 connection.Open();
-                SqlDataReader dr = selectCmd.ExecuteReader(CommandBehavior.SingleRow);
-                if (dr.Read()) { // if customer exists
+                SqlDataReader dr = selectCmd.ExecuteReader();
+                while (dr.Read()) { // if customer exists
                     ProductsSupplier prodSuppObj = new ProductsSupplier();
                     prodSuppObj.ProductSupplierId = (int)dr["ProductSupplierId"];
 
