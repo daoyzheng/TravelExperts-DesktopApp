@@ -284,5 +284,53 @@ namespace DBAccess {
 
             return updateSuccess;
         }
+        
+        // Delete from Product Supplier table
+        public static bool DeleteProductsSupplier (ProductsSupplier prodSuppObj) {
+            bool deleteSuccess = true;
+            string deleteStatement = "DELETE FROM Products_Suppliers " +
+                                     "WHERE ProductSupplierId = @ProductSupplierId " +
+                                     "AND (ProductId = @ProductId " +
+                                     "OR ProductId IS NULL AND @ProductId IS NULL) " +
+                                     "AND (SupplierId = @SupplierId " +
+                                     "OR SupplierId IS NULL AND @SupplierId IS NULL)";
+
+            // Get connection to Travel Experts DB
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            // Create a select command object
+            SqlCommand deleteCmd = new SqlCommand(deleteStatement, connection);
+
+            // Assign value to parameter(s)
+            // Verify if prodSuppObj.ProductId is null
+            if (prodSuppObj.ProductId == null) {
+                deleteCmd.Parameters.AddWithValue("@ProductId", DBNull.Value);
+            } else { 
+                deleteCmd.Parameters.AddWithValue("@ProductId", prodSuppObj.ProductId);
+            }
+
+            // Verify if newProdSuppObj.SupplierId is null
+            if (prodSuppObj.SupplierId == null) {
+                deleteCmd.Parameters.AddWithValue("@SupplierId", DBNull.Value);
+            } else {
+                deleteCmd.Parameters.AddWithValue("@SupplierId", prodSuppObj.SupplierId);
+            }
+
+            // Execute the delete command
+            try {
+                connection.Open();
+                int rowsDeleted = deleteCmd.ExecuteNonQuery();
+                // Check for concurrency, another user might have updated or deleted in the meantime
+                if (rowsDeleted == 0) deleteSuccess = false;
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                connection.Close();
+            }
+
+            return deleteSuccess;
+        }
+        
+        // May need cascade delete
     }
 }
