@@ -30,6 +30,8 @@
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label productIdLabel1;
+            System.Windows.Forms.Label supplierIdLabel1;
             this.productsSupplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productIdTextBox = new System.Windows.Forms.TextBox();
             this.productSupplierIdComboBox = new System.Windows.Forms.ComboBox();
@@ -39,21 +41,26 @@
             this.txtProdId = new System.Windows.Forms.TextBox();
             this.btnSearchProdId = new System.Windows.Forms.Button();
             this.productsSupplierDataGridViewSortByProdId = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSuppId = new System.Windows.Forms.TextBox();
             this.btnSearchSuppId = new System.Windows.Forms.Button();
             this.productsSupplierDataGridViewSortBySuppId = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productIdTextBoxAdd = new System.Windows.Forms.TextBox();
+            this.supplierIdTextBoxAdd = new System.Windows.Forms.TextBox();
+            this.btnAddProdSupp = new System.Windows.Forms.Button();
             productIdLabel = new System.Windows.Forms.Label();
             productSupplierIdLabel = new System.Windows.Forms.Label();
             supplierIdLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            productIdLabel1 = new System.Windows.Forms.Label();
+            supplierIdLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productsSupplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsSupplierDataGridViewSortByProdId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsSupplierDataGridViewSortBySuppId)).BeginInit();
@@ -62,7 +69,7 @@
             // productIdLabel
             // 
             productIdLabel.AutoSize = true;
-            productIdLabel.Location = new System.Drawing.Point(470, 30);
+            productIdLabel.Location = new System.Drawing.Point(295, 21);
             productIdLabel.Name = "productIdLabel";
             productIdLabel.Size = new System.Drawing.Size(59, 13);
             productIdLabel.TabIndex = 1;
@@ -71,7 +78,7 @@
             // productSupplierIdLabel
             // 
             productSupplierIdLabel.AutoSize = true;
-            productSupplierIdLabel.Location = new System.Drawing.Point(246, 33);
+            productSupplierIdLabel.Location = new System.Drawing.Point(71, 24);
             productSupplierIdLabel.Name = "productSupplierIdLabel";
             productSupplierIdLabel.Size = new System.Drawing.Size(100, 13);
             productSupplierIdLabel.TabIndex = 3;
@@ -80,7 +87,7 @@
             // supplierIdLabel
             // 
             supplierIdLabel.AutoSize = true;
-            supplierIdLabel.Location = new System.Drawing.Point(470, 55);
+            supplierIdLabel.Location = new System.Drawing.Point(295, 46);
             supplierIdLabel.Name = "supplierIdLabel";
             supplierIdLabel.Size = new System.Drawing.Size(60, 13);
             supplierIdLabel.TabIndex = 5;
@@ -89,7 +96,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(192, 69);
+            label1.Location = new System.Drawing.Point(17, 60);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(149, 26);
             label1.TabIndex = 7;
@@ -120,7 +127,7 @@
             // productIdTextBox
             // 
             this.productIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductId", true));
-            this.productIdTextBox.Location = new System.Drawing.Point(576, 27);
+            this.productIdTextBox.Location = new System.Drawing.Point(401, 18);
             this.productIdTextBox.Name = "productIdTextBox";
             this.productIdTextBox.ReadOnly = true;
             this.productIdTextBox.Size = new System.Drawing.Size(86, 20);
@@ -130,7 +137,7 @@
             // 
             this.productSupplierIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductSupplierId", true));
             this.productSupplierIdComboBox.FormattingEnabled = true;
-            this.productSupplierIdComboBox.Location = new System.Drawing.Point(352, 30);
+            this.productSupplierIdComboBox.Location = new System.Drawing.Point(177, 21);
             this.productSupplierIdComboBox.Name = "productSupplierIdComboBox";
             this.productSupplierIdComboBox.Size = new System.Drawing.Size(86, 21);
             this.productSupplierIdComboBox.TabIndex = 4;
@@ -139,7 +146,7 @@
             // supplierIdTextBox
             // 
             this.supplierIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "SupplierId", true));
-            this.supplierIdTextBox.Location = new System.Drawing.Point(576, 52);
+            this.supplierIdTextBox.Location = new System.Drawing.Point(401, 43);
             this.supplierIdTextBox.Name = "supplierIdTextBox";
             this.supplierIdTextBox.ReadOnly = true;
             this.supplierIdTextBox.Size = new System.Drawing.Size(86, 20);
@@ -148,7 +155,7 @@
             // txtProdSuppId
             // 
             this.txtProdSuppId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductId", true));
-            this.txtProdSuppId.Location = new System.Drawing.Point(352, 66);
+            this.txtProdSuppId.Location = new System.Drawing.Point(177, 57);
             this.txtProdSuppId.Name = "txtProdSuppId";
             this.txtProdSuppId.Size = new System.Drawing.Size(86, 20);
             this.txtProdSuppId.TabIndex = 8;
@@ -156,7 +163,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(352, 102);
+            this.btnSearch.Location = new System.Drawing.Point(177, 93);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 9;
@@ -196,6 +203,24 @@
             this.productsSupplierDataGridViewSortByProdId.Name = "productsSupplierDataGridViewSortByProdId";
             this.productsSupplierDataGridViewSortByProdId.Size = new System.Drawing.Size(346, 220);
             this.productsSupplierDataGridViewSortByProdId.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ProductId";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ProductId";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductSupplierId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ProductSupplierId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "SupplierId";
+            this.dataGridViewTextBoxColumn3.HeaderText = "SupplierId";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // txtSuppId
             // 
@@ -248,29 +273,62 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "ProductId";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // dataGridViewTextBoxColumn2
+            // productIdLabel1
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ProductId";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ProductId";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            productIdLabel1.AutoSize = true;
+            productIdLabel1.Location = new System.Drawing.Point(653, 21);
+            productIdLabel1.Name = "productIdLabel1";
+            productIdLabel1.Size = new System.Drawing.Size(59, 13);
+            productIdLabel1.TabIndex = 17;
+            productIdLabel1.Text = "Product Id:";
             // 
-            // dataGridViewTextBoxColumn1
+            // productIdTextBoxAdd
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductSupplierId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ProductSupplierId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.productIdTextBoxAdd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductId", true));
+            this.productIdTextBoxAdd.Location = new System.Drawing.Point(719, 18);
+            this.productIdTextBoxAdd.Name = "productIdTextBoxAdd";
+            this.productIdTextBoxAdd.Size = new System.Drawing.Size(100, 20);
+            this.productIdTextBoxAdd.TabIndex = 18;
+            this.productIdTextBoxAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productIdTextBoxAdd_KeyPress);
             // 
-            // dataGridViewTextBoxColumn3
+            // supplierIdLabel1
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "SupplierId";
-            this.dataGridViewTextBoxColumn3.HeaderText = "SupplierId";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            supplierIdLabel1.AutoSize = true;
+            supplierIdLabel1.Location = new System.Drawing.Point(653, 47);
+            supplierIdLabel1.Name = "supplierIdLabel1";
+            supplierIdLabel1.Size = new System.Drawing.Size(60, 13);
+            supplierIdLabel1.TabIndex = 19;
+            supplierIdLabel1.Text = "Supplier Id:";
+            // 
+            // supplierIdTextBoxAdd
+            // 
+            this.supplierIdTextBoxAdd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "SupplierId", true));
+            this.supplierIdTextBoxAdd.Location = new System.Drawing.Point(719, 44);
+            this.supplierIdTextBoxAdd.Name = "supplierIdTextBoxAdd";
+            this.supplierIdTextBoxAdd.Size = new System.Drawing.Size(100, 20);
+            this.supplierIdTextBoxAdd.TabIndex = 20;
+            this.supplierIdTextBoxAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.supplierIdTextBoxAdd_KeyPress);
+            // 
+            // btnAddProdSupp
+            // 
+            this.btnAddProdSupp.Location = new System.Drawing.Point(719, 93);
+            this.btnAddProdSupp.Name = "btnAddProdSupp";
+            this.btnAddProdSupp.Size = new System.Drawing.Size(75, 23);
+            this.btnAddProdSupp.TabIndex = 21;
+            this.btnAddProdSupp.Text = "Add";
+            this.btnAddProdSupp.UseVisualStyleBackColor = true;
+            this.btnAddProdSupp.Click += new System.EventHandler(this.btnAddProdSupp_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 479);
+            this.ClientSize = new System.Drawing.Size(942, 479);
+            this.Controls.Add(this.btnAddProdSupp);
+            this.Controls.Add(productIdLabel1);
+            this.Controls.Add(this.productIdTextBoxAdd);
+            this.Controls.Add(supplierIdLabel1);
+            this.Controls.Add(this.supplierIdTextBoxAdd);
             this.Controls.Add(this.productsSupplierDataGridViewSortBySuppId);
             this.Controls.Add(this.btnSearchSuppId);
             this.Controls.Add(this.txtSuppId);
@@ -319,6 +377,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.TextBox productIdTextBoxAdd;
+        private System.Windows.Forms.TextBox supplierIdTextBoxAdd;
+        private System.Windows.Forms.Button btnAddProdSupp;
     }
 }
 

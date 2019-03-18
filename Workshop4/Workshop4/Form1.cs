@@ -27,6 +27,11 @@ namespace Workshop4 {
 
         private void Form1_Load(object sender, EventArgs e) {
             // Load combo box with a list of Product Supplier Ids
+            LoadComboBox();
+        }
+
+        
+        private void LoadComboBox() {
             var productSupplier = from prodSupp in prodSuppList
                                   orderby prodSupp.ProductSupplierId
                                   select prodSupp.ProductSupplierId;
@@ -52,8 +57,17 @@ namespace Workshop4 {
 
         // Display Product Supplier Information
         private void DisplayProdSupp(ProductsSupplier prodSuppObj) {
-            productIdTextBox.Text = prodSuppObj.ProductId.ToString();
-            supplierIdTextBox.Text = prodSuppObj.SupplierId.ToString();
+            if (prodSuppObj.ProductId == null) {
+                productIdTextBox.Text = "";
+            } else {
+                productIdTextBox.Text = prodSuppObj.ProductId.ToString();
+            }
+
+            if (prodSuppObj.SupplierId == null) {
+                supplierIdTextBox.Text = "";
+            } else {
+                supplierIdTextBox.Text = prodSuppObj.SupplierId.ToString();
+            }
         }
 
         // Search for Product Supplier by ID
@@ -109,6 +123,47 @@ namespace Workshop4 {
         }
 
         private void txtProdId_KeyPress(object sender, KeyPressEventArgs e) {
+            txtProdSuppId_KeyPress(sender, e);
+        }
+
+        // Adding a new Products Supplier
+        private void btnAddProdSupp_Click(object sender, EventArgs e) {
+            ProductsSupplier newProdSuppObj = new ProductsSupplier();
+            // if productIdTextBoxAdd is empty
+            if (string.IsNullOrWhiteSpace(productIdTextBoxAdd.Text)) {
+                newProdSuppObj.ProductId = null;
+            } else {
+                newProdSuppObj.ProductId = Convert.ToInt32(productIdTextBoxAdd.Text);
+            }
+
+            // if supplierIdTextBoxAdd is empty
+            if (string.IsNullOrWhiteSpace(supplierIdTextBoxAdd.Text)) {
+                newProdSuppObj.SupplierId = null;
+            } else {
+                newProdSuppObj.SupplierId = Convert.ToInt32(supplierIdTextBoxAdd.Text);
+            }
+
+            try {
+                newProdSuppObj.ProductSupplierId = ProductsSupplierDB.AddProductsSupplier(newProdSuppObj);
+                // Add to the Product Supplier List
+                prodSuppList.Add(newProdSuppObj);
+                // Reload combo box
+                LoadComboBox();
+
+                int searchIndex = productSupplierIdComboBox.Items.IndexOf(newProdSuppObj.ProductSupplierId);
+                productSupplierIdComboBox.SelectedIndex = searchIndex;
+            } catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        // Only allow numeric values
+        private void productIdTextBoxAdd_KeyPress(object sender, KeyPressEventArgs e) {
+            txtProdSuppId_KeyPress(sender, e);
+        }
+
+        // Only allow numeric values
+        private void supplierIdTextBoxAdd_KeyPress(object sender, KeyPressEventArgs e) {
             txtProdSuppId_KeyPress(sender, e);
         }
     }

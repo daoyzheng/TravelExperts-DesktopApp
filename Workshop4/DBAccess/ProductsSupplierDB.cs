@@ -197,5 +197,92 @@ namespace DBAccess {
         }
 
         // Insert a new product 
+        public static int AddProductsSupplier(ProductsSupplier prodSuppObj) {
+            int prodSuppId = 0;
+            string insertStatement = "INSERT INTO Products_Suppliers (ProductId, SupplierId) " +
+                                     "OUTPUT Inserted.ProductSupplierId " +
+                                     "VALUES (@ProductId, @SupplierId)";
+            
+            // Get connection to Travel Experts DB
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            // Create an insert command object
+            SqlCommand insertCmd = new SqlCommand(insertStatement, connection);
+
+            // Assign value to parameter(s)
+            // Verify if Product ID from object is null
+            if (prodSuppObj.ProductId == null) {
+                insertCmd.Parameters.AddWithValue("@ProductId", DBNull.Value);
+            } else {
+                insertCmd.Parameters.AddWithValue("@ProductId", prodSuppObj.ProductId);
+            }
+            // Verify if Supplier ID from object is null
+            if (prodSuppObj.SupplierId == null) {
+                insertCmd.Parameters.AddWithValue("@SupplierId", DBNull.Value);
+            } else {
+                insertCmd.Parameters.AddWithValue("@SupplierId", prodSuppObj.SupplierId);
+            }
+
+            // Execute the insert command
+            try {
+                connection.Open();
+                // Returns the auto generated ProductSupplierId
+                prodSuppId = (int)insertCmd.ExecuteScalar();
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                connection.Close();
+            }
+
+            return prodSuppId;
+        }
+
+        // Update Products Supplier Table
+        public static bool UpdateProductsSupplier(ProductsSupplier oldProdSuppObj, ProductsSupplier newProdSuppObj) {
+            bool updateSuccess = true;
+            string updateStatement = "UPDATE Products_Suppliers " +
+                                     "SET ProductId = @newProductId, " +
+                                     "SupplierId = @newSupplierId " +
+                                     "WHERE ProductSupplierId = @oldProductSupplierId " +
+                                     "AND (ProductId = @oldProductId " +
+                                     "OR ProductId IS NULL AND @oldProductId IS NULL) " +
+                                     "AND (SupplierId = @oldSupplierId " +
+                                     "OR SupplierId IS NULL AND @oldSupplierId IS NULL)";
+
+            // Get connection to Travel Experts DB
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            // Create a select command object
+            SqlCommand updateCmd = new SqlCommand(updateStatement, connection);
+
+            // Assign value to parameter(s)
+            // Verify if newProdSuppObj.ProductId is null
+            if (newProdSuppObj.ProductId == null) {
+                updateCmd.Parameters.AddWithValue("@newProductId", DBNull.Value);
+            } else { 
+                updateCmd.Parameters.AddWithValue("@newProductId", newProdSuppObj.ProductId);
+            }
+
+            // Verify if newProdSuppObj.SupplierId is null
+            if (newProdSuppObj.SupplierId == null) {
+                updateCmd.Parameters.AddWithValue("@newSupplierId", DBNull.Value);
+            } else {
+                updateCmd.Parameters.AddWithValue("@newSupplierId", newProdSuppObj.SupplierId);
+            }
+
+            // Execute the update command
+            try {
+                connection.Open();
+                int rowsUpdated = updateCmd.ExecuteNonQuery();
+                // Check for concurrency, another user might have updated or deleted in the meantime
+                if (rowsUpdated == 0) updateSuccess = false;
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                connection.Close();
+            }
+
+            return updateSuccess;
+        }
     }
 }
