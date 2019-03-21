@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Workshop4 {
-    public partial class Form1 : Form {
+    public partial class ProductsSupplierForm : Form {
 
         /********************************
          *  FOR TESTING PURPOSES ONLY   *
@@ -21,7 +21,7 @@ namespace Workshop4 {
         List<ProductsSupplier> prodSuppList = ProductsSupplierDB.GetAllProductsSuppliers();
         ProductsSupplier selectedProdSuppObj;
 
-        public Form1() {
+        public ProductsSupplierForm() {
             InitializeComponent();
         }
 

@@ -1,5 +1,5 @@
 ﻿namespace Workshop4 {
-    partial class Form1 {
+    partial class ProductsSupplierForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
