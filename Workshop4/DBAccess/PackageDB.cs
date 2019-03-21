@@ -18,7 +18,7 @@ namespace DBAccess
     * Module : PROJ-207-OOSD
     * Purpose :to get the packageid from sql and 
     * dispaly information related to that package.
-    * also do Add,Modify,Delete and update function in order to change the packages.
+    * also do Add,Delete and update(modify) function in order to change the packages.
     */
     public static class PackageDB
     {
@@ -105,7 +105,7 @@ namespace DBAccess
         }
 
 
-        //update function 
+        //update(modify) function 
         public static bool UpdatePackage(Package oldPackage, Package newPackage)
         {
             bool success = true;
