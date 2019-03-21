@@ -36,7 +36,7 @@ namespace Workshop4
             }
         }
 
-        // validation if the textbox is filled and is not empty
+        // validation if the textboxes are filled and are not empty
         public static bool IsPresent(Control control)
         {
             if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
@@ -69,7 +69,7 @@ namespace Workshop4
         }
 
 
-        //validation if price is decimal
+        //validation if price & commission are decimal(not letters)
 
         public static bool IsDecimal(TextBox textBox)
         {
@@ -85,6 +85,23 @@ namespace Workshop4
                 return false;
             }
         }
+
+        //validation if price & commission are positive decimal
+        public static bool IsPositiveDecimal(TextBox textBox)
+        {
+            if (Convert.ToDecimal(textBox.Text) > 0)
+            {
+               
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(textBox.Tag + " must be a positive number.");
+                return false;
+            }
+
+        }
+
         // validation if package start and end Date have specific format for date
         public static bool IsDateTime(TextBox textBox)
         {
@@ -94,11 +111,10 @@ namespace Workshop4
                 {
                     Convert.ToDateTime(textBox.Text);
                     return true;
-
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show(textBox.Tag + "Must be like yyyy-mm-dd", Title);
+                    MessageBox.Show(textBox.Tag + " must be like yyyy-mm-dd .", Title);
                     textBox.Focus();
                     return false;
                 }
@@ -106,6 +122,37 @@ namespace Workshop4
             return true;
         }
 
-        
+        //validation for agency commission can not be grater than base price
+        public static bool IsNotGreater(TextBox commission, TextBox price)
+        {
+            if (Convert.ToDecimal(commission.Text) < Convert.ToDecimal(price.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Agency commission must be less than the base price!");
+                return false;
+            }
+
+        }
+
+        // validation for Package End Date must be later than Package Start Date 
+        public static bool IsLatter(TextBox EndDate, TextBox StartDate)
+        {
+            if (Convert.ToDateTime(EndDate.Text) > Convert.ToDateTime(StartDate.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Package End Date must be later than Package Start Date !");
+                return false;
+            }
+
+        }
+
+
+
     }// end of Validator class
 }// end of namespace

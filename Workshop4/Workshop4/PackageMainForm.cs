@@ -19,7 +19,8 @@ namespace Workshop4
     * Course Name : Threaded Project for OOSD
     * Module : PROJ-207-OOSD
     * Purpose :PackageMainForm:Create Windows Form application that connects to
-     * the Travelexpert database and retrieves data from Packages table.
+    *  the Travelexpert database and retrieves data from Packages table. 
+    *  also it has different button to modify the package.
     */
     public partial class PackageMainForm : Form
     {
@@ -57,7 +58,7 @@ namespace Workshop4
 
         }// end of GetPackage button
 
-        // GetOrder function to display the orderid information
+        // GetPackage function to display the packageid information
         private void GetPackage(int packageId)
         {
             try
@@ -72,11 +73,10 @@ namespace Workshop4
 
 
 
-        // ClearControls function to clear the text boxes if they have already an packageid information
-        // and we want to try another packageid which is not in database.
+        // ClearControls function to clear the text boxes if they have already an 
+        // packageid info and we want to try another packageid which is not in database.
         private void ClearControls()
         {
-
             txtPkgId.Text = "";
             txtName.Text = "";
             txtStartDate.Text = "";
@@ -90,7 +90,6 @@ namespace Workshop4
         }
 
         // DisplayPackage function to display the packageid information in each text boxes
-
         private void DisplayPackage()
         {
             txtName.Text = package.PkgName;
@@ -101,16 +100,11 @@ namespace Workshop4
             txtCommission.Text = package.PkgAgencyCommission.ToString("c");
             btnModify.Enabled = true;
             btnDelete.Enabled = true;
-
         }
 
         
-        // Exit buttun to close the main form
-        private void btnExit_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        
+        //add button to add a new package and it opens the second form
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
@@ -125,7 +119,7 @@ namespace Workshop4
             }
 
         }
-        // Modify Button
+        // Modify Button to modify a package and it opens the second form
         private void btnModify_Click(object sender, EventArgs e)
         {
 
@@ -148,7 +142,7 @@ namespace Workshop4
             }
 
         }
-
+        // delete button to delete a package
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Delete " + package.PkgName + "?",
@@ -160,7 +154,7 @@ namespace Workshop4
                     if (!PackageDB.DeletePackage(package)) // optimistic concurrency violation
                     {
                         MessageBox.Show("Another user has updated or deleted " +
-                            "that customer.", "Database Error");
+                            "that package.", "Database Error");
                         this.GetPackage(package.PackageId);
                         if (package != null)
                             this.DisplayPackage();
@@ -176,5 +170,12 @@ namespace Workshop4
                 }
             }
         }
+
+        // Exit buttun to close the main form
+        private void btnExit_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }// end of class
 }// end of namespace

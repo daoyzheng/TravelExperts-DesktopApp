@@ -12,6 +12,14 @@ using System.Windows.Forms;
 
 namespace Workshop4
 {
+    /*
+    * Term 2 Threaded Project 
+    * Author : Mahda Kazemian
+    * Date : March 19,2019
+    * Course Name : Threaded Project for OOSD
+    * Module : PROJ-207-OOSD
+    * Purpose :PackageSecondForm: to open second form in order to add/modify/delete a package
+    */
     public partial class PackageSecondForm : Form
     {
         public PackageSecondForm()
@@ -20,13 +28,12 @@ namespace Workshop4
         }
 
         public bool addPackage; // indicates whether it is Add or Modify
-        public Package package; // current customer
+        public Package package; // current package
 
 
         //when form loads
         private void PackageSecondForm_Load(object sender, EventArgs e)
         {
-
             if (addPackage)
             {
                 this.Text = "Add Package";
@@ -38,7 +45,8 @@ namespace Workshop4
                 this.DisplayPackage();
             }
         }
-        // Accept button 
+
+        // Accept button to accept add or modify function
         private void btnAccept_Click(object sender, EventArgs e)
         {
 
@@ -89,19 +97,17 @@ namespace Workshop4
 
 
         // DisplayPackage function to display the packageid information in each text boxes
-
         private void DisplayPackage()
         {
             txtName.Text = package.PkgName;
             txtStartDate.Text = package.PkgStartDate.ToString("yyyy-MM-dd");
             txtEndDate.Text = package.PkgEndDate.ToString("yyyy-MM-dd");
             txtDesc.Text = package.PkgDesc;
-            txtPrice.Text = package.PkgBasePrice.ToString("c");
-            txtCommission.Text = package.PkgAgencyCommission.ToString("c");
-           
+            txtPrice.Text = package.PkgBasePrice.ToString();
+            txtCommission.Text = package.PkgAgencyCommission.ToString();
         }
-        //validation
 
+        //validation function
         private bool IsValidData()
         {
             return
@@ -110,12 +116,18 @@ namespace Workshop4
                 Validator.IsDateTime(txtStartDate) &&
                 Validator.IsPresent(txtEndDate) &&
                 Validator.IsDateTime(txtEndDate) &&
+                Validator.IsLatter(txtEndDate, txtStartDate) &&
                 Validator.IsPresent(txtDesc) &&
                 Validator.IsPresent(txtPrice) &&
-                Validator.IsPresent(txtCommission);
+                Validator.IsDecimal(txtPrice) &&
+                Validator.IsPositiveDecimal(txtPrice) &&
+                Validator.IsPresent(txtCommission) &&
+                Validator.IsDecimal(txtCommission) &&
+                Validator.IsPositiveDecimal(txtCommission) &&
+                Validator.IsNotGreater(txtCommission, txtPrice);
 
         }
-        //
+        //PutPackageData function to show new package information
         private void PutPackageData(Package package)
         {
             package.PkgName = txtName.Text;
@@ -125,6 +137,13 @@ namespace Workshop4
             package.PkgBasePrice =Convert.ToDecimal( txtPrice.Text);
             package.PkgAgencyCommission = Convert.ToDecimal(txtCommission.Text);
         }
-       
+
+        //cancel button to cancel the add or the modify and close the second form
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }//end of class
 }//end of namespace
