@@ -15,7 +15,7 @@ Workshop 4 for .NET C#
     - Delete (Have database access method, still needs testing)
 - Packages Table
     - Read (Done)
-    - Insert (needs testing)
-    - Update (needs testing)
+    - Insert (Done)
+    - Update (Done)
     - Delete (Done)
 
