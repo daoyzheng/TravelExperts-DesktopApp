@@ -63,6 +63,7 @@ namespace Workshop4
             catch (FormatException)
             {
                 MessageBox.Show(textBox.Tag + " must be an integer.", Title);
+                textBox.SelectAll();
                 textBox.Focus();
                 return false;
             }
@@ -81,6 +82,7 @@ namespace Workshop4
             catch (FormatException)
             {
                 MessageBox.Show(textBox.Tag + " must be a decimal number.", Title);
+                textBox.SelectAll();
                 textBox.Focus();
                 return false;
             }
@@ -97,6 +99,8 @@ namespace Workshop4
             else
             {
                 MessageBox.Show(textBox.Tag + " must be a positive number.");
+                textBox.SelectAll();
+                textBox.Focus();
                 return false;
             }
 
@@ -115,6 +119,7 @@ namespace Workshop4
                 catch (FormatException)
                 {
                     MessageBox.Show(textBox.Tag + " must be like yyyy-mm-dd .", Title);
+                    textBox.SelectAll();
                     textBox.Focus();
                     return false;
                 }
@@ -132,6 +137,8 @@ namespace Workshop4
             else
             {
                 MessageBox.Show("Agency commission must be less than the base price!");
+                commission.SelectAll();
+                commission.Focus();
                 return false;
             }
 
@@ -147,6 +154,8 @@ namespace Workshop4
             else
             {
                 MessageBox.Show("Package End Date must be later than Package Start Date !");
+                EndDate.SelectAll();
+                EndDate.Focus();
                 return false;
             }
 
