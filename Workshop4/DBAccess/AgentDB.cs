@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace DBAccess {
     public static class AgentDB {
         // Get Agent details by Agent User Name and Password
-        public static Agent GetAgentByAgtUserName (string agtUserName, string password) {
-            Agent agtObj = null;
+        //public static Agent GetAgentByAgtUserName (string agtUserName, string password) {
+            //Agent agtObj = null;
             //string selectStatement = "SELECT AgtFirstName, AgtLastName " +
             //                        "FROM Agents " +
             //                       "WHERE "
             //return agtObj;
-        }
+        //}
     }
 }
