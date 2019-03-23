@@ -218,7 +218,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 403);
+            this.ClientSize = new System.Drawing.Size(742, 426);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnModify);
@@ -238,6 +238,7 @@
             this.Controls.Add(this.lblPkgStartDate);
             this.Controls.Add(this.lblPkgName);
             this.Controls.Add(this.lblPackageId);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PackageMainForm";
             this.Text = "PackageMainForm";
             this.ResumeLayout(false);
