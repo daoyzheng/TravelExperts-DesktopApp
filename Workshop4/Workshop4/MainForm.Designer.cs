@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.pnlSuppBar = new System.Windows.Forms.Panel();
             this.pnlProdBar = new System.Windows.Forms.Panel();
@@ -32,12 +33,17 @@
             this.productButton = new Workshop4.ProductButton();
             this.packageButton = new Workshop4.PackageButton();
             this.homeButton = new Workshop4.HomeButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSignIn = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.White;
+            this.pnlMenu.Controls.Add(this.btnSignIn);
+            this.pnlMenu.Controls.Add(this.pictureBox1);
             this.pnlMenu.Controls.Add(this.supplierButton);
             this.pnlMenu.Controls.Add(this.pnlSuppBar);
             this.pnlMenu.Controls.Add(this.productButton);
@@ -128,6 +134,30 @@
             this.homeButton.MouseEnter += new System.EventHandler(this.homeButton_MouseEnter);
             this.homeButton.MouseLeave += new System.EventHandler(this.homeButton_MouseLeave);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, 505);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(29, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnSignIn
+            // 
+            this.btnSignIn.FlatAppearance.BorderSize = 0;
+            this.btnSignIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignIn.Location = new System.Drawing.Point(45, 505);
+            this.btnSignIn.Name = "btnSignIn";
+            this.btnSignIn.Size = new System.Drawing.Size(61, 32);
+            this.btnSignIn.TabIndex = 9;
+            this.btnSignIn.Text = "Sign in";
+            this.btnSignIn.UseVisualStyleBackColor = true;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +169,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.pnlMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -154,5 +185,7 @@
         private System.Windows.Forms.Panel pnlSuppBar;
         private ProductButton productButton;
         private System.Windows.Forms.Panel pnlProdBar;
+        private System.Windows.Forms.Button btnSignIn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

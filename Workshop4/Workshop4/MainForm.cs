@@ -150,5 +150,12 @@ namespace Workshop4 {
             supplierButton.BackColor = Color.White;
         }
 
+        private void btnSignIn_Click(object sender, EventArgs e) {
+            Form loginForm = new frmLogin();
+            DialogResult result = loginForm.ShowDialog();
+            if (result == DialogResult.OK) {
+
+            }
+        }
     }
 }
