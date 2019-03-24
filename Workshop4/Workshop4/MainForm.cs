@@ -20,7 +20,34 @@ namespace Workshop4 {
             InitializeComponent();
         }
 
-        private void btnPackage_Click(object sender, EventArgs e) {
+        private void homeButton_Click(object sender, EventArgs e) {
+            // Set active bar
+            pnlHomeBar.Visible = true;
+            pnlPackBar.Visible = false;
+            pnlProdBar.Visible = false;
+            pnlSuppBar.Visible = false;
+
+            // Set the active font color
+            homeButton.ForeColor = Color.DodgerBlue;
+            packageButton.ForeColor = Color.Black;
+            productButton.ForeColor = Color.Black;
+            supplierButton.ForeColor = Color.Black;
+
+        }
+
+        private void packageButton_Click(object sender, EventArgs e) {
+            // Set active bar
+            pnlHomeBar.Visible = false;
+            pnlPackBar.Visible = true;
+            pnlProdBar.Visible = false;
+            pnlSuppBar.Visible = false;
+
+            // Set the active font color
+            homeButton.ForeColor = Color.Black;
+            packageButton.ForeColor = Color.DodgerBlue;
+            productButton.ForeColor = Color.Black;
+            supplierButton.ForeColor = Color.Black;
+
             // Reset all other forms
             prodsFormOpened = false;
             suppsFormOpened = false;
@@ -34,7 +61,19 @@ namespace Workshop4 {
             }
         }
 
-        private void btnProducts_Click(object sender, EventArgs e) {
+        private void productButton_Click(object sender, EventArgs e) {
+            // Set active bar
+            pnlHomeBar.Visible = false;
+            pnlPackBar.Visible = false;
+            pnlProdBar.Visible = true;
+            pnlSuppBar.Visible = false;
+
+            // Set the active font color
+            homeButton.ForeColor = Color.Black;
+            packageButton.ForeColor = Color.Black;
+            productButton.ForeColor = Color.DodgerBlue;
+            supplierButton.ForeColor = Color.Black;
+
             // Reset all other forms
             pkgFormOpened = false;
             suppsFormOpened = false;
@@ -48,7 +87,20 @@ namespace Workshop4 {
             }
         }
 
-        private void btnSuppliers_Click(object sender, EventArgs e) {
+        private void supplierButton_Click(object sender, EventArgs e) {
+            // Set active bar
+            pnlHomeBar.Visible = false;
+            pnlPackBar.Visible = false;
+            pnlProdBar.Visible = false;
+            pnlSuppBar.Visible = true;
+
+            // Set the active font color
+            homeButton.ForeColor = Color.Black;
+            packageButton.ForeColor = Color.Black;
+            productButton.ForeColor = Color.Black;
+            supplierButton.ForeColor = Color.DodgerBlue;
+
+
             // Reset all other forms
             pkgFormOpened = false;
             prodsFormOpened = false;
@@ -61,5 +113,42 @@ namespace Workshop4 {
                 suppsFormOpened = true;
             }
         }
+
+        private void homeButton_MouseEnter(object sender, EventArgs e) {
+            homeButton.BackColor = Color.LightGray;
+        }
+
+        private void packageButton_MouseEnter(object sender, EventArgs e) {
+            packageButton.BackColor = Color.LightGray;
+        }
+
+        private void productButton_MouseEnter(object sender, EventArgs e) {
+            productButton.BackColor = Color.LightGray;
+        }
+
+        private void supplierButton_MouseEnter(object sender, EventArgs e) {
+            supplierButton.BackColor = Color.LightGray;
+        }
+
+        private void homeButton_MouseLeave(object sender, EventArgs e) {
+            // Reset to default color
+            homeButton.BackColor = Color.White;
+        }
+
+        private void packageButton_MouseLeave(object sender, EventArgs e) {
+            // Reset to default color
+            packageButton.BackColor = Color.White;
+        }
+
+        private void productButton_MouseLeave(object sender, EventArgs e) {
+            // Reset to default color
+            productButton.BackColor = Color.White;
+        }
+
+        private void supplierButton_MouseLeave(object sender, EventArgs e) {
+            // Reset to default color
+            supplierButton.BackColor = Color.White;
+        }
+
     }
 }

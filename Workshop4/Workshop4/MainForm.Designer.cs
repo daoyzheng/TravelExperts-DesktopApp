@@ -24,101 +24,115 @@
         /// </summary>
         private void InitializeComponent() {
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.btnSuppliers = new System.Windows.Forms.Button();
-            this.btnProducts = new System.Windows.Forms.Button();
-            this.btnPackage = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
-            this.pnlTopBar = new System.Windows.Forms.Panel();
+            this.pnlSuppBar = new System.Windows.Forms.Panel();
+            this.pnlProdBar = new System.Windows.Forms.Panel();
+            this.pnlPackBar = new System.Windows.Forms.Panel();
+            this.pnlHomeBar = new System.Windows.Forms.Panel();
+            this.supplierButton = new Workshop4.SupplierButton();
+            this.productButton = new Workshop4.ProductButton();
+            this.packageButton = new Workshop4.PackageButton();
+            this.homeButton = new Workshop4.HomeButton();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.pnlMenu.Controls.Add(this.btnSuppliers);
-            this.pnlMenu.Controls.Add(this.btnProducts);
-            this.pnlMenu.Controls.Add(this.btnPackage);
-            this.pnlMenu.Controls.Add(this.btnHome);
+            this.pnlMenu.BackColor = System.Drawing.Color.White;
+            this.pnlMenu.Controls.Add(this.supplierButton);
+            this.pnlMenu.Controls.Add(this.pnlSuppBar);
+            this.pnlMenu.Controls.Add(this.productButton);
+            this.pnlMenu.Controls.Add(this.pnlProdBar);
+            this.pnlMenu.Controls.Add(this.packageButton);
+            this.pnlMenu.Controls.Add(this.pnlPackBar);
+            this.pnlMenu.Controls.Add(this.homeButton);
+            this.pnlMenu.Controls.Add(this.pnlHomeBar);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(113, 586);
+            this.pnlMenu.Size = new System.Drawing.Size(226, 586);
             this.pnlMenu.TabIndex = 0;
             // 
-            // btnSuppliers
+            // pnlSuppBar
             // 
-            this.btnSuppliers.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnSuppliers.FlatAppearance.BorderSize = 0;
-            this.btnSuppliers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnSuppliers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aquamarine;
-            this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuppliers.Location = new System.Drawing.Point(0, 320);
-            this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Size = new System.Drawing.Size(113, 40);
-            this.btnSuppliers.TabIndex = 5;
-            this.btnSuppliers.Text = "Suppliers";
-            this.btnSuppliers.UseVisualStyleBackColor = false;
-            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
+            this.pnlSuppBar.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pnlSuppBar.Location = new System.Drawing.Point(0, 351);
+            this.pnlSuppBar.Name = "pnlSuppBar";
+            this.pnlSuppBar.Size = new System.Drawing.Size(10, 44);
+            this.pnlSuppBar.TabIndex = 8;
+            this.pnlSuppBar.Visible = false;
             // 
-            // btnProducts
+            // pnlProdBar
             // 
-            this.btnProducts.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnProducts.FlatAppearance.BorderSize = 0;
-            this.btnProducts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnProducts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aquamarine;
-            this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProducts.Location = new System.Drawing.Point(0, 250);
-            this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(113, 40);
-            this.btnProducts.TabIndex = 4;
-            this.btnProducts.Text = "Products";
-            this.btnProducts.UseVisualStyleBackColor = false;
-            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            this.pnlProdBar.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pnlProdBar.Location = new System.Drawing.Point(0, 270);
+            this.pnlProdBar.Name = "pnlProdBar";
+            this.pnlProdBar.Size = new System.Drawing.Size(10, 44);
+            this.pnlProdBar.TabIndex = 7;
+            this.pnlProdBar.Visible = false;
             // 
-            // btnPackage
+            // pnlPackBar
             // 
-            this.btnPackage.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnPackage.FlatAppearance.BorderSize = 0;
-            this.btnPackage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnPackage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aquamarine;
-            this.btnPackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPackage.Location = new System.Drawing.Point(0, 180);
-            this.btnPackage.Name = "btnPackage";
-            this.btnPackage.Size = new System.Drawing.Size(113, 40);
-            this.btnPackage.TabIndex = 3;
-            this.btnPackage.Text = "Packages";
-            this.btnPackage.UseVisualStyleBackColor = false;
-            this.btnPackage.Click += new System.EventHandler(this.btnPackage_Click);
+            this.pnlPackBar.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pnlPackBar.Location = new System.Drawing.Point(0, 189);
+            this.pnlPackBar.Name = "pnlPackBar";
+            this.pnlPackBar.Size = new System.Drawing.Size(10, 44);
+            this.pnlPackBar.TabIndex = 6;
+            this.pnlPackBar.Visible = false;
             // 
-            // btnHome
+            // pnlHomeBar
             // 
-            this.btnHome.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSeaGreen;
-            this.btnHome.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aquamarine;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Location = new System.Drawing.Point(0, 110);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(113, 40);
-            this.btnHome.TabIndex = 2;
-            this.btnHome.Text = "Home";
-            this.btnHome.UseVisualStyleBackColor = false;
+            this.pnlHomeBar.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pnlHomeBar.Location = new System.Drawing.Point(0, 108);
+            this.pnlHomeBar.Name = "pnlHomeBar";
+            this.pnlHomeBar.Size = new System.Drawing.Size(10, 44);
+            this.pnlHomeBar.TabIndex = 3;
+            this.pnlHomeBar.Visible = false;
             // 
-            // pnlTopBar
+            // supplierButton
             // 
-            this.pnlTopBar.BackColor = System.Drawing.Color.Tomato;
-            this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTopBar.Location = new System.Drawing.Point(113, 0);
-            this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(919, 54);
-            this.pnlTopBar.TabIndex = 1;
+            this.supplierButton.Location = new System.Drawing.Point(10, 351);
+            this.supplierButton.Name = "supplierButton";
+            this.supplierButton.Size = new System.Drawing.Size(214, 44);
+            this.supplierButton.TabIndex = 0;
+            this.supplierButton.Click += new System.EventHandler(this.supplierButton_Click);
+            this.supplierButton.MouseEnter += new System.EventHandler(this.supplierButton_MouseEnter);
+            this.supplierButton.MouseLeave += new System.EventHandler(this.supplierButton_MouseLeave);
+            // 
+            // productButton
+            // 
+            this.productButton.Location = new System.Drawing.Point(10, 270);
+            this.productButton.Name = "productButton";
+            this.productButton.Size = new System.Drawing.Size(214, 44);
+            this.productButton.TabIndex = 0;
+            this.productButton.Click += new System.EventHandler(this.productButton_Click);
+            this.productButton.MouseEnter += new System.EventHandler(this.productButton_MouseEnter);
+            this.productButton.MouseLeave += new System.EventHandler(this.productButton_MouseLeave);
+            // 
+            // packageButton
+            // 
+            this.packageButton.Location = new System.Drawing.Point(10, 189);
+            this.packageButton.Name = "packageButton";
+            this.packageButton.Size = new System.Drawing.Size(214, 44);
+            this.packageButton.TabIndex = 0;
+            this.packageButton.Click += new System.EventHandler(this.packageButton_Click);
+            this.packageButton.MouseEnter += new System.EventHandler(this.packageButton_MouseEnter);
+            this.packageButton.MouseLeave += new System.EventHandler(this.packageButton_MouseLeave);
+            // 
+            // homeButton
+            // 
+            this.homeButton.Location = new System.Drawing.Point(10, 108);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(214, 44);
+            this.homeButton.TabIndex = 0;
+            this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
+            this.homeButton.MouseEnter += new System.EventHandler(this.homeButton_MouseEnter);
+            this.homeButton.MouseLeave += new System.EventHandler(this.homeButton_MouseLeave);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 586);
-            this.Controls.Add(this.pnlTopBar);
             this.Controls.Add(this.pnlMenu);
             this.IsMdiContainer = true;
             this.Name = "MainForm";
@@ -132,10 +146,13 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.Button btnSuppliers;
-        private System.Windows.Forms.Button btnProducts;
-        private System.Windows.Forms.Button btnPackage;
-        private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Panel pnlTopBar;
+        private System.Windows.Forms.Panel pnlHomeBar;
+        private HomeButton homeButton;
+        private PackageButton packageButton;
+        private System.Windows.Forms.Panel pnlPackBar;
+        private SupplierButton supplierButton;
+        private System.Windows.Forms.Panel pnlSuppBar;
+        private ProductButton productButton;
+        private System.Windows.Forms.Panel pnlProdBar;
     }
 }

@@ -47,6 +47,8 @@
             this.btnModify = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.comboBoxProdSupps = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblPackageId
@@ -214,11 +216,30 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click_1);
             // 
+            // comboBoxProdSupps
+            // 
+            this.comboBoxProdSupps.FormattingEnabled = true;
+            this.comboBoxProdSupps.Location = new System.Drawing.Point(540, 56);
+            this.comboBoxProdSupps.Name = "comboBoxProdSupps";
+            this.comboBoxProdSupps.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxProdSupps.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(423, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Products Suppliers";
+            // 
             // PackageMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 426);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBoxProdSupps);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnModify);
@@ -267,5 +288,7 @@
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ComboBox comboBoxProdSupps;
+        private System.Windows.Forms.Label label1;
     }
 }
