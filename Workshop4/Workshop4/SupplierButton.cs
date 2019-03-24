@@ -44,5 +44,20 @@ namespace Workshop4 {
                 }
             }
         }
+
+        public new event EventHandler MouseLeave {
+            add {
+                base.MouseLeave += value;
+                foreach (Control control in Controls) {
+                    control.MouseLeave += value;
+                }
+            }
+            remove {
+                base.MouseLeave -= value;
+                foreach (Control control in Controls) {
+                    control.MouseLeave -= value;
+                }
+            }
+        }
     }
 }
