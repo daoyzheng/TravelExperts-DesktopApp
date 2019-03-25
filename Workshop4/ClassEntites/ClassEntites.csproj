@@ -43,8 +43,11 @@
   <ItemGroup>
     <Compile Include="Agent.cs" />
     <Compile Include="Package.cs" />
+    <Compile Include="PackagesProductsSuppliers.cs" />
+    <Compile Include="Products.cs" />
     <Compile Include="ProductsSupplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Suppliers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
