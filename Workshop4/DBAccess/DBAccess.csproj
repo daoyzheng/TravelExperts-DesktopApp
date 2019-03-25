@@ -43,7 +43,10 @@
   <ItemGroup>
     <Compile Include="AgentDB.cs" />
     <Compile Include="PackageDB.cs" />
+    <Compile Include="PackagesProductsSuppliersDB.cs" />
+    <Compile Include="ProductDB.cs" />
     <Compile Include="ProductsSupplierDB.cs" />
+    <Compile Include="SupplierDB.cs" />
     <Compile Include="TravelExpertsDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

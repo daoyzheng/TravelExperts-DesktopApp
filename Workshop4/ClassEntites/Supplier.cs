@@ -21,6 +21,6 @@ namespace ClassEntites
     {
         public int SupplierId { get; set; }
 
-        public string ProdName { get; set; } // string is reference type and thus nullable
+        public string SupName { get; set; } // string is reference type and thus nullable
     }
 }
