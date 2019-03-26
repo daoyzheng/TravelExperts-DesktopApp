@@ -20,8 +20,46 @@ using System.Threading.Tasks;
 
 namespace DBAccess
 {
+    
     public class SupplierDB
     {
+        public static List<Supplier> GetSuppliers()
+        {
+            List<Supplier> suppliers = new List<Supplier>();
+
+            SqlConnection conn = TravelExpertsDB.GetConnection();
+
+            // create a sql select statement
+            string selectStatement =
+                "SELECT SupplierId, SupName " +
+                "FROM Suppliers";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
+
+            try
+            {
+                conn.Open();// open connection
+
+                SqlDataReader sr = selectCommand.ExecuteReader();
+
+                while (sr.Read()) // product record exists
+                {
+                    Supplier supplier = new Supplier();
+                    supplier.SupplierId = (int)sr["SupplierId"];
+                    supplier.SupName = sr["SupName"].ToString();
+                    suppliers.Add(supplier);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return suppliers;
+        }
         // Method to return a Supplier object for the given supplierid.
         public static Supplier GetSupplier(int supplierid)
         {

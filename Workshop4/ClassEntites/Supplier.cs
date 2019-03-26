@@ -22,5 +22,12 @@ namespace ClassEntites
         public int SupplierId { get; set; }
 
         public string SupName { get; set; } // string is reference type and thus nullable
+
+        public override string ToString()
+        {
+            return "SupplierId: " + SupplierId.ToString() + ",   " + "Supplier Name: " + SupName;
+        }
+
     }
+
 }
