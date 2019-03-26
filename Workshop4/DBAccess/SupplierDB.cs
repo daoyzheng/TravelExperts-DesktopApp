@@ -44,7 +44,7 @@ namespace DBAccess
 
                 SqlDataReader sr = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
 
-                if (pr.Read()) // product record exists
+                if (sr.Read()) // product record exists
                 {
                     supplier = new Supplier();
                     supplier.SupplierId = (int)sr["SupplierId"];

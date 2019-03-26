@@ -12,6 +12,8 @@ using System.Windows.Forms;
 
 namespace Workshop4 {
     public partial class frmLogin : Form {
+        // Get main agent login reference
+        public Agent loggedInAgt { get; set; }
         public frmLogin() {
             InitializeComponent();
         }
@@ -31,7 +33,19 @@ namespace Workshop4 {
                                                && a.AgtLastName.ToLower() == lastName.ToLower());
 
             if (agent != null) { // if found a match
-                
+                loggedInAgt = new Agent();
+                loggedInAgt.AgentId = agent.AgentId;
+                loggedInAgt.AgtFirstName = agent.AgtFirstName;
+                loggedInAgt.AgtMiddleInitial = agent.AgtMiddleInitial;
+                loggedInAgt.AgtLastName = agent.AgtLastName;
+                loggedInAgt.AgtEmail = agent.AgtEmail;
+                loggedInAgt.AgtBusPhone = agent.AgtBusPhone;
+                loggedInAgt.AgtPosition = agent.AgtPosition;
+                loggedInAgt.AgencyId = agent.AgencyId;
+                DialogResult = DialogResult.OK;
+            } else {
+                MessageBox.Show("Incorrect First Name or Last Name");
+                DialogResult = DialogResult.None;
             }
         }
     }

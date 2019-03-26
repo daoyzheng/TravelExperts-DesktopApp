@@ -28,7 +28,7 @@ namespace DBAccess {
                 SqlDataReader dr = selectCmd.ExecuteReader();
                 while (dr.Read()) {
                     Agent agent = new Agent();
-                    agent.AgencyId = (int)dr["AgentId"];
+                    agent.AgentId = (int)dr["AgentId"];
                     if (dr["AgtFirstName"] is DBNull)
                         agent.AgtFirstName = null;
                     else
