@@ -21,19 +21,17 @@ using System.Threading.Tasks;
 
 namespace DBAccess
 {
-    public class sPackagesProductsSuppliersDB
+    public class PackagesProductsSuppliersDB
     {
-
-        // Method to return a PackagesProductsSuppliers object for the given PackagesProductsSuppliersid.
-        public static PackagesProductsSuppliers GetPackagesProductsSuppliers(int ppsid)
+        // Method to return a list of PackagesProductsSuppliers objects for the given PackagesProductsSuppliersid.
+        public static List<PackagesProductsSuppliers> GetPackagesProductsSuppliers(int ppsid)
         {
-            PackagesProductsSuppliers pps = null;
-
+            List<PackagesProductsSuppliers> packagesProductsSuppliers = new List<PackagesProductsSuppliers>();
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
             // create a sql select statement
             string selectStatement =
-                "SELECT PackageId, ProductSupplirId " +
+                "SELECT PackageId, ProductSupplierId " +
                 "FROM Packages_Products_Suppliers " +
                 "WHERE PackageId = @PackageId";
 
@@ -44,13 +42,15 @@ namespace DBAccess
             {
                 conn.Open();// open connection
 
-                SqlDataReader sr = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                SqlDataReader sr = selectCommand.ExecuteReader();
 
-                if (sr.Read()) // product record exists
+                while (sr.Read()) // product record exists
                 {
-                    pps = new PackagesProductsSuppliers();
+                    PackagesProductsSuppliers pps = new PackagesProductsSuppliers();
                     pps.PackageId = (int)sr["PackageId"];
                     pps.ProductSupplierId = (int)sr["ProductSupplierId"];
+
+                    packagesProductsSuppliers.Add(pps);
                 }
             }
             catch (Exception ex)
@@ -61,7 +61,7 @@ namespace DBAccess
             {
                 conn.Close();
             }
-            return pps;
+            return packagesProductsSuppliers;
         }
 
         // Method to add a new product to the PackagesProductsSupplierss table of Travel Experts
