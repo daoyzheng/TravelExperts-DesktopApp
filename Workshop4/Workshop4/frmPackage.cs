@@ -31,10 +31,12 @@ namespace Workshop4 {
         private void frmPackage_Load(object sender, EventArgs e) {
             // Display a list of Package ids to the package Id combobox
             // Select all pakage ids from the list of package objects
-            var pkgIdList = packages.Select(pkg => pkg.PackageId).ToList();
-            packageIdComboBox.DataSource = pkgIdList;
+            //var pkgIdList = packages.Select(pkg => pkg.PackageId).ToList();
+            //packageIdComboBox.DataSource = pkgIdList;
 
-            DataGridView dataGridView = new DataGridView();
+            packageIdComboBox.DisplayMember = "PkgName";
+            packageIdComboBox.ValueMember = "PackageId";
+            packageIdComboBox.DataSource = packages;
         }
 
         private void packageIdComboBox_SelectedIndexChanged(object sender, EventArgs e) {
