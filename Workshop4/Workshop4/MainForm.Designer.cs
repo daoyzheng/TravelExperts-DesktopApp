@@ -25,6 +25,8 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnLogOut = new System.Windows.Forms.Button();
+            this.lblAgtName = new System.Windows.Forms.Label();
             this.pnlAgtBar = new System.Windows.Forms.Panel();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -32,8 +34,6 @@
             this.pnlProdBar = new System.Windows.Forms.Panel();
             this.pnlPackBar = new System.Windows.Forms.Panel();
             this.pnlHomeBar = new System.Windows.Forms.Panel();
-            this.lblAgtName = new System.Windows.Forms.Label();
-            this.btnLogOut = new System.Windows.Forms.Button();
             this.agentButton = new Workshop4.AgentButton();
             this.supplierButton = new Workshop4.SupplierButton();
             this.productButton = new Workshop4.ProductButton();
@@ -65,6 +65,32 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(226, 661);
             this.pnlMenu.TabIndex = 0;
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.FlatAppearance.BorderSize = 0;
+            this.btnLogOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnLogOut.Location = new System.Drawing.Point(142, 592);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(61, 32);
+            this.btnLogOut.TabIndex = 12;
+            this.btnLogOut.Text = "Log out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Visible = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
+            // lblAgtName
+            // 
+            this.lblAgtName.AutoSize = true;
+            this.lblAgtName.Location = new System.Drawing.Point(54, 578);
+            this.lblAgtName.Name = "lblAgtName";
+            this.lblAgtName.Size = new System.Drawing.Size(35, 13);
+            this.lblAgtName.TabIndex = 11;
+            this.lblAgtName.Text = "label1";
+            this.lblAgtName.Visible = false;
             // 
             // pnlAgtBar
             // 
@@ -136,32 +162,6 @@
             this.pnlHomeBar.TabIndex = 3;
             this.pnlHomeBar.Visible = false;
             // 
-            // lblAgtName
-            // 
-            this.lblAgtName.AutoSize = true;
-            this.lblAgtName.Location = new System.Drawing.Point(54, 578);
-            this.lblAgtName.Name = "lblAgtName";
-            this.lblAgtName.Size = new System.Drawing.Size(35, 13);
-            this.lblAgtName.TabIndex = 11;
-            this.lblAgtName.Text = "label1";
-            this.lblAgtName.Visible = false;
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.FlatAppearance.BorderSize = 0;
-            this.btnLogOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnLogOut.Location = new System.Drawing.Point(142, 592);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(61, 32);
-            this.btnLogOut.TabIndex = 12;
-            this.btnLogOut.Text = "Log out";
-            this.btnLogOut.UseVisualStyleBackColor = true;
-            this.btnLogOut.Visible = false;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
             // agentButton
             // 
             this.agentButton.Location = new System.Drawing.Point(10, 100);
@@ -177,7 +177,7 @@
             // 
             this.supplierButton.Location = new System.Drawing.Point(10, 408);
             this.supplierButton.Name = "supplierButton";
-            this.supplierButton.Size = new System.Drawing.Size(214, 44);
+            this.supplierButton.Size = new System.Drawing.Size(216, 44);
             this.supplierButton.TabIndex = 0;
             this.supplierButton.Click += new System.EventHandler(this.supplierButton_Click);
             this.supplierButton.MouseEnter += new System.EventHandler(this.supplierButton_MouseEnter);
@@ -217,7 +217,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 661);
+            this.ClientSize = new System.Drawing.Size(1094, 661);
             this.Controls.Add(this.pnlMenu);
             this.IsMdiContainer = true;
             this.Name = "MainForm";

@@ -7,7 +7,7 @@
 * Purpose: This is a Suppliers class definition and forms part of the CPRG 214
 * Threaded Project Workshop 4.
 *
-*********************************************************************************/using System;
+*********************************************************************************/
 using System;
 using System.Collections.Generic;
 using System.Linq;

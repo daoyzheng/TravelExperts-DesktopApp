@@ -100,8 +100,8 @@ namespace Workshop4
         private void DisplayPackage()
         {
             txtName.Text = package.PkgName;
-            txtStartDate.Text = package.PkgStartDate.ToString("yyyy-MM-dd");
-            txtEndDate.Text = package.PkgEndDate.ToString("yyyy-MM-dd");
+            //txtStartDate.Text = package.PkgStartDate.ToString("yyyy-MM-dd");
+            //txtEndDate.Text = package.PkgEndDate.ToString("yyyy-MM-dd");
             txtDesc.Text = package.PkgDesc;
             txtPrice.Text = package.PkgBasePrice.ToString();
             txtCommission.Text = package.PkgAgencyCommission.ToString();

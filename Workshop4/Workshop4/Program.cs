@@ -13,7 +13,8 @@ namespace Workshop4 {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            //Application.Run(new MainForm());
+            Application.Run(new frmPackage());
         }
     }
 }
