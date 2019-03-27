@@ -18,9 +18,9 @@ namespace Workshop4 {
         // Get a list of all product_suppliers objects from database
         List<ProductsSupplier> productsSuppliers = ProductsSupplierDB.GetAllProductsSuppliers();
         // Get a list of all products objects from database
-        List<Product> products = ProductDB.GetAllProducts();
+        List<Product> products = ProductDB.GetProducts();
         // Get a list of all suppliers objects from database
-        List<Supplier> suppliers = SupplierDB.GetAllSuppliers();
+        List<Supplier> suppliers = SupplierDB.GetSuppliers();
         
         
 
