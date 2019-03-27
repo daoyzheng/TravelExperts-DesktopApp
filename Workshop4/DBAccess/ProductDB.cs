@@ -22,6 +22,43 @@ namespace DBAccess
 {
     public class ProductDB
     {
+        public static List<Product> GetProducts()
+        {
+            List<Product> products = new List<Product>();
+
+            SqlConnection conn = TravelExpertsDB.GetConnection();
+
+            // create a sql select statement
+            string selectStatement =
+                "SELECT ProductId, ProdName " +
+                "FROM Products";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
+
+            try
+            {
+                conn.Open();// open connection
+
+                SqlDataReader sr = selectCommand.ExecuteReader();
+
+                while (sr.Read()) // product record exists
+                {
+                    Product product = new Product();
+                    product.ProductId = (int)sr["ProductId"];
+                    product.ProdName = sr["ProdName"].ToString();
+                    products.Add(product);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return products;
+        }
         // Method to return a Product object for the given productId.
         public static Product GetProduct(int productid)
         {

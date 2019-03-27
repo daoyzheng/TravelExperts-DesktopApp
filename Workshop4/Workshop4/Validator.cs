@@ -51,6 +51,29 @@ namespace Workshop4
             }
             return true;
         }
+        // Public method to check whether data is a whole number (non-negative int).
+        // T. Leslie
+        public static bool IsNonNegativeInt(TextBox tb, string name)
+        {
+            bool result = true;
+            int val;
+            if (!Int32.TryParse(tb.Text, out val))
+            {
+                result = false;
+                MessageBox.Show(name + " has to be a whole number.", "Input Error");
+                tb.SelectAll();
+                tb.Focus();
+            }
+            else if (val < 0)
+            {
+                result = false;
+                MessageBox.Show(name + " has to be a whole number.", "Input Error");
+                tb.SelectAll();
+                tb.Focus();
+            }
+            return result;
+        }
+
 
         // validation if packageid is an integer
         public static bool IsInt32(TextBox textBox)

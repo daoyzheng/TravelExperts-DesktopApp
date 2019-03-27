@@ -108,11 +108,12 @@ namespace DBAccess
 
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
-            string insertStatement = "INSERT INTO Suppliers (SupName) " +
-                                     "VALUES(@SupName)";
+            string insertStatement = "INSERT INTO Suppliers (SupplierId, SupName) " +
+                                     "VALUES(@SupplierId, @SupName)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, conn);
 
+            insertCommand.Parameters.AddWithValue("@SupplierId", supplier.SupplierId);
             insertCommand.Parameters.AddWithValue("@SupName", supplier.SupName);
 
             try
@@ -121,9 +122,9 @@ namespace DBAccess
 
                 insertCommand.ExecuteNonQuery();
 
-                string selectStatement = "SELECT IDENT_CURRENT('SupplierId') FROM Suppliers"; // extract the SupplierId for the newly added product
-                SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
-                supplierid = Convert.ToInt32(selectCommand.ExecuteScalar()); // execute the sql command expecting the single id result
+                //string selectStatement = "SELECT IDENT_CURRENT('SupplierId') FROM Suppliers"; // extract the SupplierId for the newly added product
+                //SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
+                //supplierid = Convert.ToInt32(selectCommand.ExecuteScalar()); // execute the sql command expecting the single id result
             }
             catch (Exception ex)
             {
