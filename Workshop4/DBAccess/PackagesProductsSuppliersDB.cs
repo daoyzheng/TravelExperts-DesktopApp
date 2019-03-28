@@ -23,6 +23,45 @@ namespace DBAccess
 {
     public class PackagesProductsSuppliersDB
     {
+        // Method to return a list of  all PackagesProductsSuppliers objects 
+        public static List<PackagesProductsSuppliers> GetAllPackagesProductsSuppliers()
+        {
+            List<PackagesProductsSuppliers> packagesProductsSuppliers = new List<PackagesProductsSuppliers>();
+            SqlConnection conn = TravelExpertsDB.GetConnection();
+
+            // create a sql select statement
+            string selectStatement =
+                "SELECT PackageId, ProductSupplierId " +
+                "FROM Packages_Products_Suppliers ";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
+
+            try
+            {
+                conn.Open();// open connection
+
+                SqlDataReader sr = selectCommand.ExecuteReader();
+
+                while (sr.Read()) // product record exists
+                {
+                    PackagesProductsSuppliers pps = new PackagesProductsSuppliers();
+                    pps.PackageId = (int)sr["PackageId"];
+                    pps.ProductSupplierId = (int)sr["ProductSupplierId"];
+
+                    packagesProductsSuppliers.Add(pps);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return packagesProductsSuppliers;
+        }
+
         // Method to return a list of PackagesProductsSuppliers objects for the given PackagesProductsSuppliersid.
         public static List<PackagesProductsSuppliers> GetPackagesProductsSuppliers(int ppsid)
         {

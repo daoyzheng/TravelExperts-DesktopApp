@@ -185,8 +185,11 @@
       <DependentUpon>SupplierButton.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\ClassEntites.Agent.datasource" />
+    <None Include="Properties\DataSources\ClassEntites.DummyProductsSupplier.datasource" />
     <None Include="Properties\DataSources\ClassEntites.Package.datasource" />
+    <None Include="Properties\DataSources\ClassEntites.Product.datasource" />
     <None Include="Properties\DataSources\ClassEntites.ProductsSupplier.datasource" />
+    <None Include="Properties\DataSources\ClassEntites.Supplier.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -212,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
