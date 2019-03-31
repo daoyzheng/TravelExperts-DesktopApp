@@ -1,16 +1,4 @@
-﻿/***************************************************************************************
-* 
-* Author: Tim Leslie
-* Date: March 25, 2019.
-* Course: CPRG 217 Rapid OOSD Threaded Project
-* Assignment: Workshop 4
-* Purpose: This is a PackagesProductsSuppliers database class definition and forms part of the CPRG 214
-* Threaded Project Workshop 4. This class contains several public static methods
-* which allow manipulation of the PackagesProductsPackagesProductsSupplierss table and the
-* PackagesProductsPackagesProductsSupplierss entity class.
-* 
-****************************************************************************************/
-using ClassEntites;
+﻿using ClassEntites;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,190 +11,109 @@ namespace DBAccess
 {
     public class PackagesProductsSuppliersDB
     {
-        // Method to return a list of  all PackagesProductsSuppliers objects 
-        public static List<PackagesProductsSuppliers> GetAllPackagesProductsSuppliers()
+        public static List<PackagesProductsSuppliers> GetPackagesProductsSuppliers()
         {
             List<PackagesProductsSuppliers> packagesProductsSuppliers = new List<PackagesProductsSuppliers>();
-            SqlConnection conn = TravelExpertsDB.GetConnection();
+            SqlConnection connection = TravelExpertsDB.GetConnection(); //Connecting to TRavel Experts Database
 
-            // create a sql select statement
-            string selectStatement =
-                "SELECT PackageId, ProductSupplierId " +
-                "FROM Packages_Products_Suppliers ";
+            string select = "Select * FROM Packages_Products_Suppliers "; //selecting PackageId and Product Supplier ID
 
-            SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
+            SqlCommand sqlCommand = new SqlCommand(select, connection);
+            try 
+	        {	        
+		        connection.Open();//opening connection 
 
-            try
-            {
-                conn.Open();// open connection
+                SqlDataReader read = sqlCommand.ExecuteReader();
 
-                SqlDataReader sr = selectCommand.ExecuteReader();
-
-                while (sr.Read()) // product record exists
+                while (read.Read())
                 {
-                    PackagesProductsSuppliers pps = new PackagesProductsSuppliers();
-                    pps.PackageId = (int)sr["PackageId"];
-                    pps.ProductSupplierId = (int)sr["ProductSupplierId"];
+                    PackagesProductsSuppliers packProdSupp = new PackagesProductsSuppliers();
+                    packProdSupp.PackageId = (int)read["PackageId"];
+                    packProdSupp.ProductSupplierId = (int)read["ProductSupplierId"];
 
-                    packagesProductsSuppliers.Add(pps);
+                    packagesProductsSuppliers.Add(packProdSupp);
                 }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+	        }
+	        catch (Exception ex)//catching all exeptions
+	        {
+
+		        throw ex;
+	        }
             finally
             {
-                conn.Close();
+                connection.Close();//closing connection
             }
-            return packagesProductsSuppliers;
-        }
+            return packagesProductsSuppliers; //returning List
+        }//List of PPS end
 
-        // Method to return a list of PackagesProductsSuppliers objects for the given PackagesProductsSuppliersid.
-        public static List<PackagesProductsSuppliers> GetPackagesProductsSuppliers(int ppsid)
-        {
-            List<PackagesProductsSuppliers> packagesProductsSuppliers = new List<PackagesProductsSuppliers>();
-            SqlConnection conn = TravelExpertsDB.GetConnection();
+        //Updating DataBase
 
-            // create a sql select statement
-            string selectStatement =
-                "SELECT PackageId, ProductSupplierId " +
-                "FROM Packages_Products_Suppliers " +
-                "WHERE PackageId = @PackageId";
-
-            SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
-
-            selectCommand.Parameters.AddWithValue("@PackageId", ppsid);
-            try
-            {
-                conn.Open();// open connection
-
-                SqlDataReader sr = selectCommand.ExecuteReader();
-
-                while (sr.Read()) // product record exists
-                {
-                    PackagesProductsSuppliers pps = new PackagesProductsSuppliers();
-                    pps.PackageId = (int)sr["PackageId"];
-                    pps.ProductSupplierId = (int)sr["ProductSupplierId"];
-
-                    packagesProductsSuppliers.Add(pps);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return packagesProductsSuppliers;
-        }
-
-        // Method to add a new product to the PackagesProductsSupplierss table of Travel Experts
-        // and return the auto-generated PackagesProductsSuppliersId.
-        public static int AddPackagesProductsSuppliers(PackagesProductsSuppliers pps)
-        {
-            int ppsid = 0;
-
-            SqlConnection conn = TravelExpertsDB.GetConnection();
-
-            string insertStatement = "INSERT INTO PackagesProductsSuppliers (ProductSupplierId) " +
-                                        "VALUES(@ProductSupplierId)";
-
-            SqlCommand insertCommand = new SqlCommand(insertStatement, conn);
-
-            insertCommand.Parameters.AddWithValue("@ProductSupplierId", pps.ProductSupplierId);
-
-            try
-            {
-                conn.Open();
-
-                insertCommand.ExecuteNonQuery();
-
-                string selectStatement = "SELECT IDENT_CURRENT('PackageId') FROM PackagesProductsSuppliers"; // extract the PackagesProductsSuppliersId for the newly added product
-                SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
-                pps.PackageId = Convert.ToInt32(selectCommand.ExecuteScalar()); // execute the sql command expecting the single id result
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return ppsid;
-        }
-
-        // Method to update an existing PackagesProductsSuppliers record in the database.
-        // This method compares the 'old' product which was 'SELECT'ed 
-        // originally against the product record at the time of 'UPDATE'ing
-        // to ensure that no chnages have occurred. In other words, this is
-        // a concurrency check prior to updating the record.
         public static bool UpdatePackagesProductsSuppliers(PackagesProductsSuppliers oldPPS, PackagesProductsSuppliers newPPS)
         {
+            SqlConnection connection = TravelExpertsDB.GetConnection();//connection to DB
+
             bool success = true;
 
-            SqlConnection conn = TravelExpertsDB.GetConnection();
+            //finding record it needs to update "old" and replacing it with the "new" PPS info
+            string update = "UPDATE PackagesProductsSupplierss SET " +
+                            "ProductSupplierId = @NewProductSupplierId, " +
+                            "WHERE PackageId = @OldPackageId " + 
+                            "AND ProductSupplierId = @OldProductSupplierId";
 
-            string updateStatement = "UPDATE PackagesProductsSupplierss SET " +
-                                        "ProductSupplierId = @NewProductSupplierId, " +
-                                        "WHERE PackageId = @OldPackageId " + // to identify record to update
-                                        "AND ProductSupplierId = @OldProductSupplierId";
+            SqlCommand updateCmd = new SqlCommand(update, connection);
 
-            SqlCommand updateCommand = new SqlCommand(updateStatement, conn);
+            updateCmd.Parameters.AddWithValue("@NewProductSupplierId", newPPS.ProductSupplierId);
+            updateCmd.Parameters.AddWithValue("@OldPackageId", oldPPS.PackageId);
+            updateCmd.Parameters.AddWithValue("@OldProductSupplierId", oldPPS.ProductSupplierId);
 
-            updateCommand.Parameters.AddWithValue("@NewProductSupplierId", newPPS.ProductSupplierId);
-            updateCommand.Parameters.AddWithValue("@OldPackageId", oldPPS.PackageId);
-            updateCommand.Parameters.AddWithValue("@OldProductSupplierId", oldPPS.ProductSupplierId);
-
-            try
-            {
-                conn.Open();
-                int rowsUpdated = updateCommand.ExecuteNonQuery();
-                if (rowsUpdated == 0) success = false; // did not update (another user updated or deleted)
+            try 
+            {	        
+		        connection.Open();
+                int rowsUpdated = updateCmd.ExecuteNonQuery();
+                if(rowsUpdated == 0) success = false; //if rows where not updated and success returns false 
             }
-            catch (Exception ex)
+            catch (Exception ex)//catching all exeptions
             {
                 throw ex;
             }
             finally
             {
-                conn.Close();
+                connection.Close();//closing connection
             }
-            return success;
-        }
-        public static bool DeletePackagesProductsSuppliers(PackagesProductsSuppliers pps)
+            return success; //returning updated Info if it was "true"
+        }//updating Method end
+
+        public static bool DeletePackagesProductsSuppliers(PackagesProductsSuppliers packProdSupp)
         {
+            SqlConnection connection = TravelExpertsDB.GetConnection();//connection to DB
+
             bool success = true;
-            SqlConnection conn = TravelExpertsDB.GetConnection();
 
-            string deleteStatement = "DELETE FROM PackagesProductsSuppliers " +
-                                        "WHERE PackageId = @PackageId " +
-                                        "AND ProductSupplierId = @ProductSupplierId";
+            string delete = "DELETE FROM PackagesProductsSuppliers " +
+                            "WHERE PackageId = @PackageId " +
+                            "AND ProductSupplierId = @ProductSupplierId";
 
-            SqlCommand deleteCommand = new SqlCommand(deleteStatement, conn);
+            SqlCommand delete = new SqlCommand(delete, connection);
 
-            deleteCommand.Parameters.AddWithValue("@PackageId", pps.PackageId);
-            deleteCommand.Parameters.AddWithValue("@ProductSupplierId", pps.ProductSupplierId);
+            deleteCmd.Parameters.AddWithValue("@PackageId", packProdSupp.PackageId);
+            deleteCmd.Parameters.AddWithValue("@ProductSupplierId", packProdSupp.ProductSupplierId);
 
             try
             {
-                conn.Open();
-                int count = deleteCommand.ExecuteNonQuery();
-                if (count == 0)
-                    success = false;
+                connection.Open();//opening connection
+                int del = delete.ExecuteNonQuery();
+                if (del == 0)
+                    success = false; //zero rows have been deleted then we return false
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 throw ex;
             }
-            finally
+            finally 
             {
-                conn.Close();
+                connection.Close();
             }
             return success;
-        }
-    }
-}
+        }//delete method end
+    }//Class
+}//Namespace
