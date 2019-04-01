@@ -58,6 +58,8 @@ namespace Workshop4 {
                 // Join Package_Product_Suppliers table with Product_Suppliers table and 
                 // Products table and Suppliers table
                 var prodSuppTable = from pkgProdSupp in pkgProdSuppList
+                                         join pkgs in packages
+                                         on pkgProdSupp.PackageId equals pkgs.PackageId
                                          join prodSupp in productsSuppliers
                                          on pkgProdSupp.ProductSupplierId equals prodSupp.ProductSupplierId
                                          join prod in products
@@ -65,6 +67,10 @@ namespace Workshop4 {
                                          join supp in suppliers
                                          on prodSupp.SupplierId equals supp.SupplierId
                                          select new {
+                                            pkgs.PkgName,
+                                            pkgs.PkgBasePrice,
+                                            pkgs.PkgStartDate,
+                                            pkgs.PkgEndDate,
                                             prodSupp.ProductSupplierId,   
                                             prod.ProdName,
                                             supp.SupName
