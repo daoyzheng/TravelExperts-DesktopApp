@@ -59,6 +59,17 @@ namespace DBAccess
             }
             return products;
         }
+
+        public static int FindMaxProductId(List<Product> products)
+        {
+            int tempMax = 0;
+            foreach (Product product in products)
+            {
+                if (product.ProductId > tempMax)
+                    tempMax = product.ProductId;
+            }
+            return tempMax;
+        }
         // Method to return a Product object for the given productId.
         public static Product GetProduct(int productid)
         {
@@ -104,11 +115,10 @@ namespace DBAccess
         public static int AddProduct(Product product)
         {
             int productid = 0;
-
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
             string insertStatement = "INSERT INTO Products (ProdName) " +
-                                     "VALUES(@ProdName)";
+                                     "VALUES (@ProdName)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, conn);
 
@@ -120,9 +130,10 @@ namespace DBAccess
 
                 insertCommand.ExecuteNonQuery();
 
-                string selectStatement = "SELECT IDENT_CURRENT('ProductId') FROM Products"; // extract the ProductId for the newly added product
+                string selectStatement = "SELECT SCOPE_IDENTITY() FROM Products"; // extract the ProductId for the newly added product
                 SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
                 productid = Convert.ToInt32(selectCommand.ExecuteScalar()); // execute the sql command expecting the single id result
+
             }
             catch (Exception ex)
             {
@@ -147,7 +158,7 @@ namespace DBAccess
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
             string updateStatement = "UPDATE Products SET " +
-                                     "ProdName = @NewProdName, " +
+                                     "ProdName = @NewProdName " +
                                      "WHERE ProductId = @OldProductId " + // to identify record to update
                                      "AND ProdName = @OldProdName"; 
 
@@ -179,8 +190,7 @@ namespace DBAccess
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
             string deleteStatement = "DELETE FROM Products " +
-                                     "WHERE ProductId = @ProductId " +
-                                     "AND ProdName = @ProdName";
+                                     "WHERE ProductId = @ProductId";
 
             SqlCommand deleteCommand = new SqlCommand(deleteStatement, conn);
 
@@ -203,6 +213,18 @@ namespace DBAccess
                 conn.Close();
             }
             return success;
+        }
+        public static bool IsInProductsSuppliers(Product product)
+        {
+            bool result = false;
+            List<ProductsSupplier> prodSuppliers = ProductsSupplierDB.GetAllProductsSuppliers();
+
+            foreach (ProductsSupplier ps in prodSuppliers)
+            {
+                if (ps.ProductId == product.ProductId)
+                    result = true;
+            }
+            return result;
         }
     }
 }

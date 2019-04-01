@@ -17,20 +17,19 @@ namespace Workshop4 {
             InitializeComponent();
         }
 
-
-
         private void cmbProducts_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            txtIndex.Text = cmbProducts.SelectedIndex.ToString();
             Product product = new Product();
 
             // declare suppliers List variable and instantiate new List<Supplier> object
             List<Product> products = new List<Product>();
 
-            // assign suppliers to return of GetSuppliers nmethod call
+            // assign suppliers to return of GetSuppliers method call
             products = ProductDB.GetProducts();
 
-            // bind suppliers list to combo box
-            // cmbSuppliers.DataSource = suppliers;
+            if (cmbProducts.SelectedIndex < 0)
+                cmbProducts.SelectedIndex = 0;
 
             product = products[cmbProducts.SelectedIndex];
 
@@ -43,7 +42,7 @@ namespace Workshop4 {
             // declare suppliers List variable and instantiate new List<Supplier> object
             List<Product> products = new List<Product>();
 
-            // assign suppliers to return of GetSuppliers nethod call
+            // assign suppliers to return of GetSuppliers method call
             products = ProductDB.GetProducts();
 
             // bind products list to combo box
@@ -62,18 +61,17 @@ namespace Workshop4 {
             if (Validator.IsPresent(txtProductName))
             {
                 // text boxes validated
-                // now check that the entered Supplier Id does not already exist in the database
+                // now check that the entered Product Name does not already exist in the database
                 foreach (Product prod in products)
                 {
-                    if (txtProductId.Text != "" && prod.ProductId == Convert.ToInt32(txtProductId.Text))
+                    if (txtProductName.Text != "" && prod.ProdName == txtProductId.Text)
                     {
-                        MessageBox.Show("Supplier Id already exists in database");
+                        MessageBox.Show("Product Name already exists in database");
                         return;
                     }
                 }
                 // create Product object to be added
                 Product product = new Product();
-                product.ProductId = Convert.ToInt32(txtProductId.Text);
                 product.ProdName = txtProductName.Text;
 
                 int newProductId = ProductDB.AddProduct(product);
@@ -83,10 +81,21 @@ namespace Workshop4 {
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            // create Supplier object to be deleted
+            // create Product object to be deleted
             Product product = new Product();
             product.ProductId = Convert.ToInt32(txtProductId.Text);
             product.ProdName = txtProductName.Text;
+
+            // check if product to be deleted already exists in Products_Suppliers
+            // table and if so, the user may not delete it.
+
+            if (ProductDB.IsInProductsSuppliers(product))
+            {
+                MessageBox.Show("This product is already being used in " +
+                    " the Products_Suppliers table and you may not delete it.");
+                return;
+            }
+
 
             bool result = ProductDB.DeleteProduct(product);
 
@@ -116,8 +125,34 @@ namespace Workshop4 {
 
             txtProductId.Text = (product.ProductId).ToString();
             txtProductName.Text = product.ProdName;
-
         }
 
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            txtIndex.Text = cmbProducts.SelectedIndex.ToString();
+            Product product = new Product();
+
+            // declare products List variable and instantiate new List<Supplier> object
+            List<Product> products = new List<Product>();
+            products = ProductDB.GetProducts();
+            product = products[cmbProducts.SelectedIndex];
+
+            // check if product to be updated already exists in Products_Suppliers
+            // table and if so, the user may not update it.
+
+            if (ProductDB.IsInProductsSuppliers(product))
+            {
+                MessageBox.Show("This product is already being used in " +
+                    " the Products_Suppliers table and you may not update it.");
+                return;
+            }
+
+            Product newProduct = new Product();
+            newProduct.ProductId = Convert.ToInt32(txtProductId.Text);
+            newProduct.ProdName = txtProductName.Text;
+
+            bool result = ProductDB.UpdateProduct(product, newProduct);
+            DisplayProducts();
+        }
     }
 }

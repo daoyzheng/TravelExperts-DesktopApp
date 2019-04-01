@@ -24,18 +24,44 @@ namespace Workshop4 {
         // Get a list of all Package_Product_Suppliers by package id
         List<PackagesProductsSuppliers> pkgProdSupps = 
             PackagesProductsSuppliersDB.GetAllPackagesProductsSuppliers();
-        
 
         public frmPackage() {
             InitializeComponent();
         }
 
+        // Join related tables together and create view model
+        private List<DummyPackage> JoinTables() {
+            // Join Package_Product_Suppliers table with Product_Suppliers table and 
+            // Products table and Suppliers table
+            var pkgTable = from pkgProdSupp in pkgProdSupps
+                           join pkgs in packages
+                           on pkgProdSupp.PackageId equals pkgs.PackageId
+                           join prodSupp in productsSuppliers
+                           on pkgProdSupp.ProductSupplierId equals prodSupp.ProductSupplierId
+                           join prod in products
+                           on prodSupp.ProductId equals prod.ProductId
+                           join supp in suppliers
+                           on prodSupp.SupplierId equals supp.SupplierId
+                           select new DummyPackage {
+                               PackageId = pkgs.PackageId,
+                               PkgName = pkgs.PkgName,
+                               PkgBasePrice = pkgs.PkgBasePrice,
+                               PkgStartDate = pkgs.PkgStartDate,
+                               PkgEndDate =  pkgs.PkgEndDate,
+                               PkgDesc = pkgs.PkgDesc,
+                               PkgAgencyCommission = pkgs.PkgAgencyCommission,
+                               ProductSupplierId =  prodSupp.ProductSupplierId,
+                               ProdName = prod.ProdName,
+                               SuppName = supp.SupName
+                           };
+
+            var pkgViewModel = pkgTable.ToList();
+
+            return pkgViewModel;
+        }
+
         private void frmPackage_Load(object sender, EventArgs e) {
             // Display a list of Package ids to the package Id combobox
-            // Select all pakage ids from the list of package objects
-            //var pkgIdList = packages.Select(pkg => pkg.PackageId).ToList();
-            //packageIdComboBox.DataSource = pkgIdList;
-
             pkgNameComboBox.DisplayMember = "PkgName";
             pkgNameComboBox.ValueMember = "PackageId";
             pkgNameComboBox.DataSource = packages;
@@ -43,124 +69,115 @@ namespace Workshop4 {
 
         private void pkgNameComboBox_SelectedIndexChanged(object sender, EventArgs e) {
             try {
-                // Get the selected PackageID
-                int pkgId = (int)pkgNameComboBox.SelectedValue;
-
-                // Get the current selected Package Object
-                var pkgObj = packages.SingleOrDefault(pkg => pkg.PackageId == pkgId);
-
-                // Display Package object information
-                DisplayPkgInfo(pkgObj);
-
-                // Get Package_Product_Supplier by package id
-                var pkgProdSuppList = pkgProdSupps.Where(pps => pps.PackageId == pkgId);
-
-                // Join Package_Product_Suppliers table with Product_Suppliers table and 
-                // Products table and Suppliers table
-                var prodSuppTable = from pkgProdSupp in pkgProdSuppList
-                                         join prodSupp in productsSuppliers
-                                         on pkgProdSupp.ProductSupplierId equals prodSupp.ProductSupplierId
-                                         join prod in products
-                                         on prodSupp.ProductId equals prod.ProductId
-                                         join supp in suppliers
-                                         on prodSupp.SupplierId equals supp.SupplierId
-                                         select new {
-                                            prodSupp.ProductSupplierId,   
-                                            prod.ProdName,
-                                            supp.SupName
-                                         };
-
-                // Assign from the prodSuppTable to a list of DummyProductsSupplier objects
-                List<DummyProductsSupplier> dummyProductsSuppliers = new List<DummyProductsSupplier>();
-                foreach (var prod in prodSuppTable) {
-                    DummyProductsSupplier dummyProductsSupplier = new DummyProductsSupplier();
-                    dummyProductsSupplier.ProductSupplierId = prod.ProductSupplierId;
-                    dummyProductsSupplier.ProdName = prod.ProdName;
-                    dummyProductsSupplier.SuppName = prod.SupName;
-                    dummyProductsSuppliers.Add(dummyProductsSupplier);
-                }
-
-                // Assign DummyProdSupps to datagridview
-                dummyProductsSupplierDataGridView.DataSource = dummyProductsSuppliers;
-
-                // Load Product Supplier Id textbox with the first default product supplier id,
-                // if there is any
-                var prodSuppId = prodSuppTable.FirstOrDefault().ProductSupplierId;
-                productSupplierIdTextBox.Text = prodSuppId.ToString();
-
-                DisplayProdNameSuppName(prodSuppId);
-
+                LoadPkgs();
             } catch(Exception ex) {
                 MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
             }
         }
-
-        // Display Product name and Supplier name in textbox
-        private void DisplayProdNameSuppName(int prodSuppId) {
-
-            ProductsSupplier productsSupplier = ProductsSupplierDB.GetProductsSupplierByProductSupplierId(prodSuppId);
-
-            // find the Product and Supplier object 
-            var product = products.SingleOrDefault(p => p.ProductId == productsSupplier.ProductId);
-            var supplier = suppliers.SingleOrDefault(s => s.SupplierId == productsSupplier.SupplierId);
-
-            // Load the Product and Supplier text box
-            prodNameTextBox.Text = product.ProdName;
-            supNameTextBox.Text = supplier.SupName;
+        
+        private void prodNameComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            try {
+                // If option (None) is chosen
+                if (prodNameComboBox.SelectedIndex == 0) {
+                    LoadPkgs();
+                    supNameComboBox.Text = string.Empty;
+                    supNameComboBox.Enabled = false;
+                } else {
+                    supNameComboBox.Enabled = true;
+                    LoadPkgProds();
+                }
+            } catch(Exception ex) {
+                MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
+            }
         }
-
-        // Display package information
-        private void DisplayPkgInfo(Package pkgObj) {
-            // Check if incoming data is null
-            if (pkgDescTextBox.Text == null) {
-                pkgDescTextBox.Text = string.Empty;
-            }else {
-                pkgDescTextBox.Text = pkgObj.PkgDesc;
-            }
-
-            // Check if incoming data is null
-            if (pkgObj.PkgAgencyCommission == null) {
-                pkgAgencyCommissionTextBox.Text = string.Empty;
-            } else {
-                pkgAgencyCommissionTextBox.Text = pkgObj.PkgAgencyCommission.ToString();
-            }
-
-            pkgBasePriceTextBox.Text = pkgObj.PkgBasePrice.ToString();
-
-            // Check if incoming data is null
-            DateTime startDate = pkgObj.PkgStartDate ?? DateTime.MinValue;
-            if (startDate == DateTime.MinValue) { // if orderObj.OrderDate == null, orderDate = DateTime.MinValue
-                pkgStartDateDateTimePicker.Format = DateTimePickerFormat.Custom;
-                pkgStartDateDateTimePicker.CustomFormat = " "; // Display empty if null
-            } else { // if orderObj.OrderDate is not null
-                // Reset format
-                pkgStartDateDateTimePicker.Format = DateTimePickerFormat.Long;
-                pkgStartDateDateTimePicker.Value = startDate;
-            }
-
-            // Check if incoming data is null
-            DateTime endDate = pkgObj.PkgEndDate ?? DateTime.MinValue;
-            if (endDate == DateTime.MinValue) { // if orderObj.OrderDate == null, orderDate = DateTime.MinValue
-                pkgEndDateDateTimePicker.Format = DateTimePickerFormat.Custom;
-                pkgEndDateDateTimePicker.CustomFormat = " "; // Display empty if null
-            } else { // if orderObj.OrderDate is not null
-                // Reset format
-                pkgEndDateDateTimePicker.Format = DateTimePickerFormat.Long;
-                pkgEndDateDateTimePicker.Value = endDate;
+        private void supNameComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            try {
+                if (supNameComboBox.SelectedIndex == 0) {
+                    LoadPkgProds();
+                } else {
+                    LoadPkgProdSupps();
+                }
+            } catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
             }
         }
 
-        // Change Products Suppliers id textbox when cell is clicked
-        private void dummyProductsSupplierDataGridView_CellClick(object sender, DataGridViewCellEventArgs e) {
+        // Load Packages
+        private void LoadPkgs() {
+            List<DummyPackage> dummyPackages = JoinTables();
+            // Get the selected PackageID
+            int pkgId = (int)pkgNameComboBox.SelectedValue;
+
+            // Display View Model associated with the selected packageID
+            var pkgList = dummyPackages.Where(p => p.PackageId == pkgId).ToList();
+
+            // Bind to datagridview
+            dummyPackageDataGridView.DataSource = pkgList;
+
+            // Display available options of products for the selected packageID
+            var prods = pkgList.Select(p => p.ProdName).ToList();
+
+            // Add a (None) option to the list
+            prods.Insert(0, "(None)");
+
+            // Bind to Products Combo box
+            prodNameComboBox.DataSource = prods;
+        }
+
+        // Load packages and products
+        private void LoadPkgProds() {
+            List<DummyPackage> dummyPackages = JoinTables();
+
+            // Get currently selected pkg Id
+            int pkgId = (int)pkgNameComboBox.SelectedValue;
+
+            // Get currently selected products Name
+            string prodName = prodNameComboBox.Text;
+
+            var pkgList = dummyPackages.Where(p => p.PackageId == pkgId && 
+                (string.Compare(p.ProdName, prodName) == 0)).ToList();
+
+            // Bind to datagridview
+            dummyPackageDataGridView.DataSource = pkgList;
+
+            // Display available options of suppliers for the Selected PackageId and ProductId
+            var supps = pkgList.Select(p => p.SuppName).ToList();
+
+            // Add a (None) option to the list
+            supps.Insert(0, "(None)");
+
+            // Bind to Supplier combo box
+            supNameComboBox.DataSource = supps;
+        }
+
+        private void LoadPkgProdSupps() {
+            List<DummyPackage> dummyPackages = JoinTables();
+
+            // Get currently selected pkg Id
+            int pkgId = (int)pkgNameComboBox.SelectedValue;
+
+            // Get currently selected products Name
+            string prodName = prodNameComboBox.Text;
+
+            // Get currently selected suppliers Name
+            string suppName = supNameComboBox.Text;
+
+            var pkgList = dummyPackages.Where(p => p.PackageId == pkgId && 
+                (string.Compare(p.ProdName, prodName) == 0) &&
+                (string.Compare(p.SuppName, suppName) == 0)).ToList();
+
+            // Bind to datagridview
+            dummyPackageDataGridView.DataSource = pkgList;
+        }
+
+        private void dummyPackageDataGridView_CellClick(object sender, DataGridViewCellEventArgs e) {
             // If row is empty, don't select, if row is not empty, select the product supplier id
-            if (dummyProductsSupplierDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null) {
-
+            if (dummyPackageDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null) {
                 // When a single cell is seleted, it will select the whole row
-                dummyProductsSupplierDataGridView.CurrentRow.Selected = true;
-                int psId = (int)dummyProductsSupplierDataGridView.Rows[e.RowIndex].Cells[0].Value;
-                productSupplierIdTextBox.Text = psId.ToString();
-                DisplayProdNameSuppName(psId);
+                dummyPackageDataGridView.CurrentRow.Selected = true;
+                int psId = (int)dummyPackageDataGridView.Rows[e.RowIndex].Cells[0].Value;
             }
         }
+
     }
 }

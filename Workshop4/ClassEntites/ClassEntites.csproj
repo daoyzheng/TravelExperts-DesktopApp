@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
-    <Compile Include="DummyProductsSupplier.cs" />
+    <Compile Include="DummyPackage.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="PackagesProductsSuppliers.cs" />
     <Compile Include="Product.cs" />

@@ -185,7 +185,7 @@
       <DependentUpon>SupplierButton.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\ClassEntites.Agent.datasource" />
-    <None Include="Properties\DataSources\ClassEntites.DummyProductsSupplier.datasource" />
+    <None Include="Properties\DataSources\ClassEntites.DummyPackage.datasource" />
     <None Include="Properties\DataSources\ClassEntites.Package.datasource" />
     <None Include="Properties\DataSources\ClassEntites.Product.datasource" />
     <None Include="Properties\DataSources\ClassEntites.ProductsSupplier.datasource" />
