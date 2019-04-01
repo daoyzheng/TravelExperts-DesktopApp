@@ -55,7 +55,7 @@
             this.cmbSuppliers.IntegralHeight = false;
             this.cmbSuppliers.Location = new System.Drawing.Point(27, 273);
             this.cmbSuppliers.Name = "cmbSuppliers";
-            this.cmbSuppliers.Size = new System.Drawing.Size(677, 37);
+            this.cmbSuppliers.Size = new System.Drawing.Size(723, 37);
             this.cmbSuppliers.TabIndex = 1;
             this.cmbSuppliers.SelectedIndexChanged += new System.EventHandler(this.cmbSuppliers_SelectedIndexChanged);
             // 
@@ -88,6 +88,7 @@
             // 
             // txtSupplierId
             // 
+            this.txtSupplierId.Enabled = false;
             this.txtSupplierId.Location = new System.Drawing.Point(209, 71);
             this.txtSupplierId.Name = "txtSupplierId";
             this.txtSupplierId.Size = new System.Drawing.Size(169, 35);
@@ -95,16 +96,17 @@
             // 
             // txtSupplierName
             // 
+            this.txtSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierName.Location = new System.Drawing.Point(209, 126);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(495, 35);
+            this.txtSupplierName.Size = new System.Drawing.Size(541, 39);
             this.txtSupplierName.TabIndex = 6;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(337, 176);
+            this.btnAdd.Location = new System.Drawing.Point(353, 176);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 39);
+            this.btnAdd.Size = new System.Drawing.Size(112, 56);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -112,9 +114,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(466, 176);
+            this.btnDelete.Location = new System.Drawing.Point(490, 176);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 39);
+            this.btnDelete.Size = new System.Drawing.Size(107, 56);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -124,16 +126,16 @@
             // 
             this.btnUpdate.Location = new System.Drawing.Point(209, 176);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(100, 39);
+            this.btnUpdate.Size = new System.Drawing.Size(122, 56);
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(604, 176);
+            this.btnExit.Location = new System.Drawing.Point(637, 176);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(100, 39);
+            this.btnExit.Size = new System.Drawing.Size(113, 56);
             this.btnExit.TabIndex = 10;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;

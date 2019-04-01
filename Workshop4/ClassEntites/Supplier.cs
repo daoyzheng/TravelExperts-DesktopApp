@@ -25,7 +25,7 @@ namespace ClassEntites
 
         public override string ToString()
         {
-            return "SupplierId: " + SupplierId.ToString() + ",   " + "Supplier Name: " + SupName;
+            return "Supplier Id: " + SupplierId.ToString() + ",   " + "Supplier Name: " + SupName;
         }
 
     }

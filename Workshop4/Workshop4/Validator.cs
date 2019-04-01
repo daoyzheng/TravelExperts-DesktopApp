@@ -44,7 +44,7 @@ namespace Workshop4
                 TextBox textBox = (TextBox)control;
                 if (textBox.Text == "")
                 {
-                    MessageBox.Show(textBox.Tag + " is required to be field.", Title);
+                    MessageBox.Show(textBox.Tag + " is required to be filled.", Title);
                     textBox.Focus();
                     return false;
                 }
