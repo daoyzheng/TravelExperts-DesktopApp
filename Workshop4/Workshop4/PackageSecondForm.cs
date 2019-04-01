@@ -18,7 +18,7 @@ namespace Workshop4
     * Date : March 19,2019
     * Course Name : Threaded Project for OOSD
     * Module : PROJ-207-OOSD
-    * Purpose :PackageSecondForm: to open second form in order to add/modify/delete a package
+    * Purpose :PackageSecondForm:to open second form in order to add/modify/delete a package
     */
     public partial class PackageSecondForm : Form
     {
