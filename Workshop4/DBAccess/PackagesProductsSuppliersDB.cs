@@ -6,7 +6,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
+ * Author: Hayley Mead
+ * last updated: 2019-03-31
+ * WorkShop 4
+ * Purpose: This code manages packages products suppliers 
+ * Connects to Travel Expert Data Base to update, delete and add
+ * information in the packages products suppliers  table
+ */
 namespace DBAccess
 {
     public class PackagesProductsSuppliersDB
@@ -93,15 +100,15 @@ namespace DBAccess
                             "WHERE PackageId = @PackageId " +
                             "AND ProductSupplierId = @ProductSupplierId";
 
-            SqlCommand delete = new SqlCommand(delete, connection);
+            SqlCommand deleteStatment = new SqlCommand(delete, connection);
 
-            deleteCmd.Parameters.AddWithValue("@PackageId", packProdSupp.PackageId);
-            deleteCmd.Parameters.AddWithValue("@ProductSupplierId", packProdSupp.ProductSupplierId);
+            deleteStatment.Parameters.AddWithValue("@PackageId", packProdSupp.PackageId);
+            deleteStatment.Parameters.AddWithValue("@ProductSupplierId", packProdSupp.ProductSupplierId);
 
             try
             {
                 connection.Open();//opening connection
-                int del = delete.ExecuteNonQuery();
+                int del = deleteStatment.ExecuteNonQuery();
                 if (del == 0)
                     success = false; //zero rows have been deleted then we return false
             }
