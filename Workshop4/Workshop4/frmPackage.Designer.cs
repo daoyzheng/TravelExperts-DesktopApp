@@ -45,6 +45,9 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             pkgNameLabel = new System.Windows.Forms.Label();
             prodNameLabel = new System.Windows.Forms.Label();
             supNameLabel = new System.Windows.Forms.Label();
@@ -148,7 +151,7 @@
             this.dummyPackageDataGridView.Location = new System.Drawing.Point(15, 123);
             this.dummyPackageDataGridView.Name = "dummyPackageDataGridView";
             this.dummyPackageDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dummyPackageDataGridView.Size = new System.Drawing.Size(1019, 220);
+            this.dummyPackageDataGridView.Size = new System.Drawing.Size(1019, 177);
             this.dummyPackageDataGridView.TabIndex = 21;
             // 
             // dataGridViewTextBoxColumn1
@@ -221,11 +224,41 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 142;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(61, 371);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(133, 34);
+            this.btnAdd.TabIndex = 22;
+            this.btnAdd.Text = "Add Packages";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(313, 371);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(122, 34);
+            this.btnUpdate.TabIndex = 23;
+            this.btnUpdate.Text = "Update Packages";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(584, 371);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(121, 34);
+            this.btnDelete.TabIndex = 24;
+            this.btnDelete.Text = "Delete Packages";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
             // frmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1123, 498);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dummyPackageDataGridView);
             this.Controls.Add(supNameLabel);
             this.Controls.Add(this.supNameComboBox);
@@ -266,5 +299,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
