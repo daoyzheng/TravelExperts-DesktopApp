@@ -206,5 +206,18 @@ namespace DBAccess
             }
             return success;
         }
+        public static bool IsInProductsSuppliers(Supplier supplier)
+        {
+            bool result = false;
+            List<ProductsSupplier> prodSuppliers = ProductsSupplierDB.GetAllProductsSuppliers();
+
+            foreach (ProductsSupplier ps in prodSuppliers)
+            {
+                if (ps.SupplierId == supplier.SupplierId)
+                    result = true;
+            }
+            return result;
+        }
+
     }
 }
