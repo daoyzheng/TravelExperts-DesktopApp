@@ -83,6 +83,7 @@ namespace DBAccess
             return packages;
 
         }// end of GetPackage
+
         public static Package GetPackage(int packageId)
         {
 
@@ -139,11 +140,23 @@ namespace DBAccess
                                      "VALUES(@PkgName, @PkgStartDate, @PkgEndDate, @PkgDesc, @PkgBasePrice, @PkgAgencyCommission)";
             SqlCommand cmd = new SqlCommand(insertStatement, con);
             cmd.Parameters.AddWithValue("@PkgName", pack.PkgName);
-            cmd.Parameters.AddWithValue("@PkgStartDate", pack.PkgStartDate);
-            cmd.Parameters.AddWithValue("@PkgEndDate", pack.PkgEndDate);
-            cmd.Parameters.AddWithValue("@PkgDesc", pack.PkgDesc);
+            if (pack.PkgStartDate == null)
+                cmd.Parameters.AddWithValue("@PkgStartDate", DBNull.Value);
+            else 
+                cmd.Parameters.AddWithValue("@PkgStartDate", pack.PkgStartDate);
+            if (pack.PkgEndDate == null)
+                cmd.Parameters.AddWithValue("@PkgEndDate", DBNull.Value);
+            else 
+                cmd.Parameters.AddWithValue("@PkgEndDate", pack.PkgEndDate);
+            if (pack.PkgDesc == null)
+                cmd.Parameters.AddWithValue("@PkgDesc", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@PkgDesc", pack.PkgDesc);
             cmd.Parameters.AddWithValue("@PkgBasePrice", pack.PkgBasePrice);
-            cmd.Parameters.AddWithValue("@PkgAgencyCommission", pack.PkgAgencyCommission);
+            if (pack.PkgAgencyCommission == null)
+                cmd.Parameters.AddWithValue("@PkgAgencyCommission", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@PkgAgencyCommission", pack.PkgAgencyCommission);
             try
             {
                 con.Open();

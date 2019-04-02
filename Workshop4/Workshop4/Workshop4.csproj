@@ -52,6 +52,12 @@
     <Compile Include="AgentButton.Designer.cs">
       <DependentUpon>AgentButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddPackages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddPackages.Designer.cs">
+      <DependentUpon>frmAddPackages.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAgtInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="AgentButton.resx">
       <DependentUpon>AgentButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddPackages.resx">
+      <DependentUpon>frmAddPackages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgtInfo.resx">
       <DependentUpon>frmAgtInfo.cs</DependentUpon>

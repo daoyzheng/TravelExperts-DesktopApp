@@ -95,8 +95,8 @@ namespace Workshop4 {
         private void btnSearchProdId_Click(object sender, EventArgs e) {
             if (Int32.TryParse(txtProdId.Text, out int myInt)) {
                 int prodId = Convert.ToInt32(txtProdId.Text);
-                List<ProductsSupplier> prodSuppListSortByProdId = ProductsSupplierDB.GetProductsSupplierByProductId(prodId);
-                productsSupplierDataGridViewSortByProdId.DataSource = prodSuppListSortByProdId;
+                //List<ProductsSupplier> prodSuppListSortByProdId = ProductsSupplierDB.GetProductsSupplierByProductId(prodId);
+                //productsSupplierDataGridViewSortByProdId.DataSource = prodSuppListSortByProdId;
             } else {
                 MessageBox.Show("Please Enter a Product Supplier ID to search", "Invalid Input");
                 txtProdId.SelectAll();
@@ -108,8 +108,8 @@ namespace Workshop4 {
         private void btnSearchSuppId_Click(object sender, EventArgs e) {
             if (Int32.TryParse(txtSuppId.Text, out int myInt)) {
                 int suppId = Convert.ToInt32(txtSuppId.Text);
-                List<ProductsSupplier> prodSuppListSortBySuppId = ProductsSupplierDB.GetProductsSupplierBySupplierId(suppId);
-                productsSupplierDataGridViewSortBySuppId.DataSource = prodSuppListSortBySuppId;
+                //List<ProductsSupplier> prodSuppListSortBySuppId = ProductsSupplierDB.GetProductsSupplierBySupplierId(suppId);
+                //productsSupplierDataGridViewSortBySuppId.DataSource = prodSuppListSortBySuppId;
             } else {
                 MessageBox.Show("Please Enter a Product Supplier ID to search", "Invalid Input");
                 txtProdId.SelectAll();

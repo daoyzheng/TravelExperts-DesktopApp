@@ -23,7 +23,7 @@ namespace Workshop4 {
         List<Supplier> suppliers = SupplierDB.GetSuppliers();
         // Get a list of all Package_Product_Suppliers by package id
         List<PackagesProductsSuppliers> pkgProdSupps = 
-            PackagesProductsSuppliersDB.GetAllPackagesProductsSuppliers();
+            PackagesProductsSuppliersDB.GetPackagesProductsSuppliers();
 
         public frmPackage() {
             InitializeComponent();
@@ -179,5 +179,17 @@ namespace Workshop4 {
             }
         }
 
+        private void btnAddPkg_Click(object sender, EventArgs e) {
+            frmAddPackages frmAddPackages = new frmAddPackages();
+            frmAddPackages.products = products;
+            frmAddPackages.suppliers = suppliers;
+            frmAddPackages.packages = packages;
+            DialogResult result = frmAddPackages.ShowDialog();
+            if (result == DialogResult.OK) {
+                
+            } else if (result == DialogResult.Retry) {
+                
+            }
+        }
     }
 }
