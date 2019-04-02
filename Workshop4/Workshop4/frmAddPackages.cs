@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace Workshop4 {
     public partial class frmAddPackages : Form {
+        public bool PkgInserted { get; set; }
+        public bool ProdSuppInserted { get; set; }
+
         public ProductsSupplier productsSupplier { get; set; }
         public Package Package { get; set; }
         public PackagesProductsSuppliers pkgProdSupp { get; set; }
@@ -42,81 +45,120 @@ namespace Workshop4 {
             int productId;
             int supplierId;
 
-            if (Validator.IsPresent(pkgNameTextBox) &&
-                Validator.IsPresent(pkgBasePriceTextBox)) { 
+            if (Validator.IsPresent(pkgNameTextBox)) { 
                 pkgName = pkgNameTextBox.Text;
-                basePrice = Convert.ToDecimal(pkgBasePriceTextBox.Text);
 
                 // If Package Name already exists, get package object from database
-                var pkg = packages.SingleOrDefault(p => p.PkgName == pkgName);
+                bool ValidPrice = true;
+                bool DateValid = true;
+                var pkg = packages.SingleOrDefault(p => p.PkgName.ToLower() == pkgName.ToLower());
                 if (pkg != null) {
                     Package = pkg;
+                    PkgInserted = false;
                 } else {
-                    Package.PkgName = pkgName;
-                    Package.PkgBasePrice = basePrice;
-                    
-                    if (string.IsNullOrWhiteSpace(pkgAgencyCommissionTextBox.Text)) {
-                        Package.PkgAgencyCommission = null;
-                    } else {
-                        Package.PkgAgencyCommission = Convert.ToDecimal(pkgAgencyCommissionTextBox.Text);
-                    }
+                    Package newPkg = new Package();
+                    if (Validator.IsPresent(pkgBasePriceTextBox)) {
+                        basePrice = Convert.ToDecimal(pkgBasePriceTextBox.Text);
+                        newPkg.PkgBasePrice = basePrice;
 
-                    if (string.IsNullOrWhiteSpace(pkgDescTextBox.Text)) {
-                        Package.PkgDesc = null;
-                    } else {
-                        Package.PkgDesc = pkgDescTextBox.Text;
-                    }
+                        newPkg.PkgName = pkgName;
 
-                    if (pkgStartDateDateTimePicker.Checked == false &&
-                        pkgEndDateDateTimePicker.Checked == false) {
-                        Package.PkgStartDate = null;
-                        Package.PkgEndDate = null;
-                    } else if (pkgStartDateDateTimePicker.Checked == true &&
-                        pkgEndDateDateTimePicker.Checked == false) {
-                        // Package End Date has not been provided yet
-                        Package.PkgStartDate = pkgStartDateDateTimePicker.Value;
-                        Package.PkgEndDate = null;
-                    } else if (pkgStartDateDateTimePicker.Checked == false &&
-                        pkgEndDateDateTimePicker.Checked == true) {
-                        MessageBox.Show("Must Provide a Valid Start Date");
-                        DialogResult = DialogResult.None;
-                    } else {
-                        if (DateTime.Compare(pkgStartDateDateTimePicker.Value, pkgEndDateDateTimePicker.Value) >= 0 ) {
-                            MessageBox.Show("Start Date must be earlier than End Date");
+                        if (string.IsNullOrWhiteSpace(pkgAgencyCommissionTextBox.Text)) {
+                            newPkg.PkgAgencyCommission = null;
+                        } else {
+                            newPkg.PkgAgencyCommission = Convert.ToDecimal(pkgAgencyCommissionTextBox.Text);
+                        }
+
+                        if (string.IsNullOrWhiteSpace(pkgDescTextBox.Text)) {
+                            newPkg.PkgDesc = null;
+                        } else {
+                            newPkg.PkgDesc = pkgDescTextBox.Text;
+                        }
+
+                        if (pkgStartDateDateTimePicker.Checked == false &&
+                            pkgEndDateDateTimePicker.Checked == false) {
+                            newPkg.PkgStartDate = null;
+                            newPkg.PkgEndDate = null;
+                        } else if (pkgStartDateDateTimePicker.Checked == true &&
+                            pkgEndDateDateTimePicker.Checked == false) {
+                            // Package End Date has not been provided yet
+                            newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value;
+                            newPkg.PkgEndDate = null;
+                        } else if (pkgStartDateDateTimePicker.Checked == false &&
+                            pkgEndDateDateTimePicker.Checked == true) {
+                            MessageBox.Show("Must Provide a Valid Start Date");
+                            DateValid = false;
                             DialogResult = DialogResult.None;
                         } else {
-                            Package.PkgStartDate = pkgStartDateDateTimePicker.Value;
-                            Package.PkgEndDate = pkgEndDateDateTimePicker.Value;
+                            if (DateTime.Compare(pkgStartDateDateTimePicker.Value, pkgEndDateDateTimePicker.Value) >= 0) {
+                                MessageBox.Show("Start Date must be earlier than End Date");
+                                DateValid = false;
+                                DialogResult = DialogResult.None;
+                            } else {
+                                newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value;
+                                newPkg.PkgEndDate = pkgEndDateDateTimePicker.Value;
+                            }
                         }
+                        if (DateValid) {
+                            // Add package to database
+                            int pkgId = PackageDB.AddPackage(newPkg);
+                            newPkg.PackageId = pkgId;
+                            Package = newPkg;
+                            PkgInserted = true;
+                        }
+                    } else {
+                        ValidPrice = false;
+                        DialogResult = DialogResult.None;
                     }
+                }        
+                if (ValidPrice && DateValid) {
+                    productId = (int)prodNameComboBox.SelectedValue;
+                    supplierId = (int)supNameComboBox.SelectedValue;
+
+                    // Check if the combination of productId and supplierId already exists in database
+                    if (ProductsSupplierDB.GetProductsSupplierByProductIdAndSupplierId(productId, supplierId) == null) {
+                        // if doesn't exist in database, insert a new record
+                        ProductsSupplier prodSupps = new ProductsSupplier {
+                            ProductId = productId,
+                            SupplierId = supplierId
+                        };
+
+                        // Insert into database
+                        int prodSuppId = ProductsSupplierDB.AddProductsSupplier(prodSupps);
+                        prodSupps.ProductSupplierId = prodSuppId;
+
+                        productsSupplier = prodSupps;
+                        ProdSuppInserted = true;
+                    } else {
+                        productsSupplier =
+                            ProductsSupplierDB.GetProductsSupplierByProductIdAndSupplierId(productId, supplierId);
+                        ProdSuppInserted = false;
+                    }
+
+                    // If there already exists a same packageId and ProductSupplierId combination
+                    var pkgProdSuppTable = pkgProdSupps.SingleOrDefault(p => p.PackageId == Package.PackageId
+                        && p.ProductSupplierId == productsSupplier.ProductSupplierId);
+
+                    if (pkgProdSuppTable != null) {
+                        MessageBox.Show("Package:  " + Package.PkgName + " with \n" +
+                            "Product Name:  " + prodNameComboBox.Text + "\nSupplier Name:  " +
+                            supNameComboBox.Text + " \nalready exists", "Record Exists");
+                        DialogResult = DialogResult.None;
+                    } else {
+                        PackagesProductsSuppliers pps = new PackagesProductsSuppliers();
+                        pps.PackageId = Package.PackageId;
+                        pps.ProductSupplierId = productsSupplier.ProductSupplierId;
+                        // Insert into database
+                        PackagesProductsSuppliersDB.AddPackagesProductsSuppliers(pps);
+                        pkgProdSupp = pps;
+                        DialogResult = DialogResult.OK;
+                    }
+                } else {
+                    DialogResult = DialogResult.None;
                 }
             } else {
                 DialogResult = DialogResult.None;
             }
-
-            productId = (int)prodNameComboBox.SelectedValue;
-            supplierId = (int)supNameComboBox.SelectedValue;
-
-            // Check if the combination of productId and supplierId already exists in database
-            if (ProductsSupplierDB.GetProductsSupplierByProductIdAndSupplierId(productId, supplierId) == null) {
-                // if doesn't exist in database, insert a new record
-                ProductsSupplier prodSupps = new ProductsSupplier {
-                    ProductId = productId,
-                    SupplierId = supplierId
-                };
-
-                int prodSuppId = ProductsSupplierDB.AddProductsSupplier(productsSupplier);
-                prodSupps.ProductSupplierId = prodSuppId;
-
-                productsSupplier = prodSupps;
-            } else {
-                productsSupplier =
-                    ProductsSupplierDB.GetProductsSupplierByProductIdAndSupplierId(productId, supplierId);
-            }
-
-            // Bind data to form-level variable
-
-            // First, Bind to Package 
         }
 
         // Only allow numerics and one decimal
@@ -143,7 +185,7 @@ namespace Workshop4 {
             TextBox tb = sender as TextBox;
 
             // If Package Name already exists, get package object from database
-            var pkg = packages.SingleOrDefault(p => p.PkgName == tb.Text);
+            var pkg = packages.SingleOrDefault(p => p.PkgName.ToLower() == tb.Text.ToLower());
 
             if (pkg != null) {
                 pkgBasePriceTextBox.ReadOnly = true;

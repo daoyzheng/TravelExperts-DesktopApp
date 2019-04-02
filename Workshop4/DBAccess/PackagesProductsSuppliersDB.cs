@@ -53,6 +53,32 @@ namespace DBAccess
             return packagesProductsSuppliers; //returning List
         }//List of PPS end
 
+        // Add to Database
+        public static void AddPackagesProductsSuppliers(PackagesProductsSuppliers packagesProductsSuppliers) {
+            string insertStatement = "INSERT INTO Packages_Products_Suppliers (PackageId, ProductSupplierId) " +
+                                     "VALUES (@PackageId, @ProductSupplierId)";
+            
+            // Get connection to Travel Experts DB
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            // Create an insert command object
+            SqlCommand insertCmd = new SqlCommand(insertStatement, connection);
+
+            // Assign value to parameter(s)
+            insertCmd.Parameters.AddWithValue("@PackageId", packagesProductsSuppliers.PackageId);
+            insertCmd.Parameters.AddWithValue("@ProductSupplierId", packagesProductsSuppliers.ProductSupplierId);
+
+            // Execute the insert command
+            try {
+                connection.Open();
+                // Returns the auto generated ProductSupplierId
+                insertCmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                connection.Close();
+            }
+        }
         //Updating DataBase
 
         public static bool UpdatePackagesProductsSuppliers(PackagesProductsSuppliers oldPPS, PackagesProductsSuppliers newPPS)

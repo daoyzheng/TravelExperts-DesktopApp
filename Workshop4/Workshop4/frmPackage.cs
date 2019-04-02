@@ -106,22 +106,25 @@ namespace Workshop4 {
         private void LoadPkgs() {
             List<DummyPackage> dummyPackages = JoinTables();
             // Get the selected PackageID
-            int pkgId = (int)pkgNameComboBox.SelectedValue;
+            if (pkgNameComboBox.DataSource != null) {
+                int pkgId = (int)pkgNameComboBox.SelectedValue;
 
-            // Display View Model associated with the selected packageID
-            var pkgList = dummyPackages.Where(p => p.PackageId == pkgId).ToList();
+                // Display View Model associated with the selected packageID
+                var pkgList = dummyPackages.Where(p => p.PackageId == pkgId).ToList();
 
-            // Bind to datagridview
-            dummyPackageDataGridView.DataSource = pkgList;
+                // Bind to datagridview
+                dummyPackageDataGridView.DataSource = pkgList;
 
-            // Display available options of products for the selected packageID
-            var prods = pkgList.Select(p => p.ProdName).ToList();
+                // Display available options of products for the selected packageID
+                var prods = pkgList.Select(p => p.ProdName).ToList();
 
-            // Add a (None) option to the list
-            prods.Insert(0, "(None)");
+                // Add a (None) option to the list
+                prods.Insert(0, "(None)");
 
-            // Bind to Products Combo box
-            prodNameComboBox.DataSource = prods;
+                // Bind to Products Combo box
+                prodNameComboBox.DataSource = prods;
+            }
+
         }
 
         // Load packages and products
@@ -129,45 +132,50 @@ namespace Workshop4 {
             List<DummyPackage> dummyPackages = JoinTables();
 
             // Get currently selected pkg Id
-            int pkgId = (int)pkgNameComboBox.SelectedValue;
+            if (pkgNameComboBox.DataSource != null) {
+                int pkgId = (int)pkgNameComboBox.SelectedValue;
 
-            // Get currently selected products Name
-            string prodName = prodNameComboBox.Text;
+                // Get currently selected products Name
+                string prodName = prodNameComboBox.Text;
 
-            var pkgList = dummyPackages.Where(p => p.PackageId == pkgId && 
-                (string.Compare(p.ProdName, prodName) == 0)).ToList();
+                var pkgList = dummyPackages.Where(p => p.PackageId == pkgId && 
+                    (string.Compare(p.ProdName, prodName) == 0)).ToList();
 
-            // Bind to datagridview
-            dummyPackageDataGridView.DataSource = pkgList;
+                // Bind to datagridview
+                dummyPackageDataGridView.DataSource = pkgList;
 
-            // Display available options of suppliers for the Selected PackageId and ProductId
-            var supps = pkgList.Select(p => p.SuppName).ToList();
+                // Display available options of suppliers for the Selected PackageId and ProductId
+                var supps = pkgList.Select(p => p.SuppName).ToList();
 
-            // Add a (None) option to the list
-            supps.Insert(0, "(None)");
+                // Add a (None) option to the list
+                supps.Insert(0, "(None)");
 
-            // Bind to Supplier combo box
-            supNameComboBox.DataSource = supps;
+                // Bind to Supplier combo box
+                supNameComboBox.DataSource = supps;
+
+            }
         }
 
         private void LoadPkgProdSupps() {
             List<DummyPackage> dummyPackages = JoinTables();
 
-            // Get currently selected pkg Id
-            int pkgId = (int)pkgNameComboBox.SelectedValue;
+            if (pkgNameComboBox.DataSource != null) {
+                // Get currently selected pkg Id
+                int pkgId = (int)pkgNameComboBox.SelectedValue;
 
-            // Get currently selected products Name
-            string prodName = prodNameComboBox.Text;
+                // Get currently selected products Name
+                string prodName = prodNameComboBox.Text;
 
-            // Get currently selected suppliers Name
-            string suppName = supNameComboBox.Text;
+                // Get currently selected suppliers Name
+                string suppName = supNameComboBox.Text;
 
-            var pkgList = dummyPackages.Where(p => p.PackageId == pkgId && 
-                (string.Compare(p.ProdName, prodName) == 0) &&
-                (string.Compare(p.SuppName, suppName) == 0)).ToList();
+                var pkgList = dummyPackages.Where(p => p.PackageId == pkgId && 
+                    (string.Compare(p.ProdName, prodName) == 0) &&
+                    (string.Compare(p.SuppName, suppName) == 0)).ToList();
 
-            // Bind to datagridview
-            dummyPackageDataGridView.DataSource = pkgList;
+                // Bind to datagridview
+                dummyPackageDataGridView.DataSource = pkgList;
+            }
         }
 
         private void dummyPackageDataGridView_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -184,9 +192,24 @@ namespace Workshop4 {
             frmAddPackages.products = products;
             frmAddPackages.suppliers = suppliers;
             frmAddPackages.packages = packages;
+            frmAddPackages.pkgProdSupps = pkgProdSupps;
             DialogResult result = frmAddPackages.ShowDialog();
             if (result == DialogResult.OK) {
-                
+                if (frmAddPackages.PkgInserted == true) {
+                    packages.Add(frmAddPackages.Package);
+                }
+
+                if (frmAddPackages.ProdSuppInserted == true) {
+                    productsSuppliers.Add(frmAddPackages.productsSupplier);
+                }
+
+                pkgProdSupps.Add(frmAddPackages.pkgProdSupp);
+
+                // Reload Combo box
+                pkgNameComboBox.DataSource = null;
+                pkgNameComboBox.DisplayMember = "PkgName";
+                pkgNameComboBox.ValueMember = "PackageId";
+                pkgNameComboBox.DataSource = packages;
             } else if (result == DialogResult.Retry) {
                 
             }
