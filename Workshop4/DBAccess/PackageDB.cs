@@ -281,21 +281,42 @@ namespace DBAccess
             string deleteStatement = "DELETE FROM Packages " +
                                     "WHERE PackageId = @PackageId " + // to identify record
                                     "AND PkgName = @PkgName " + // remaining: for optimistic concurrency
-                                    "AND PkgStartDate = @PkgStartDate " +
-                                    "AND PkgEndDate = @PkgEndDate " +
-                                    "AND PkgDesc = @PkgDesc " +
+                                    "AND (PkgStartDate = @PkgStartDate " +
+                                    "OR PkgStartDate IS NULL AND @PkgStartDate IS NULL) " +
+                                    "AND (PkgEndDate = @PkgEndDate " +
+                                    "OR PkgEndDate IS NULL AND @PkgStartDate IS NULL) " +
+                                    "AND (PkgDesc = @PkgDesc " +
+                                    "OR PkgDesc IS NULL AND @PkgDesc IS NULL) " +
                                     "AND PkgBasePrice = @PkgBasePrice " +
-                                    "AND PkgAgencyCommission = @PkgAgencyCommission";
+                                    "AND (PkgAgencyCommission = @PkgAgencyCommission " +
+                                    "OR PkgAgencyCommission IS NULL AND @PkgAgencyCommission IS NULL)";
 
             SqlCommand cmd = new SqlCommand(deleteStatement, con);
 
-            cmd.Parameters.AddWithValue("@PackageId", package.PackageId);
             cmd.Parameters.AddWithValue("@PkgName", package.PkgName);
-            cmd.Parameters.AddWithValue("@PkgStartDate", package.PkgStartDate);
-            cmd.Parameters.AddWithValue("@PkgEndDate", package.PkgEndDate);
-            cmd.Parameters.AddWithValue("@PkgDesc", package.PkgDesc);
+            cmd.Parameters.AddWithValue("@PackageId", package.PackageId);
+
+            if (package.PkgStartDate == null)
+                cmd.Parameters.AddWithValue("@PkgStartDate", DBNull.Value);
+            else 
+                cmd.Parameters.AddWithValue("@PkgStartDate", package.PkgStartDate);
+
+            if (package.PkgEndDate == null)
+                cmd.Parameters.AddWithValue("@PkgEndDate", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@PkgEndDate", package.PkgEndDate);
+
+            if (package.PkgDesc == null)
+                cmd.Parameters.AddWithValue("@PkgDesc", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@PkgDesc", package.PkgDesc);
+
             cmd.Parameters.AddWithValue("@PkgBasePrice", package.PkgBasePrice);
-            cmd.Parameters.AddWithValue("@PkgAgencyCommission", package.PkgAgencyCommission);
+
+            if (package.PkgAgencyCommission == null)
+                cmd.Parameters.AddWithValue("@PkgAgencyCommission", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@PkgAgencyCommission", package.PkgAgencyCommission);
 
             try
             {

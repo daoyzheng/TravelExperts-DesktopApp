@@ -36,10 +36,6 @@
             this.supNameComboBox = new System.Windows.Forms.ComboBox();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dummyPackageDataGridView = new System.Windows.Forms.DataGridView();
-            this.dummyPackageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAddPkg = new System.Windows.Forms.Button();
-            this.btnUpdatePkg = new System.Windows.Forms.Button();
-            this.btnDeletePkg = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +46,10 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dummyPackageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAddPkg = new System.Windows.Forms.Button();
+            this.btnUpdatePkg = new System.Windows.Forms.Button();
+            this.btnDeletePkg = new System.Windows.Forms.Button();
             pkgNameLabel = new System.Windows.Forms.Label();
             prodNameLabel = new System.Windows.Forms.Label();
             supNameLabel = new System.Windows.Forms.Label();
@@ -152,45 +152,12 @@
             this.dummyPackageDataGridView.Size = new System.Drawing.Size(1161, 177);
             this.dummyPackageDataGridView.TabIndex = 21;
             // 
-            // dummyPackageBindingSource
-            // 
-            this.dummyPackageBindingSource.DataSource = typeof(ClassEntites.DummyPackage);
-            // 
-            // btnAddPkg
-            // 
-            this.btnAddPkg.Location = new System.Drawing.Point(61, 371);
-            this.btnAddPkg.Name = "btnAddPkg";
-            this.btnAddPkg.Size = new System.Drawing.Size(133, 34);
-            this.btnAddPkg.TabIndex = 22;
-            this.btnAddPkg.Text = "Add Packages";
-            this.btnAddPkg.UseVisualStyleBackColor = true;
-            this.btnAddPkg.Click += new System.EventHandler(this.btnAddPkg_Click);
-            // 
-            // btnUpdatePkg
-            // 
-            this.btnUpdatePkg.Location = new System.Drawing.Point(313, 371);
-            this.btnUpdatePkg.Name = "btnUpdatePkg";
-            this.btnUpdatePkg.Size = new System.Drawing.Size(122, 34);
-            this.btnUpdatePkg.TabIndex = 23;
-            this.btnUpdatePkg.Text = "Update Packages";
-            this.btnUpdatePkg.UseVisualStyleBackColor = true;
-            this.btnUpdatePkg.Click += new System.EventHandler(this.btnUpdatePkg_Click);
-            // 
-            // btnDeletePkg
-            // 
-            this.btnDeletePkg.Location = new System.Drawing.Point(584, 371);
-            this.btnDeletePkg.Name = "btnDeletePkg";
-            this.btnDeletePkg.Size = new System.Drawing.Size(121, 34);
-            this.btnDeletePkg.TabIndex = 24;
-            this.btnDeletePkg.Text = "Delete Packages";
-            this.btnDeletePkg.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "PackageId";
             this.dataGridViewTextBoxColumn1.HeaderText = "Package ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 89;
+            this.dataGridViewTextBoxColumn1.Width = 82;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -204,14 +171,14 @@
             this.dataGridViewTextBoxColumn3.DataPropertyName = "PkgStartDate";
             this.dataGridViewTextBoxColumn3.HeaderText = "Start Date";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 80;
+            this.dataGridViewTextBoxColumn3.Width = 74;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "PkgEndDate";
             this.dataGridViewTextBoxColumn4.HeaderText = "End Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 77;
+            this.dataGridViewTextBoxColumn4.Width = 71;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -221,7 +188,7 @@
             this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn5.HeaderText = "Base Price";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 83;
+            this.dataGridViewTextBoxColumn5.Width = 77;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -260,6 +227,40 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "Agency Commission";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 115;
+            // 
+            // dummyPackageBindingSource
+            // 
+            this.dummyPackageBindingSource.DataSource = typeof(ClassEntites.DummyPackage);
+            // 
+            // btnAddPkg
+            // 
+            this.btnAddPkg.Location = new System.Drawing.Point(61, 371);
+            this.btnAddPkg.Name = "btnAddPkg";
+            this.btnAddPkg.Size = new System.Drawing.Size(133, 34);
+            this.btnAddPkg.TabIndex = 22;
+            this.btnAddPkg.Text = "Add Packages";
+            this.btnAddPkg.UseVisualStyleBackColor = true;
+            this.btnAddPkg.Click += new System.EventHandler(this.btnAddPkg_Click);
+            // 
+            // btnUpdatePkg
+            // 
+            this.btnUpdatePkg.Location = new System.Drawing.Point(313, 371);
+            this.btnUpdatePkg.Name = "btnUpdatePkg";
+            this.btnUpdatePkg.Size = new System.Drawing.Size(122, 34);
+            this.btnUpdatePkg.TabIndex = 23;
+            this.btnUpdatePkg.Text = "Update Packages";
+            this.btnUpdatePkg.UseVisualStyleBackColor = true;
+            this.btnUpdatePkg.Click += new System.EventHandler(this.btnUpdatePkg_Click);
+            // 
+            // btnDeletePkg
+            // 
+            this.btnDeletePkg.Location = new System.Drawing.Point(584, 371);
+            this.btnDeletePkg.Name = "btnDeletePkg";
+            this.btnDeletePkg.Size = new System.Drawing.Size(121, 34);
+            this.btnDeletePkg.TabIndex = 24;
+            this.btnDeletePkg.Text = "Delete Packages";
+            this.btnDeletePkg.UseVisualStyleBackColor = true;
+            this.btnDeletePkg.Click += new System.EventHandler(this.btnDeletePkg_Click);
             // 
             // frmPackage
             // 

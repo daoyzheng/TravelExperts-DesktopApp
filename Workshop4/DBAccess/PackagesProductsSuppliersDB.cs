@@ -122,7 +122,7 @@ namespace DBAccess
 
             bool success = true;
 
-            string delete = "DELETE FROM PackagesProductsSuppliers " +
+            string delete = "DELETE FROM Packages_Products_Suppliers " +
                             "WHERE PackageId = @PackageId " +
                             "AND ProductSupplierId = @ProductSupplierId";
 

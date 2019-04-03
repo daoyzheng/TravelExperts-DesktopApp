@@ -252,7 +252,75 @@ namespace Workshop4 {
                 pkgNameComboBox.DataSource = packages;
             } else if (result == DialogResult.Retry) {
                 // Reload from database
+                packages = PackageDB.GetAllPackages();
+                products = ProductDB.GetProducts();
+                suppliers = SupplierDB.GetSuppliers();
+                productsSuppliers = ProductsSupplierDB.GetAllProductsSuppliers();
+                pkgProdSupps = PackagesProductsSuppliersDB.GetPackagesProductsSuppliers();
                 LoadPkgs();
+            }
+        }
+
+        private void btnDeletePkg_Click(object sender, EventArgs e) {
+            // Get Data from datagridview
+            int packageId = (int)dummyPackageDataGridView.CurrentRow.Cells[0].Value;
+            var selectedPkg = packages.SingleOrDefault(p => p.PackageId == packageId);
+
+            int prodSuppId = (int)dummyPackageDataGridView.CurrentRow.Cells[5].Value;
+
+            var selectedPkgProdSupp = pkgProdSupps.SingleOrDefault(pps => pps.ProductSupplierId == prodSuppId &&
+                                                                    pps.PackageId == packageId);
+
+            int pkgIdCount = pkgProdSupps.Where(pps => pps.PackageId == packageId).Count();
+            if(pkgIdCount == 1) {
+                // If the packageId is the last one inside the Package_Products_Supplier table
+                // Then we delete that package in the Package Table
+                deletePkgProdSupp(selectedPkgProdSupp);
+                try {
+                    if (!PackageDB.DeletePackage(selectedPkg)) {
+                        MessageBox.Show("Another user has updated or " +
+                            "deleted that Package.", "Database Error");
+                        // Refresh data
+                        packages = PackageDB.GetAllPackages();
+                        Refresh();
+                        Invalidate();
+                    } else {
+                        packages.Remove(selectedPkg);
+                        pkgNameComboBox.SelectedIndex = 0;
+                        pkgNameComboBox.DataSource = null;
+                        pkgNameComboBox.DataSource = packages;
+                        pkgNameComboBox.DisplayMember = "PkgName";
+                        pkgNameComboBox.ValueMember = "PackageId";
+                    }
+                } catch (Exception ex) {
+                    MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
+                }
+            } else {
+                deletePkgProdSupp(selectedPkgProdSupp);
+                // If there are 2 or more packageIds inside Package_Products_Supplier, only delete
+                // from the package_products_supplier table, not the Package table
+            }
+        }
+
+        private void deletePkgProdSupp (PackagesProductsSuppliers packagesProductsSuppliers) {
+            try {
+                if (!PackagesProductsSuppliersDB.DeletePackagesProductsSuppliers(packagesProductsSuppliers)) {
+                    MessageBox.Show("Another user has updated or " +
+                        "deleted that Package.", "Database Error");
+                    // Refresh data
+                    pkgProdSupps = PackagesProductsSuppliersDB.GetPackagesProductsSuppliers();
+                    Refresh();
+                    Invalidate();
+                } else {
+                    pkgProdSupps.Remove(packagesProductsSuppliers);
+                    // Reload Combo box
+                    pkgNameComboBox.DataSource = null;
+                    pkgNameComboBox.DisplayMember = "PkgName";
+                    pkgNameComboBox.ValueMember = "PackageId";
+                    pkgNameComboBox.DataSource = packages;
+                }
+            } catch (Exception ex) {
+                MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
             }
         }
     }
