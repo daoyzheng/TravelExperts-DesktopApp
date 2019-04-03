@@ -27,14 +27,19 @@
             System.Windows.Forms.Label pkgNameLabel;
             System.Windows.Forms.Label prodNameLabel;
             System.Windows.Forms.Label supNameLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pkgNameComboBox = new System.Windows.Forms.ComboBox();
             this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.prodNameComboBox = new System.Windows.Forms.ComboBox();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.supNameComboBox = new System.Windows.Forms.ComboBox();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dummyPackageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dummyPackageDataGridView = new System.Windows.Forms.DataGridView();
+            this.dummyPackageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAddPkg = new System.Windows.Forms.Button();
+            this.btnUpdatePkg = new System.Windows.Forms.Button();
+            this.btnDeletePkg = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,17 +50,14 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAddPkg = new System.Windows.Forms.Button();
-            this.btnUpdatePkg = new System.Windows.Forms.Button();
-            this.btnDeletePkg = new System.Windows.Forms.Button();
             pkgNameLabel = new System.Windows.Forms.Label();
             prodNameLabel = new System.Windows.Forms.Label();
             supNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dummyPackageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dummyPackageDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dummyPackageBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pkgNameLabel
@@ -127,10 +129,6 @@
             // 
             this.supplierBindingSource.DataSource = typeof(ClassEntites.Supplier);
             // 
-            // dummyPackageBindingSource
-            // 
-            this.dummyPackageBindingSource.DataSource = typeof(ClassEntites.DummyPackage);
-            // 
             // dummyPackageDataGridView
             // 
             this.dummyPackageDataGridView.AutoGenerateColumns = false;
@@ -148,81 +146,15 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
             this.dummyPackageDataGridView.DataSource = this.dummyPackageBindingSource;
-            this.dummyPackageDataGridView.Location = new System.Drawing.Point(15, 123);
+            this.dummyPackageDataGridView.Location = new System.Drawing.Point(15, 122);
             this.dummyPackageDataGridView.Name = "dummyPackageDataGridView";
             this.dummyPackageDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dummyPackageDataGridView.Size = new System.Drawing.Size(1019, 177);
+            this.dummyPackageDataGridView.Size = new System.Drawing.Size(1161, 177);
             this.dummyPackageDataGridView.TabIndex = 21;
             // 
-            // dataGridViewTextBoxColumn1
+            // dummyPackageBindingSource
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "PackageId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "PackageId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 84;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "PkgName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "PkgName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 79;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "PkgStartDate";
-            this.dataGridViewTextBoxColumn3.HeaderText = "PkgStartDate";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 96;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "PkgEndDate";
-            this.dataGridViewTextBoxColumn4.HeaderText = "PkgEndDate";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 93;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "PkgBasePrice";
-            this.dataGridViewTextBoxColumn5.HeaderText = "PkgBasePrice";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 99;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "ProductSupplierId";
-            this.dataGridViewTextBoxColumn8.HeaderText = "ProductSupplierId";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 116;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "ProdName";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ProdName";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 82;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "SuppName";
-            this.dataGridViewTextBoxColumn10.HeaderText = "SuppName";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Width = 85;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "PkgDesc";
-            this.dataGridViewTextBoxColumn6.HeaderText = "PkgDesc";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 76;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "PkgAgencyCommission";
-            this.dataGridViewTextBoxColumn7.HeaderText = "PkgAgencyCommission";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 142;
+            this.dummyPackageBindingSource.DataSource = typeof(ClassEntites.DummyPackage);
             // 
             // btnAddPkg
             // 
@@ -242,6 +174,7 @@
             this.btnUpdatePkg.TabIndex = 23;
             this.btnUpdatePkg.Text = "Update Packages";
             this.btnUpdatePkg.UseVisualStyleBackColor = true;
+            this.btnUpdatePkg.Click += new System.EventHandler(this.btnUpdatePkg_Click);
             // 
             // btnDeletePkg
             // 
@@ -252,11 +185,87 @@
             this.btnDeletePkg.Text = "Delete Packages";
             this.btnDeletePkg.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PackageId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Package ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 89;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "PkgName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "PkgStartDate";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Start Date";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "PkgEndDate";
+            this.dataGridViewTextBoxColumn4.HeaderText = "End Date";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 77;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PkgBasePrice";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Base Price";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 83;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "ProductSupplierId";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Product Supplier ID";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 104;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "ProdName";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Product Name";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Width = 92;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "SuppName";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Supplier Name";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Width = 93;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "PkgDesc";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "PkgAgencyCommission";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Agency Commission";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 115;
+            // 
             // frmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1123, 498);
+            this.ClientSize = new System.Drawing.Size(1204, 498);
             this.Controls.Add(this.btnDeletePkg);
             this.Controls.Add(this.btnUpdatePkg);
             this.Controls.Add(this.btnAddPkg);
@@ -273,8 +282,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dummyPackageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dummyPackageDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dummyPackageBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,6 +299,9 @@
         private System.Windows.Forms.ComboBox prodNameComboBox;
         private System.Windows.Forms.ComboBox supNameComboBox;
         private System.Windows.Forms.DataGridView dummyPackageDataGridView;
+        private System.Windows.Forms.Button btnAddPkg;
+        private System.Windows.Forms.Button btnUpdatePkg;
+        private System.Windows.Forms.Button btnDeletePkg;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -300,8 +312,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.Button btnAddPkg;
-        private System.Windows.Forms.Button btnUpdatePkg;
-        private System.Windows.Forms.Button btnDeletePkg;
     }
 }

@@ -88,8 +88,8 @@ namespace DBAccess
             bool success = true;
 
             //finding record it needs to update "old" and replacing it with the "new" PPS info
-            string update = "UPDATE PackagesProductsSupplierss SET " +
-                            "ProductSupplierId = @NewProductSupplierId, " +
+            string update = "UPDATE Packages_Products_Suppliers SET " +
+                            "ProductSupplierId = @NewProductSupplierId " +
                             "WHERE PackageId = @OldPackageId " + 
                             "AND ProductSupplierId = @OldProductSupplierId";
 

@@ -192,29 +192,68 @@ namespace DBAccess
                                      "PkgAgencyCommission = @NewPkgAgencyCommission "+
                                      "WHERE PackageId = @OldPackageId " + // to identify record to update
                                      "AND PkgName = @OldPkgName " + // remaining conditions for optimistic concurrency
-                                     "AND PkgStartDate = @OldPkgStartDate " +
-                                     "AND PkgEndDate = @OldPkgEndDate " +
-                                     "AND PkgDesc = @OldPkgDesc " +
+                                     "AND (PkgStartDate = @OldPkgStartDate " +
+                                     "OR PkgStartDate IS NULL AND @OldPkgStartDate IS NULL) " +
+                                     "AND (PkgEndDate = @OldPkgEndDate " +
+                                     "OR PkgEndDate IS NULL AND @OldPkgEndDate IS NULL) " +
+                                     "AND (PkgDesc = @OldPkgDesc " +
+                                     "OR PkgDesc IS NULL AND @OldPkgDesc IS NULL) " +
                                      "AND PkgBasePrice = @OldPkgBasePrice " +
-                                     "AND PkgAgencyCommission = @OldPkgAgencyCommission ";
+                                     "AND (PkgAgencyCommission = @OldPkgAgencyCommission " +
+                                     "OR PkgAgencyCommission IS NULL AND @OldPkgAgencyCommission IS NULL)";
 
             SqlCommand cmd = new SqlCommand(updateStatement, con);
 
             cmd.Parameters.AddWithValue("@NewPkgName", newPackage.PkgName);
-            cmd.Parameters.AddWithValue("@NewPkgStartDate", newPackage.PkgStartDate);
-            cmd.Parameters.AddWithValue("@NewPkgEndDate", newPackage.PkgEndDate);
-            cmd.Parameters.AddWithValue("@NewPkgDesc", newPackage.PkgDesc);
-            cmd.Parameters.AddWithValue("@NewPkgBasePrice", newPackage.PkgBasePrice);
-            cmd.Parameters.AddWithValue("@NewPkgAgencyCommission", newPackage.PkgAgencyCommission);
 
+            if (newPackage.PkgStartDate == null)
+                cmd.Parameters.AddWithValue("@NewPkgStartDate", DBNull.Value);
+            else 
+                cmd.Parameters.AddWithValue("@NewPkgStartDate", newPackage.PkgStartDate);
+
+            if (newPackage.PkgEndDate == null)
+                cmd.Parameters.AddWithValue("@NewPkgEndDate", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@NewPkgEndDate", newPackage.PkgEndDate);
+
+            if (newPackage.PkgDesc == null)
+                cmd.Parameters.AddWithValue("@NewPkgDesc", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@NewPkgDesc", newPackage.PkgDesc);
+
+            cmd.Parameters.AddWithValue("@NewPkgBasePrice", newPackage.PkgBasePrice);
+
+            if (newPackage.PkgAgencyCommission == null)
+                cmd.Parameters.AddWithValue("@NewPkgAgencyCommission", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@NewPkgAgencyCommission", newPackage.PkgAgencyCommission);
+
+            // OLD
             cmd.Parameters.AddWithValue("@OldPackageId", oldPackage.PackageId);
 
             cmd.Parameters.AddWithValue("@OldPkgName", oldPackage.PkgName);
-            cmd.Parameters.AddWithValue("@OldPkgStartDate", oldPackage.PkgStartDate);
-            cmd.Parameters.AddWithValue("@OldPkgEndDate", oldPackage.PkgEndDate);
-            cmd.Parameters.AddWithValue("@OldPkgDesc", oldPackage.PkgDesc);
+            
+            if (oldPackage.PkgStartDate == null)
+                cmd.Parameters.AddWithValue("@OldPkgStartDate", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@OldPkgStartDate", oldPackage.PkgStartDate);
+
+            if (oldPackage.PkgEndDate == null)
+                cmd.Parameters.AddWithValue("@OldPkgEndDate", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@OldPkgEndDate", oldPackage.PkgEndDate);
+
+            if (oldPackage.PkgDesc == null)
+                cmd.Parameters.AddWithValue("@OldPkgDesc", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@OldPkgDesc", oldPackage.PkgDesc);
+
             cmd.Parameters.AddWithValue("@OldPkgBasePrice", oldPackage.PkgBasePrice);
-            cmd.Parameters.AddWithValue("@OldPkgAgencyCommission", oldPackage.PkgAgencyCommission);
+
+            if (oldPackage.PkgAgencyCommission == null)
+                cmd.Parameters.AddWithValue("@OldPkgAgencyCommission", DBNull.Value);
+            else
+                cmd.Parameters.AddWithValue("@OldPkgAgencyCommission", oldPackage.PkgAgencyCommission);
 
             try
             {

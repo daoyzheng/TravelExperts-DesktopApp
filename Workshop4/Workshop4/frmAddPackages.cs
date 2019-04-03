@@ -82,7 +82,7 @@ namespace Workshop4 {
                         } else if (pkgStartDateDateTimePicker.Checked == true &&
                             pkgEndDateDateTimePicker.Checked == false) {
                             // Package End Date has not been provided yet
-                            newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value;
+                            newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value.Date;
                             newPkg.PkgEndDate = null;
                         } else if (pkgStartDateDateTimePicker.Checked == false &&
                             pkgEndDateDateTimePicker.Checked == true) {
@@ -95,8 +95,8 @@ namespace Workshop4 {
                                 DateValid = false;
                                 DialogResult = DialogResult.None;
                             } else {
-                                newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value;
-                                newPkg.PkgEndDate = pkgEndDateDateTimePicker.Value;
+                                newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value.Date;
+                                newPkg.PkgEndDate = pkgEndDateDateTimePicker.Value.Date;
                             }
                         }
                         if (DateValid) {

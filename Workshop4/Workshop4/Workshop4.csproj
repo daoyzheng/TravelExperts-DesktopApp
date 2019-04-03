@@ -88,6 +88,12 @@
     <Compile Include="frmSuppliers.Designer.cs">
       <DependentUpon>frmSuppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUpdatePackages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdatePackages.Designer.cs">
+      <DependentUpon>frmUpdatePackages.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomeButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSuppliers.resx">
       <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdatePackages.resx">
+      <DependentUpon>frmUpdatePackages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomeButton.resx">
       <DependentUpon>HomeButton.cs</DependentUpon>

@@ -210,8 +210,49 @@ namespace Workshop4 {
                 pkgNameComboBox.DisplayMember = "PkgName";
                 pkgNameComboBox.ValueMember = "PackageId";
                 pkgNameComboBox.DataSource = packages;
+            } 
+        }
+
+        private void btnUpdatePkg_Click(object sender, EventArgs e) {
+            // Get Data from datagridview
+            int packageId = (int)dummyPackageDataGridView.CurrentRow.Cells[0].Value;
+            var selectedPkg = packages.SingleOrDefault(p => p.PackageId == packageId);
+
+            int prodSuppId = (int)dummyPackageDataGridView.CurrentRow.Cells[5].Value;
+            var selectedProdSupp = productsSuppliers.SingleOrDefault(ps => ps.ProductSupplierId == prodSuppId);
+
+            var selectedPkgProdSupp = pkgProdSupps.SingleOrDefault(pps => pps.ProductSupplierId == prodSuppId &&
+                                                                    pps.PackageId == packageId);
+
+            frmUpdatePackages frmUpdatePackages = new frmUpdatePackages();
+            // Assign reference to update form
+            frmUpdatePackages.SelectedPackage = selectedPkg;
+            frmUpdatePackages.SelectedProductsSupplier = selectedProdSupp;
+            frmUpdatePackages.SelectedPkgProdSupp = selectedPkgProdSupp;
+
+            // Assign list to update form
+            frmUpdatePackages.Products = products;
+            frmUpdatePackages.Suppliers = suppliers;
+            frmUpdatePackages.Packages = packages;
+            frmUpdatePackages.PkgProdSupps = pkgProdSupps;
+
+            DialogResult result = frmUpdatePackages.ShowDialog();
+            if (result == DialogResult.OK) {
+                selectedPkg = frmUpdatePackages.SelectedPackage;
+                selectedPkgProdSupp = frmUpdatePackages.SelectedPkgProdSupp;
+                if (frmUpdatePackages.ProdSuppInserted) {
+                    productsSuppliers.Add(frmUpdatePackages.SelectedProductsSupplier);
+                }
+
+                // Refresh DataGridView
+                // Reload Combo box
+                pkgNameComboBox.DataSource = null;
+                pkgNameComboBox.DisplayMember = "PkgName";
+                pkgNameComboBox.ValueMember = "PackageId";
+                pkgNameComboBox.DataSource = packages;
             } else if (result == DialogResult.Retry) {
-                
+                // Reload from database
+                LoadPkgs();
             }
         }
     }
