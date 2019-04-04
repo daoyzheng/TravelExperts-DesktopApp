@@ -35,6 +35,7 @@
             this.cmbProducts = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIndex = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnExit
@@ -160,11 +161,20 @@
             this.txtIndex.Size = new System.Drawing.Size(100, 35);
             this.txtIndex.TabIndex = 22;
             // 
+            // txtId
+            // 
+            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(579, 68);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 35);
+            this.txtId.TabIndex = 23;
+            // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtIndex);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdate);
@@ -200,5 +210,6 @@
         private System.Windows.Forms.ComboBox cmbProducts;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtIndex;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

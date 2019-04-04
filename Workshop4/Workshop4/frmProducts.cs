@@ -75,6 +75,7 @@ namespace Workshop4 {
                 product.ProdName = txtProductName.Text;
 
                 int newProductId = ProductDB.AddProduct(product);
+                txtId.Text = newProductId.ToString();
                 DisplayProducts();
             }
         }

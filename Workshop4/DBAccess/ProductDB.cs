@@ -118,7 +118,7 @@ namespace DBAccess
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
             string insertStatement = "INSERT INTO Products (ProdName) " +
-                                     "VALUES (@ProdName)";
+                                     "VALUES (@ProdName); SELECT SCOPE_IDENTITY()";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, conn);
 
@@ -128,11 +128,12 @@ namespace DBAccess
             {
                 conn.Open();
 
-                insertCommand.ExecuteNonQuery();
+                // insertCommand.ExecuteNonQuery();
+                productid = Convert.ToInt32(insertCommand.ExecuteScalar());
 
-                string selectStatement = "SELECT SCOPE_IDENTITY() FROM Products"; // extract the ProductId for the newly added product
-                SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
-                productid = Convert.ToInt32(selectCommand.ExecuteScalar()); // execute the sql command expecting the single id result
+                //string selectStatement = "SELECT SCOPE_IDENTITY()"; // extract the ProductId for the newly added product
+                //SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
+                //productid = Convert.ToInt32(selectCommand.ExecuteScalar()); // execute the sql command expecting the single id result
 
             }
             catch (Exception ex)

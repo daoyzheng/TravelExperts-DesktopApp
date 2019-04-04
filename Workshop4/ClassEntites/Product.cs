@@ -26,7 +26,5 @@ namespace ClassEntites
         {
             return "Product Id: " + ProductId.ToString() + ",   " + "Product Name: " + ProdName;
         }
-
     }
-
 }

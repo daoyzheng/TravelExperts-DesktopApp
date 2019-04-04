@@ -219,5 +219,15 @@ namespace DBAccess
             return result;
         }
 
+        public static int FindMaxSupplierId(List<Supplier> suppliers)            
+        {
+            int maxId = 0;
+            foreach (Supplier supplier in suppliers)
+            {
+                if (supplier.SupplierId > maxId)
+                    maxId = supplier.SupplierId;
+            }
+            return maxId;
+        }
     }
 }

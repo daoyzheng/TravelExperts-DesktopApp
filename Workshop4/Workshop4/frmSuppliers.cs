@@ -60,7 +60,7 @@ namespace Workshop4 {
             // declare suppliers List variable and instantiate new List<Supplier> object
             List<Supplier> suppliers = new List<Supplier>();
 
-            // assign suppliers to return of GetSuppliers nethod call
+            // assign suppliers to return of GetSuppliers method call
             suppliers = SupplierDB.GetSuppliers();
 
             // validate input
@@ -76,9 +76,17 @@ namespace Workshop4 {
                         return;
                     }
                 }
+
+                // business logic here is to determine the largest SupplierId in the database
+                // and then assign this value + 1, to the new Supplier entry
+
+                // Find largest SupplierID
+                int maxId = SupplierDB.FindMaxSupplierId(suppliers);
+
                 // create Supplier object to be added
                 Supplier supplier = new Supplier();
-                supplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
+
+                supplier.SupplierId = ++maxId;
                 supplier.SupName = txtSupplierName.Text;
 
                 int newSupplierId = SupplierDB.AddSupplier(supplier);
@@ -117,5 +125,34 @@ namespace Workshop4 {
 
             DisplaySuppliers();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
+            Supplier supplier = new Supplier();
+
+            // declare products List variable and instantiate new List<Supplier> object
+            List<Supplier> suppliers = new List<Supplier>();
+            suppliers = SupplierDB.GetSuppliers();
+            supplier = suppliers[cmbSuppliers.SelectedIndex];
+
+            // check if product to be updated already exists in Products_Suppliers
+            // table and if so, the user may not update it.
+
+            if (SupplierDB.IsInProductsSuppliers(supplier))
+            {
+                MessageBox.Show("This supplier is already being used in " +
+                    " the Products_Suppliers table and you may not update it.");
+                return;
+            }
+
+            Supplier newSupplier = new Supplier();
+            newSupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
+            newSupplier.SupName = txtSupplierName.Text;
+
+            bool result = SupplierDB.UpdateSupplier(supplier, newSupplier);
+            DisplaySuppliers();
+        }
     }
 }
+
