@@ -15,8 +15,8 @@ namespace Workshop4 {
             Application.SetCompatibleTextRenderingDefault(false);
 //            Application.Run(new MainForm());
 //            Application.Run(new frmPackage());
-           Application.Run(new frmSuppliers());
- //           Application.Run(new frmProducts());
+//            Application.Run(new frmSuppliers());
+            Application.Run(new frmProducts());
         }
     }
 }

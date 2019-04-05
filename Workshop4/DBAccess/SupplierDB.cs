@@ -149,7 +149,7 @@ namespace DBAccess
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
             string updateStatement = "UPDATE Suppliers SET " +
-                                     "SupName = @NewSupName, " +
+                                     "SupName = @NewSupName " +
                                      "WHERE SupplierId = @OldSupplierId " + // to identify record to update
                                      "AND SupName = @OldSupName";
 
