@@ -28,6 +28,8 @@ namespace Workshop4 {
             // bind suppliers list to combo box
             cmbSuppliers.DataSource = suppliers;
 
+            txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -53,6 +55,7 @@ namespace Workshop4 {
 
             txtSupplierId.Text   = (supplier.SupplierId).ToString();
             txtSupplierName.Text = supplier.SupName;
+            txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -67,12 +70,12 @@ namespace Workshop4 {
             if (Validator.IsPresent(txtSupplierName))
             {
                 // text boxes validated
-                // now check that the entered Supplier Id does not already exist in the database
+                // now check that the entered Supplier Name does not already exist in the database
                 foreach (Supplier supp in suppliers)
                 {
-                    if (txtSupplierId.Text != "" && supp.SupplierId == Convert.ToInt32(txtSupplierId.Text))
+                    if (txtSupplierName.Text != "" && supp.SupName == txtSupplierName.Text)
                     {
-                        MessageBox.Show("Supplier Id already exists in database");
+                        MessageBox.Show("The Supplier Name already exists in the database");
                         return;
                     }
                 }
@@ -89,29 +92,28 @@ namespace Workshop4 {
                 supplier.SupplierId = ++maxId;
                 supplier.SupName = txtSupplierName.Text;
 
+                txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
+
                 int newSupplierId = SupplierDB.AddSupplier(supplier);
-                DisplaySuppliers();
+                DisplaySuppliers(cmbSuppliers.SelectedIndex - 1);
             }
         }
-        public void DisplaySuppliers()
+        public void DisplaySuppliers(int sIndex)
         {
             // declare suppliers List variable and instantiate new List<Supplier> object
             List<Supplier> suppliers = new List<Supplier>();
-            Supplier supplier = new Supplier();
-
-            // track selected index
-            // int sIndex = cmbSuppliers.SelectedIndex;
 
             // assign suppliers to return of GetSuppliers method call
             suppliers = SupplierDB.GetSuppliers();
             // bind suppliers list to combo box
             cmbSuppliers.DataSource = suppliers;
 
-            // cmbSuppliers.SelectedIndex = sIndex - 1;
+            txtSupplierId.Text = (suppliers[sIndex].SupplierId).ToString();
+            txtSupplierName.Text = suppliers[sIndex].SupName;
 
-            txtSupplierId.Text = (supplier.SupplierId).ToString();
-            txtSupplierName.Text = supplier.SupName;
+            txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
 
+            cmbSuppliers.SelectedIndex = sIndex;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -123,7 +125,7 @@ namespace Workshop4 {
 
             bool result = SupplierDB.DeleteSupplier(supplier);
 
-            DisplaySuppliers();
+            DisplaySuppliers(cmbSuppliers.SelectedIndex - 1);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -151,7 +153,7 @@ namespace Workshop4 {
             newSupplier.SupName = txtSupplierName.Text;
 
             bool result = SupplierDB.UpdateSupplier(supplier, newSupplier);
-            DisplaySuppliers();
+            DisplaySuppliers(cmbSuppliers.SelectedIndex);
         }
     }
 }

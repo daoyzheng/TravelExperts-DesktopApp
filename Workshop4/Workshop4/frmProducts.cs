@@ -54,7 +54,7 @@ namespace Workshop4 {
             // declare suppliers List variable and instantiate new List<Supplier> object
             List<Product> products = new List<Product>();
 
-            // assign suppliers to return of GetSuppliers nethod call
+            // assign suppliers to return of GetSuppliers method call
             products = ProductDB.GetProducts();
 
             // validate input
@@ -64,9 +64,9 @@ namespace Workshop4 {
                 // now check that the entered Product Name does not already exist in the database
                 foreach (Product prod in products)
                 {
-                    if (txtProductName.Text != "" && prod.ProdName == txtProductId.Text)
+                    if (txtProductName.Text != "" && prod.ProdName == txtProductName.Text)
                     {
-                        MessageBox.Show("Product Name already exists in database");
+                        MessageBox.Show("This Product Name already exists in the database.");
                         return;
                     }
                 }
@@ -76,7 +76,7 @@ namespace Workshop4 {
 
                 int newProductId = ProductDB.AddProduct(product);
                 txtId.Text = newProductId.ToString();
-                DisplayProducts();
+                DisplayProducts(cmbProducts.SelectedIndex + 1);
             }
         }
 
@@ -97,10 +97,9 @@ namespace Workshop4 {
                 return;
             }
 
-
             bool result = ProductDB.DeleteProduct(product);
 
-            DisplayProducts();
+            DisplayProducts(cmbProducts.SelectedIndex - 1);
         }
 
         private void btnExit_Click_1(object sender, EventArgs e)
@@ -108,24 +107,23 @@ namespace Workshop4 {
             // close this form
             this.Close();
         }
-        public void DisplayProducts()
+        public void DisplayProducts(int sIndex)
         {
             // declare suppliers List variable and instantiate new List<Supplier> object
             List<Product> products = new List<Product>();
-            Product product = new Product();
 
             // track selected index
-            int sIndex = cmbProducts.SelectedIndex;
+            // int sIndex = cmbProducts.SelectedIndex;
 
             // assign suppliers to return of GetSuppliers nethod call
             products = ProductDB.GetProducts();
             // bind suppliers list to combo box
             cmbProducts.DataSource = products;
 
-            cmbProducts.SelectedIndex = sIndex - 1;
+            cmbProducts.SelectedIndex = sIndex; ;
 
-            txtProductId.Text = (product.ProductId).ToString();
-            txtProductName.Text = product.ProdName;
+            txtProductId.Text = (products[sIndex].ProductId).ToString();
+            txtProductName.Text = products[sIndex].ProdName;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -153,7 +151,7 @@ namespace Workshop4 {
             newProduct.ProdName = txtProductName.Text;
 
             bool result = ProductDB.UpdateProduct(product, newProduct);
-            DisplayProducts();
+            DisplayProducts(cmbProducts.SelectedIndex);
         }
     }
 }
