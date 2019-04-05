@@ -32,6 +32,7 @@
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label productIdLabel1;
             System.Windows.Forms.Label supplierIdLabel1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsSupplierForm));
             this.productsSupplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productIdTextBox = new System.Windows.Forms.TextBox();
             this.productSupplierIdComboBox = new System.Windows.Forms.ComboBox();
@@ -69,56 +70,83 @@
             // productIdLabel
             // 
             productIdLabel.AutoSize = true;
-            productIdLabel.Location = new System.Drawing.Point(295, 21);
+            productIdLabel.Location = new System.Drawing.Point(492, 34);
+            productIdLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             productIdLabel.Name = "productIdLabel";
-            productIdLabel.Size = new System.Drawing.Size(59, 13);
+            productIdLabel.Size = new System.Drawing.Size(92, 20);
             productIdLabel.TabIndex = 1;
-            productIdLabel.Text = "Product Id:";
+            productIdLabel.Text = "Product Id";
             // 
             // productSupplierIdLabel
             // 
             productSupplierIdLabel.AutoSize = true;
-            productSupplierIdLabel.Location = new System.Drawing.Point(71, 24);
+            productSupplierIdLabel.BackColor = System.Drawing.Color.Transparent;
+            productSupplierIdLabel.Location = new System.Drawing.Point(118, 37);
+            productSupplierIdLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             productSupplierIdLabel.Name = "productSupplierIdLabel";
-            productSupplierIdLabel.Size = new System.Drawing.Size(100, 13);
+            productSupplierIdLabel.Size = new System.Drawing.Size(163, 20);
             productSupplierIdLabel.TabIndex = 3;
-            productSupplierIdLabel.Text = "Product Supplier Id:";
+            productSupplierIdLabel.Text = "Product Supplier Id";
             // 
             // supplierIdLabel
             // 
             supplierIdLabel.AutoSize = true;
-            supplierIdLabel.Location = new System.Drawing.Point(295, 46);
+            supplierIdLabel.Location = new System.Drawing.Point(492, 94);
+            supplierIdLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             supplierIdLabel.Name = "supplierIdLabel";
-            supplierIdLabel.Size = new System.Drawing.Size(60, 13);
+            supplierIdLabel.Size = new System.Drawing.Size(96, 20);
             supplierIdLabel.TabIndex = 5;
-            supplierIdLabel.Text = "Supplier Id:";
+            supplierIdLabel.Text = "Supplier Id";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(17, 60);
+            label1.Location = new System.Drawing.Point(28, 92);
+            label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(149, 26);
+            label1.Size = new System.Drawing.Size(250, 40);
             label1.TabIndex = 7;
-            label1.Text = "Search By Product Supplier Id\r\n:\r\n";
+            label1.Text = "Search By Product Supplier Id\r\n\r\n";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(23, 143);
+            label2.Location = new System.Drawing.Point(39, 228);
+            label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(111, 13);
+            label2.Size = new System.Drawing.Size(179, 20);
             label2.TabIndex = 10;
-            label2.Text = "Search By Product Id:";
+            label2.Text = "Search By Product Id";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(470, 147);
+            label3.Location = new System.Drawing.Point(783, 226);
+            label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(112, 13);
+            label3.Size = new System.Drawing.Size(183, 20);
             label3.TabIndex = 13;
-            label3.Text = "Search By Supplier Id:";
+            label3.Text = "Search By Supplier Id";
+            // 
+            // productIdLabel1
+            // 
+            productIdLabel1.AutoSize = true;
+            productIdLabel1.Location = new System.Drawing.Point(1088, 32);
+            productIdLabel1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            productIdLabel1.Name = "productIdLabel1";
+            productIdLabel1.Size = new System.Drawing.Size(92, 20);
+            productIdLabel1.TabIndex = 17;
+            productIdLabel1.Text = "Product Id";
+            // 
+            // supplierIdLabel1
+            // 
+            supplierIdLabel1.AutoSize = true;
+            supplierIdLabel1.Location = new System.Drawing.Point(1088, 72);
+            supplierIdLabel1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            supplierIdLabel1.Name = "supplierIdLabel1";
+            supplierIdLabel1.Size = new System.Drawing.Size(96, 20);
+            supplierIdLabel1.TabIndex = 19;
+            supplierIdLabel1.Text = "Supplier Id";
             // 
             // productsSupplierBindingSource
             // 
@@ -127,45 +155,58 @@
             // productIdTextBox
             // 
             this.productIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductId", true));
-            this.productIdTextBox.Location = new System.Drawing.Point(401, 18);
+            this.productIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productIdTextBox.ForeColor = System.Drawing.Color.DarkCyan;
+            this.productIdTextBox.Location = new System.Drawing.Point(615, 32);
+            this.productIdTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.productIdTextBox.Name = "productIdTextBox";
             this.productIdTextBox.ReadOnly = true;
-            this.productIdTextBox.Size = new System.Drawing.Size(86, 20);
+            this.productIdTextBox.Size = new System.Drawing.Size(141, 24);
             this.productIdTextBox.TabIndex = 2;
             // 
             // productSupplierIdComboBox
             // 
             this.productSupplierIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductSupplierId", true));
+            this.productSupplierIdComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productSupplierIdComboBox.FormattingEnabled = true;
-            this.productSupplierIdComboBox.Location = new System.Drawing.Point(177, 21);
+            this.productSupplierIdComboBox.Location = new System.Drawing.Point(295, 32);
+            this.productSupplierIdComboBox.Margin = new System.Windows.Forms.Padding(5);
             this.productSupplierIdComboBox.Name = "productSupplierIdComboBox";
-            this.productSupplierIdComboBox.Size = new System.Drawing.Size(86, 21);
+            this.productSupplierIdComboBox.Size = new System.Drawing.Size(141, 26);
             this.productSupplierIdComboBox.TabIndex = 4;
             this.productSupplierIdComboBox.SelectedIndexChanged += new System.EventHandler(this.productSupplierIdComboBox_SelectedIndexChanged);
             // 
             // supplierIdTextBox
             // 
             this.supplierIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "SupplierId", true));
-            this.supplierIdTextBox.Location = new System.Drawing.Point(401, 43);
+            this.supplierIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supplierIdTextBox.ForeColor = System.Drawing.Color.DarkCyan;
+            this.supplierIdTextBox.Location = new System.Drawing.Point(615, 90);
+            this.supplierIdTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.supplierIdTextBox.Name = "supplierIdTextBox";
             this.supplierIdTextBox.ReadOnly = true;
-            this.supplierIdTextBox.Size = new System.Drawing.Size(86, 20);
+            this.supplierIdTextBox.Size = new System.Drawing.Size(141, 24);
             this.supplierIdTextBox.TabIndex = 6;
             // 
             // txtProdSuppId
             // 
             this.txtProdSuppId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductId", true));
-            this.txtProdSuppId.Location = new System.Drawing.Point(177, 57);
+            this.txtProdSuppId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdSuppId.ForeColor = System.Drawing.Color.DarkCyan;
+            this.txtProdSuppId.Location = new System.Drawing.Point(295, 88);
+            this.txtProdSuppId.Margin = new System.Windows.Forms.Padding(5);
             this.txtProdSuppId.Name = "txtProdSuppId";
-            this.txtProdSuppId.Size = new System.Drawing.Size(86, 20);
+            this.txtProdSuppId.Size = new System.Drawing.Size(141, 24);
             this.txtProdSuppId.TabIndex = 8;
             this.txtProdSuppId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProdSuppId_KeyPress);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(177, 93);
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(295, 143);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(107, 35);
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -174,17 +215,21 @@
             // txtProdId
             // 
             this.txtProdId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductId", true));
-            this.txtProdId.Location = new System.Drawing.Point(140, 140);
+            this.txtProdId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProdId.ForeColor = System.Drawing.Color.DarkCyan;
+            this.txtProdId.Location = new System.Drawing.Point(295, 224);
+            this.txtProdId.Margin = new System.Windows.Forms.Padding(5);
             this.txtProdId.Name = "txtProdId";
-            this.txtProdId.Size = new System.Drawing.Size(86, 20);
+            this.txtProdId.Size = new System.Drawing.Size(141, 24);
             this.txtProdId.TabIndex = 11;
             this.txtProdId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProdId_KeyPress);
             // 
             // btnSearchProdId
             // 
-            this.btnSearchProdId.Location = new System.Drawing.Point(26, 166);
+            this.btnSearchProdId.Location = new System.Drawing.Point(43, 279);
+            this.btnSearchProdId.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearchProdId.Name = "btnSearchProdId";
-            this.btnSearchProdId.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchProdId.Size = new System.Drawing.Size(125, 35);
             this.btnSearchProdId.TabIndex = 12;
             this.btnSearchProdId.Text = "Search";
             this.btnSearchProdId.UseVisualStyleBackColor = true;
@@ -199,9 +244,10 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3});
             this.productsSupplierDataGridViewSortByProdId.DataSource = this.productsSupplierBindingSource;
-            this.productsSupplierDataGridViewSortByProdId.Location = new System.Drawing.Point(26, 195);
+            this.productsSupplierDataGridViewSortByProdId.Location = new System.Drawing.Point(43, 349);
+            this.productsSupplierDataGridViewSortByProdId.Margin = new System.Windows.Forms.Padding(5);
             this.productsSupplierDataGridViewSortByProdId.Name = "productsSupplierDataGridViewSortByProdId";
-            this.productsSupplierDataGridViewSortByProdId.Size = new System.Drawing.Size(346, 220);
+            this.productsSupplierDataGridViewSortByProdId.Size = new System.Drawing.Size(577, 338);
             this.productsSupplierDataGridViewSortByProdId.TabIndex = 12;
             // 
             // dataGridViewTextBoxColumn2
@@ -225,17 +271,22 @@
             // txtSuppId
             // 
             this.txtSuppId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductId", true));
-            this.txtSuppId.Location = new System.Drawing.Point(587, 144);
+            this.txtSuppId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSuppId.ForeColor = System.Drawing.Color.DarkCyan;
+            this.txtSuppId.Location = new System.Drawing.Point(1007, 225);
+            this.txtSuppId.Margin = new System.Windows.Forms.Padding(5);
             this.txtSuppId.Name = "txtSuppId";
-            this.txtSuppId.Size = new System.Drawing.Size(86, 20);
+            this.txtSuppId.Size = new System.Drawing.Size(141, 24);
             this.txtSuppId.TabIndex = 14;
             this.txtSuppId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSuppId_KeyPress);
             // 
             // btnSearchSuppId
             // 
-            this.btnSearchSuppId.Location = new System.Drawing.Point(473, 166);
+            this.btnSearchSuppId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchSuppId.Location = new System.Drawing.Point(787, 279);
+            this.btnSearchSuppId.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearchSuppId.Name = "btnSearchSuppId";
-            this.btnSearchSuppId.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchSuppId.Size = new System.Drawing.Size(117, 35);
             this.btnSearchSuppId.TabIndex = 15;
             this.btnSearchSuppId.Text = "Search";
             this.btnSearchSuppId.UseVisualStyleBackColor = true;
@@ -250,9 +301,10 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
             this.productsSupplierDataGridViewSortBySuppId.DataSource = this.productsSupplierBindingSource;
-            this.productsSupplierDataGridViewSortBySuppId.Location = new System.Drawing.Point(473, 195);
+            this.productsSupplierDataGridViewSortBySuppId.Location = new System.Drawing.Point(787, 349);
+            this.productsSupplierDataGridViewSortBySuppId.Margin = new System.Windows.Forms.Padding(5);
             this.productsSupplierDataGridViewSortBySuppId.Name = "productsSupplierDataGridViewSortBySuppId";
-            this.productsSupplierDataGridViewSortBySuppId.Size = new System.Drawing.Size(348, 220);
+            this.productsSupplierDataGridViewSortBySuppId.Size = new System.Drawing.Size(580, 338);
             this.productsSupplierDataGridViewSortBySuppId.TabIndex = 16;
             // 
             // dataGridViewTextBoxColumn6
@@ -273,57 +325,49 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "ProductId";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // productIdLabel1
-            // 
-            productIdLabel1.AutoSize = true;
-            productIdLabel1.Location = new System.Drawing.Point(653, 21);
-            productIdLabel1.Name = "productIdLabel1";
-            productIdLabel1.Size = new System.Drawing.Size(59, 13);
-            productIdLabel1.TabIndex = 17;
-            productIdLabel1.Text = "Product Id:";
-            // 
             // productIdTextBoxAdd
             // 
             this.productIdTextBoxAdd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "ProductId", true));
-            this.productIdTextBoxAdd.Location = new System.Drawing.Point(719, 18);
+            this.productIdTextBoxAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productIdTextBoxAdd.ForeColor = System.Drawing.Color.DarkCyan;
+            this.productIdTextBoxAdd.Location = new System.Drawing.Point(1198, 28);
+            this.productIdTextBoxAdd.Margin = new System.Windows.Forms.Padding(5);
             this.productIdTextBoxAdd.Name = "productIdTextBoxAdd";
-            this.productIdTextBoxAdd.Size = new System.Drawing.Size(100, 20);
+            this.productIdTextBoxAdd.Size = new System.Drawing.Size(164, 24);
             this.productIdTextBoxAdd.TabIndex = 18;
             this.productIdTextBoxAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productIdTextBoxAdd_KeyPress);
-            // 
-            // supplierIdLabel1
-            // 
-            supplierIdLabel1.AutoSize = true;
-            supplierIdLabel1.Location = new System.Drawing.Point(653, 47);
-            supplierIdLabel1.Name = "supplierIdLabel1";
-            supplierIdLabel1.Size = new System.Drawing.Size(60, 13);
-            supplierIdLabel1.TabIndex = 19;
-            supplierIdLabel1.Text = "Supplier Id:";
             // 
             // supplierIdTextBoxAdd
             // 
             this.supplierIdTextBoxAdd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsSupplierBindingSource, "SupplierId", true));
-            this.supplierIdTextBoxAdd.Location = new System.Drawing.Point(719, 44);
+            this.supplierIdTextBoxAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supplierIdTextBoxAdd.ForeColor = System.Drawing.Color.DarkCyan;
+            this.supplierIdTextBoxAdd.Location = new System.Drawing.Point(1198, 68);
+            this.supplierIdTextBoxAdd.Margin = new System.Windows.Forms.Padding(5);
             this.supplierIdTextBoxAdd.Name = "supplierIdTextBoxAdd";
-            this.supplierIdTextBoxAdd.Size = new System.Drawing.Size(100, 20);
+            this.supplierIdTextBoxAdd.Size = new System.Drawing.Size(164, 24);
             this.supplierIdTextBoxAdd.TabIndex = 20;
             this.supplierIdTextBoxAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.supplierIdTextBoxAdd_KeyPress);
             // 
             // btnAddProdSupp
             // 
-            this.btnAddProdSupp.Location = new System.Drawing.Point(719, 93);
+            this.btnAddProdSupp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProdSupp.Location = new System.Drawing.Point(1198, 143);
+            this.btnAddProdSupp.Margin = new System.Windows.Forms.Padding(5);
             this.btnAddProdSupp.Name = "btnAddProdSupp";
-            this.btnAddProdSupp.Size = new System.Drawing.Size(75, 23);
+            this.btnAddProdSupp.Size = new System.Drawing.Size(96, 35);
             this.btnAddProdSupp.TabIndex = 21;
             this.btnAddProdSupp.Text = "Add";
             this.btnAddProdSupp.UseVisualStyleBackColor = true;
             this.btnAddProdSupp.Click += new System.EventHandler(this.btnAddProdSupp_Click);
             // 
-            // Form1
+            // ProductsSupplierForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 479);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1362, 737);
             this.Controls.Add(this.btnAddProdSupp);
             this.Controls.Add(productIdLabel1);
             this.Controls.Add(this.productIdTextBoxAdd);
@@ -346,7 +390,10 @@
             this.Controls.Add(this.productSupplierIdComboBox);
             this.Controls.Add(supplierIdLabel);
             this.Controls.Add(this.supplierIdTextBox);
-            this.Name = "Form1";
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.Teal;
+            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Name = "ProductsSupplierForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productsSupplierBindingSource)).EndInit();

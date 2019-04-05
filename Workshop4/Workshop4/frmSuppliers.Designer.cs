@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSuppliers));
             this.label1 = new System.Windows.Forms.Label();
             this.cmbSuppliers = new System.Windows.Forms.ComboBox();
             this.lblSuppliers = new System.Windows.Forms.Label();
@@ -43,7 +44,7 @@
             this.label1.Location = new System.Drawing.Point(235, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(537, 29);
+            this.label1.Size = new System.Drawing.Size(356, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Suppliers Management Form Under Construction";
             // 
@@ -51,63 +52,78 @@
             // 
             this.cmbSuppliers.DropDownHeight = 310;
             this.cmbSuppliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSuppliers.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.cmbSuppliers.FormattingEnabled = true;
             this.cmbSuppliers.IntegralHeight = false;
             this.cmbSuppliers.Location = new System.Drawing.Point(27, 273);
             this.cmbSuppliers.Name = "cmbSuppliers";
-            this.cmbSuppliers.Size = new System.Drawing.Size(723, 37);
+            this.cmbSuppliers.Size = new System.Drawing.Size(723, 26);
             this.cmbSuppliers.TabIndex = 1;
             this.cmbSuppliers.SelectedIndexChanged += new System.EventHandler(this.cmbSuppliers_SelectedIndexChanged);
             // 
             // lblSuppliers
             // 
             this.lblSuppliers.AutoSize = true;
+            this.lblSuppliers.BackColor = System.Drawing.Color.Transparent;
+            this.lblSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSuppliers.ForeColor = System.Drawing.Color.Teal;
             this.lblSuppliers.Location = new System.Drawing.Point(22, 229);
             this.lblSuppliers.Name = "lblSuppliers";
-            this.lblSuppliers.Size = new System.Drawing.Size(122, 29);
+            this.lblSuppliers.Size = new System.Drawing.Size(98, 24);
             this.lblSuppliers.TabIndex = 2;
-            this.lblSuppliers.Text = "Suppliers:";
+            this.lblSuppliers.Text = "Suppliers";
             // 
             // lblSupplierId
             // 
             this.lblSupplierId.AutoSize = true;
+            this.lblSupplierId.BackColor = System.Drawing.Color.Transparent;
+            this.lblSupplierId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplierId.ForeColor = System.Drawing.Color.Teal;
             this.lblSupplierId.Location = new System.Drawing.Point(22, 74);
             this.lblSupplierId.Name = "lblSupplierId";
-            this.lblSupplierId.Size = new System.Drawing.Size(136, 29);
+            this.lblSupplierId.Size = new System.Drawing.Size(111, 24);
             this.lblSupplierId.TabIndex = 3;
-            this.lblSupplierId.Text = "Supplier Id:";
+            this.lblSupplierId.Text = "Supplier Id";
             // 
             // lblSupplierName
             // 
             this.lblSupplierName.AutoSize = true;
+            this.lblSupplierName.BackColor = System.Drawing.Color.Transparent;
+            this.lblSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupplierName.ForeColor = System.Drawing.Color.Teal;
             this.lblSupplierName.Location = new System.Drawing.Point(22, 129);
             this.lblSupplierName.Name = "lblSupplierName";
-            this.lblSupplierName.Size = new System.Drawing.Size(181, 29);
+            this.lblSupplierName.Size = new System.Drawing.Size(149, 24);
             this.lblSupplierName.TabIndex = 4;
-            this.lblSupplierName.Text = "Supplier Name:";
+            this.lblSupplierName.Text = "Supplier Name";
             // 
             // txtSupplierId
             // 
             this.txtSupplierId.Enabled = false;
-            this.txtSupplierId.Location = new System.Drawing.Point(209, 71);
+            this.txtSupplierId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierId.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtSupplierId.Location = new System.Drawing.Point(209, 74);
             this.txtSupplierId.Name = "txtSupplierId";
-            this.txtSupplierId.Size = new System.Drawing.Size(169, 35);
+            this.txtSupplierId.Size = new System.Drawing.Size(122, 24);
             this.txtSupplierId.TabIndex = 5;
             // 
             // txtSupplierName
             // 
-            this.txtSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierName.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.txtSupplierName.Location = new System.Drawing.Point(209, 126);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(541, 39);
+            this.txtSupplierName.Size = new System.Drawing.Size(541, 24);
             this.txtSupplierName.TabIndex = 6;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(353, 176);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.Teal;
+            this.btnAdd.Location = new System.Drawing.Point(338, 177);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(112, 56);
+            this.btnAdd.Size = new System.Drawing.Size(83, 56);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -115,9 +131,11 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(490, 176);
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Teal;
+            this.btnDelete.Location = new System.Drawing.Point(463, 177);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(107, 56);
+            this.btnDelete.Size = new System.Drawing.Size(88, 56);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -125,9 +143,11 @@
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.Teal;
             this.btnUpdate.Location = new System.Drawing.Point(209, 176);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(122, 56);
+            this.btnUpdate.Size = new System.Drawing.Size(90, 56);
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -135,9 +155,11 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(637, 176);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.Teal;
+            this.btnExit.Location = new System.Drawing.Point(595, 178);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(113, 56);
+            this.btnExit.Size = new System.Drawing.Size(99, 56);
             this.btnExit.TabIndex = 10;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -145,16 +167,20 @@
             // 
             // txtIndex
             // 
+            this.txtIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIndex.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.txtIndex.Location = new System.Drawing.Point(792, 273);
             this.txtIndex.Name = "txtIndex";
-            this.txtIndex.Size = new System.Drawing.Size(100, 35);
+            this.txtIndex.Size = new System.Drawing.Size(100, 24);
             this.txtIndex.TabIndex = 11;
             // 
             // frmSuppliers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1867, 1003);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(917, 741);
             this.Controls.Add(this.txtIndex);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdate);

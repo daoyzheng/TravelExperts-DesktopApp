@@ -45,7 +45,7 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.White;
+            this.pnlMenu.BackColor = System.Drawing.Color.LightCyan;
             this.pnlMenu.Controls.Add(this.btnLogOut);
             this.pnlMenu.Controls.Add(this.lblAgtName);
             this.pnlMenu.Controls.Add(this.pnlAgtBar);
@@ -63,7 +63,7 @@
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(226, 661);
+            this.pnlMenu.Size = new System.Drawing.Size(300, 661);
             this.pnlMenu.TabIndex = 0;
             // 
             // btnLogOut
@@ -71,11 +71,11 @@
             this.btnLogOut.FlatAppearance.BorderSize = 0;
             this.btnLogOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnLogOut.Location = new System.Drawing.Point(142, 592);
+            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.ForeColor = System.Drawing.Color.Teal;
+            this.btnLogOut.Location = new System.Drawing.Point(165, 594);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(61, 32);
+            this.btnLogOut.Size = new System.Drawing.Size(95, 32);
             this.btnLogOut.TabIndex = 12;
             this.btnLogOut.Text = "Log out";
             this.btnLogOut.UseVisualStyleBackColor = true;
@@ -106,11 +106,11 @@
             this.btnSignIn.FlatAppearance.BorderSize = 0;
             this.btnSignIn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignIn.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnSignIn.Location = new System.Drawing.Point(45, 594);
+            this.btnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignIn.ForeColor = System.Drawing.Color.Teal;
+            this.btnSignIn.Location = new System.Drawing.Point(57, 594);
             this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Size = new System.Drawing.Size(61, 32);
+            this.btnSignIn.Size = new System.Drawing.Size(86, 32);
             this.btnSignIn.TabIndex = 9;
             this.btnSignIn.Text = "Sign in";
             this.btnSignIn.UseVisualStyleBackColor = true;
@@ -164,9 +164,12 @@
             // 
             // agentButton
             // 
-            this.agentButton.Location = new System.Drawing.Point(10, 100);
+            this.agentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.agentButton.ForeColor = System.Drawing.Color.Teal;
+            this.agentButton.Location = new System.Drawing.Point(10, 70);
+            this.agentButton.Margin = new System.Windows.Forms.Padding(5);
             this.agentButton.Name = "agentButton";
-            this.agentButton.Size = new System.Drawing.Size(216, 44);
+            this.agentButton.Size = new System.Drawing.Size(273, 74);
             this.agentButton.TabIndex = 2;
             this.agentButton.Visible = false;
             this.agentButton.Click += new System.EventHandler(this.agentButton_Click);
@@ -175,9 +178,12 @@
             // 
             // supplierButton
             // 
-            this.supplierButton.Location = new System.Drawing.Point(10, 408);
+            this.supplierButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supplierButton.ForeColor = System.Drawing.Color.Teal;
+            this.supplierButton.Location = new System.Drawing.Point(12, 422);
+            this.supplierButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.supplierButton.Name = "supplierButton";
-            this.supplierButton.Size = new System.Drawing.Size(216, 44);
+            this.supplierButton.Size = new System.Drawing.Size(248, 69);
             this.supplierButton.TabIndex = 0;
             this.supplierButton.Click += new System.EventHandler(this.supplierButton_Click);
             this.supplierButton.MouseEnter += new System.EventHandler(this.supplierButton_MouseEnter);
@@ -185,9 +191,12 @@
             // 
             // productButton
             // 
-            this.productButton.Location = new System.Drawing.Point(10, 327);
+            this.productButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productButton.ForeColor = System.Drawing.Color.Teal;
+            this.productButton.Location = new System.Drawing.Point(10, 330);
+            this.productButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.productButton.Name = "productButton";
-            this.productButton.Size = new System.Drawing.Size(216, 44);
+            this.productButton.Size = new System.Drawing.Size(260, 75);
             this.productButton.TabIndex = 0;
             this.productButton.Click += new System.EventHandler(this.productButton_Click);
             this.productButton.MouseEnter += new System.EventHandler(this.productButton_MouseEnter);
@@ -195,19 +204,26 @@
             // 
             // packageButton
             // 
-            this.packageButton.Location = new System.Drawing.Point(10, 246);
+            this.packageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.packageButton.ForeColor = System.Drawing.Color.DarkCyan;
+            this.packageButton.Location = new System.Drawing.Point(12, 246);
+            this.packageButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.packageButton.Name = "packageButton";
-            this.packageButton.Size = new System.Drawing.Size(216, 44);
+            this.packageButton.Size = new System.Drawing.Size(258, 66);
             this.packageButton.TabIndex = 0;
             this.packageButton.Click += new System.EventHandler(this.packageButton_Click);
             this.packageButton.MouseEnter += new System.EventHandler(this.packageButton_MouseEnter);
             this.packageButton.MouseLeave += new System.EventHandler(this.packageButton_MouseLeave);
+            this.packageButton.Load += new System.EventHandler(this.packageButton_Load);
             // 
             // homeButton
             // 
+            this.homeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeButton.ForeColor = System.Drawing.Color.Teal;
             this.homeButton.Location = new System.Drawing.Point(10, 165);
+            this.homeButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(216, 44);
+            this.homeButton.Size = new System.Drawing.Size(236, 67);
             this.homeButton.TabIndex = 0;
             this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
             this.homeButton.MouseEnter += new System.EventHandler(this.homeButton_MouseEnter);

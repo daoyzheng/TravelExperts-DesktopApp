@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PackageSecondForm));
             this.txtCommission = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
@@ -46,111 +47,143 @@
             // 
             // txtCommission
             // 
-            this.txtCommission.Location = new System.Drawing.Point(126, 257);
+            this.txtCommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCommission.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtCommission.Location = new System.Drawing.Point(211, 319);
             this.txtCommission.Name = "txtCommission";
-            this.txtCommission.Size = new System.Drawing.Size(227, 20);
+            this.txtCommission.Size = new System.Drawing.Size(227, 24);
             this.txtCommission.TabIndex = 25;
             this.txtCommission.Tag = "Agency Commission";
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(126, 208);
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtPrice.Location = new System.Drawing.Point(211, 262);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(227, 20);
+            this.txtPrice.Size = new System.Drawing.Size(227, 24);
             this.txtPrice.TabIndex = 24;
             this.txtPrice.Tag = "Base Price";
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(126, 159);
+            this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDesc.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtDesc.Location = new System.Drawing.Point(211, 205);
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(281, 20);
+            this.txtDesc.Size = new System.Drawing.Size(459, 24);
             this.txtDesc.TabIndex = 23;
             this.txtDesc.Tag = "Description";
             // 
             // txtEndDate
             // 
-            this.txtEndDate.Location = new System.Drawing.Point(126, 109);
+            this.txtEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEndDate.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtEndDate.Location = new System.Drawing.Point(211, 138);
             this.txtEndDate.Name = "txtEndDate";
-            this.txtEndDate.Size = new System.Drawing.Size(227, 20);
+            this.txtEndDate.Size = new System.Drawing.Size(227, 24);
             this.txtEndDate.TabIndex = 22;
             this.txtEndDate.Tag = "End Date";
             // 
             // txtStartDate
             // 
-            this.txtStartDate.Location = new System.Drawing.Point(126, 60);
+            this.txtStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStartDate.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtStartDate.Location = new System.Drawing.Point(211, 79);
             this.txtStartDate.Name = "txtStartDate";
-            this.txtStartDate.Size = new System.Drawing.Size(227, 20);
+            this.txtStartDate.Size = new System.Drawing.Size(227, 24);
             this.txtStartDate.TabIndex = 21;
             this.txtStartDate.Tag = "Start Date";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(126, 16);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.txtName.Location = new System.Drawing.Point(211, 19);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(227, 20);
+            this.txtName.Size = new System.Drawing.Size(227, 24);
             this.txtName.TabIndex = 20;
             this.txtName.Tag = "Package Name";
             // 
             // lblPkgCommission
             // 
             this.lblPkgCommission.AutoSize = true;
-            this.lblPkgCommission.Location = new System.Drawing.Point(10, 260);
+            this.lblPkgCommission.BackColor = System.Drawing.Color.Transparent;
+            this.lblPkgCommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPkgCommission.ForeColor = System.Drawing.Color.Teal;
+            this.lblPkgCommission.Location = new System.Drawing.Point(10, 319);
             this.lblPkgCommission.Name = "lblPkgCommission";
-            this.lblPkgCommission.Size = new System.Drawing.Size(104, 13);
+            this.lblPkgCommission.Size = new System.Drawing.Size(169, 20);
             this.lblPkgCommission.TabIndex = 19;
-            this.lblPkgCommission.Text = "AgencyCommission :";
+            this.lblPkgCommission.Text = "AgencyCommission ";
             // 
             // lblPkgBasePrice
             // 
             this.lblPkgBasePrice.AutoSize = true;
-            this.lblPkgBasePrice.Location = new System.Drawing.Point(14, 215);
+            this.lblPkgBasePrice.BackColor = System.Drawing.Color.Transparent;
+            this.lblPkgBasePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPkgBasePrice.ForeColor = System.Drawing.Color.Teal;
+            this.lblPkgBasePrice.Location = new System.Drawing.Point(13, 262);
             this.lblPkgBasePrice.Name = "lblPkgBasePrice";
-            this.lblPkgBasePrice.Size = new System.Drawing.Size(64, 13);
+            this.lblPkgBasePrice.Size = new System.Drawing.Size(100, 20);
             this.lblPkgBasePrice.TabIndex = 18;
-            this.lblPkgBasePrice.Text = "Base Price :";
+            this.lblPkgBasePrice.Text = "Base Price ";
             // 
             // lblPkgDesc
             // 
             this.lblPkgDesc.AutoSize = true;
-            this.lblPkgDesc.Location = new System.Drawing.Point(14, 166);
+            this.lblPkgDesc.BackColor = System.Drawing.Color.Transparent;
+            this.lblPkgDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPkgDesc.ForeColor = System.Drawing.Color.Teal;
+            this.lblPkgDesc.Location = new System.Drawing.Point(10, 205);
             this.lblPkgDesc.Name = "lblPkgDesc";
-            this.lblPkgDesc.Size = new System.Drawing.Size(69, 13);
+            this.lblPkgDesc.Size = new System.Drawing.Size(110, 20);
             this.lblPkgDesc.TabIndex = 17;
-            this.lblPkgDesc.Text = " Description :";
+            this.lblPkgDesc.Text = " Description ";
             // 
             // lblPkgEndDate
             // 
             this.lblPkgEndDate.AutoSize = true;
-            this.lblPkgEndDate.Location = new System.Drawing.Point(14, 112);
+            this.lblPkgEndDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblPkgEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPkgEndDate.ForeColor = System.Drawing.Color.Teal;
+            this.lblPkgEndDate.Location = new System.Drawing.Point(13, 138);
             this.lblPkgEndDate.Name = "lblPkgEndDate";
-            this.lblPkgEndDate.Size = new System.Drawing.Size(61, 13);
+            this.lblPkgEndDate.Size = new System.Drawing.Size(95, 20);
             this.lblPkgEndDate.TabIndex = 16;
-            this.lblPkgEndDate.Text = " End Date :";
+            this.lblPkgEndDate.Text = " End Date ";
             // 
             // lblPkgStartDate
             // 
             this.lblPkgStartDate.AutoSize = true;
-            this.lblPkgStartDate.Location = new System.Drawing.Point(11, 63);
+            this.lblPkgStartDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblPkgStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPkgStartDate.ForeColor = System.Drawing.Color.Teal;
+            this.lblPkgStartDate.Location = new System.Drawing.Point(14, 79);
             this.lblPkgStartDate.Name = "lblPkgStartDate";
-            this.lblPkgStartDate.Size = new System.Drawing.Size(64, 13);
+            this.lblPkgStartDate.Size = new System.Drawing.Size(103, 20);
             this.lblPkgStartDate.TabIndex = 15;
-            this.lblPkgStartDate.Text = " Start Date :";
+            this.lblPkgStartDate.Text = " Start Date ";
             // 
             // lblPkgName
             // 
             this.lblPkgName.AutoSize = true;
+            this.lblPkgName.BackColor = System.Drawing.Color.Transparent;
+            this.lblPkgName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPkgName.ForeColor = System.Drawing.Color.Teal;
             this.lblPkgName.Location = new System.Drawing.Point(14, 19);
             this.lblPkgName.Name = "lblPkgName";
-            this.lblPkgName.Size = new System.Drawing.Size(87, 13);
+            this.lblPkgName.Size = new System.Drawing.Size(134, 20);
             this.lblPkgName.TabIndex = 14;
-            this.lblPkgName.Text = "Package Name :";
+            this.lblPkgName.Text = "Package Name ";
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(39, 320);
+            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccept.ForeColor = System.Drawing.Color.Teal;
+            this.btnAccept.Location = new System.Drawing.Point(211, 415);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(75, 23);
+            this.btnAccept.Size = new System.Drawing.Size(97, 49);
             this.btnAccept.TabIndex = 26;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
@@ -158,9 +191,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(271, 319);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.Teal;
+            this.btnCancel.Location = new System.Drawing.Point(432, 415);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(102, 49);
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -170,7 +205,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 378);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(712, 473);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.txtCommission);

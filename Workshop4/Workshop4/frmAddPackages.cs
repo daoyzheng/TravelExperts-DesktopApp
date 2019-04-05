@@ -195,5 +195,10 @@ namespace Workshop4 {
                 pkgAgencyCommissionTextBox.ReadOnly = true;
             }
         }
+
+        private void prodNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

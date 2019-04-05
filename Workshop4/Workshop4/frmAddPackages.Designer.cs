@@ -32,6 +32,7 @@
             System.Windows.Forms.Label pkgStartDateLabel;
             System.Windows.Forms.Label prodNameLabel;
             System.Windows.Forms.Label supNameLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddPackages));
             this.packageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pkgAgencyCommissionTextBox = new System.Windows.Forms.TextBox();
             this.pkgBasePriceTextBox = new System.Windows.Forms.TextBox();
@@ -61,74 +62,99 @@
             // pkgAgencyCommissionLabel
             // 
             pkgAgencyCommissionLabel.AutoSize = true;
-            pkgAgencyCommissionLabel.Location = new System.Drawing.Point(223, 169);
+            pkgAgencyCommissionLabel.BackColor = System.Drawing.Color.Transparent;
+            pkgAgencyCommissionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pkgAgencyCommissionLabel.ForeColor = System.Drawing.Color.Teal;
+            pkgAgencyCommissionLabel.Location = new System.Drawing.Point(12, 295);
             pkgAgencyCommissionLabel.Name = "pkgAgencyCommissionLabel";
-            pkgAgencyCommissionLabel.Size = new System.Drawing.Size(126, 13);
+            pkgAgencyCommissionLabel.Size = new System.Drawing.Size(204, 20);
             pkgAgencyCommissionLabel.TabIndex = 0;
-            pkgAgencyCommissionLabel.Text = "Pkg Agency Commission:";
+            pkgAgencyCommissionLabel.Text = "Pkg Agency Commission";
             // 
             // pkgBasePriceLabel
             // 
             pkgBasePriceLabel.AutoSize = true;
-            pkgBasePriceLabel.Location = new System.Drawing.Point(223, 60);
+            pkgBasePriceLabel.BackColor = System.Drawing.Color.Transparent;
+            pkgBasePriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pkgBasePriceLabel.ForeColor = System.Drawing.Color.Teal;
+            pkgBasePriceLabel.Location = new System.Drawing.Point(12, 75);
             pkgBasePriceLabel.Name = "pkgBasePriceLabel";
-            pkgBasePriceLabel.Size = new System.Drawing.Size(83, 13);
+            pkgBasePriceLabel.Size = new System.Drawing.Size(130, 20);
             pkgBasePriceLabel.TabIndex = 2;
-            pkgBasePriceLabel.Text = "Pkg Base Price:";
+            pkgBasePriceLabel.Text = "Pkg Base Price";
             // 
             // pkgDescLabel
             // 
             pkgDescLabel.AutoSize = true;
-            pkgDescLabel.Location = new System.Drawing.Point(223, 86);
+            pkgDescLabel.BackColor = System.Drawing.Color.Transparent;
+            pkgDescLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pkgDescLabel.ForeColor = System.Drawing.Color.Teal;
+            pkgDescLabel.Location = new System.Drawing.Point(12, 125);
             pkgDescLabel.Name = "pkgDescLabel";
-            pkgDescLabel.Size = new System.Drawing.Size(57, 13);
+            pkgDescLabel.Size = new System.Drawing.Size(85, 20);
             pkgDescLabel.TabIndex = 4;
-            pkgDescLabel.Text = "Pkg Desc:";
+            pkgDescLabel.Text = "Pkg Desc";
             // 
             // pkgEndDateLabel
             // 
             pkgEndDateLabel.AutoSize = true;
-            pkgEndDateLabel.Location = new System.Drawing.Point(223, 143);
+            pkgEndDateLabel.BackColor = System.Drawing.Color.Transparent;
+            pkgEndDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pkgEndDateLabel.ForeColor = System.Drawing.Color.Teal;
+            pkgEndDateLabel.Location = new System.Drawing.Point(12, 229);
             pkgEndDateLabel.Name = "pkgEndDateLabel";
-            pkgEndDateLabel.Size = new System.Drawing.Size(77, 13);
+            pkgEndDateLabel.Size = new System.Drawing.Size(120, 20);
             pkgEndDateLabel.TabIndex = 6;
-            pkgEndDateLabel.Text = "Pkg End Date:";
+            pkgEndDateLabel.Text = "Pkg End Date";
             // 
             // pkgNameLabel
             // 
             pkgNameLabel.AutoSize = true;
-            pkgNameLabel.Location = new System.Drawing.Point(223, 32);
+            pkgNameLabel.BackColor = System.Drawing.Color.Transparent;
+            pkgNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pkgNameLabel.ForeColor = System.Drawing.Color.Teal;
+            pkgNameLabel.Location = new System.Drawing.Point(12, 28);
             pkgNameLabel.Name = "pkgNameLabel";
-            pkgNameLabel.Size = new System.Drawing.Size(60, 13);
+            pkgNameLabel.Size = new System.Drawing.Size(90, 20);
             pkgNameLabel.TabIndex = 8;
-            pkgNameLabel.Text = "Pkg Name:";
+            pkgNameLabel.Text = "Pkg Name";
             // 
             // pkgStartDateLabel
             // 
             pkgStartDateLabel.AutoSize = true;
-            pkgStartDateLabel.Location = new System.Drawing.Point(223, 116);
+            pkgStartDateLabel.BackColor = System.Drawing.Color.Transparent;
+            pkgStartDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pkgStartDateLabel.ForeColor = System.Drawing.Color.Teal;
+            pkgStartDateLabel.Location = new System.Drawing.Point(12, 175);
             pkgStartDateLabel.Name = "pkgStartDateLabel";
-            pkgStartDateLabel.Size = new System.Drawing.Size(80, 13);
+            pkgStartDateLabel.Size = new System.Drawing.Size(128, 20);
             pkgStartDateLabel.TabIndex = 10;
-            pkgStartDateLabel.Text = "Pkg Start Date:";
+            pkgStartDateLabel.Text = "Pkg Start Date";
             // 
             // prodNameLabel
             // 
             prodNameLabel.AutoSize = true;
-            prodNameLabel.Location = new System.Drawing.Point(286, 200);
+            prodNameLabel.BackColor = System.Drawing.Color.Transparent;
+            prodNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            prodNameLabel.ForeColor = System.Drawing.Color.Teal;
+            prodNameLabel.Location = new System.Drawing.Point(12, 361);
             prodNameLabel.Name = "prodNameLabel";
-            prodNameLabel.Size = new System.Drawing.Size(63, 13);
+            prodNameLabel.Size = new System.Drawing.Size(97, 20);
             prodNameLabel.TabIndex = 12;
-            prodNameLabel.Text = "Prod Name:";
+            prodNameLabel.Text = "Prod Name";
+            prodNameLabel.Click += new System.EventHandler(this.prodNameLabel_Click);
             // 
             // supNameLabel
             // 
             supNameLabel.AutoSize = true;
-            supNameLabel.Location = new System.Drawing.Point(289, 229);
+            supNameLabel.BackColor = System.Drawing.Color.Transparent;
+            supNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            supNameLabel.ForeColor = System.Drawing.Color.Teal;
+            supNameLabel.Location = new System.Drawing.Point(12, 413);
             supNameLabel.Name = "supNameLabel";
-            supNameLabel.Size = new System.Drawing.Size(60, 13);
+            supNameLabel.Size = new System.Drawing.Size(92, 20);
             supNameLabel.TabIndex = 14;
-            supNameLabel.Text = "Sup Name:";
+            supNameLabel.Text = "Sup Name";
             // 
             // packageBindingSource
             // 
@@ -137,18 +163,22 @@
             // pkgAgencyCommissionTextBox
             // 
             this.pkgAgencyCommissionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgAgencyCommission", true));
-            this.pkgAgencyCommissionTextBox.Location = new System.Drawing.Point(355, 166);
+            this.pkgAgencyCommissionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pkgAgencyCommissionTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.pkgAgencyCommissionTextBox.Location = new System.Drawing.Point(246, 297);
             this.pkgAgencyCommissionTextBox.Name = "pkgAgencyCommissionTextBox";
-            this.pkgAgencyCommissionTextBox.Size = new System.Drawing.Size(200, 20);
+            this.pkgAgencyCommissionTextBox.Size = new System.Drawing.Size(200, 24);
             this.pkgAgencyCommissionTextBox.TabIndex = 1;
             this.pkgAgencyCommissionTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pkgAgencyCommissionTextBox_KeyPress);
             // 
             // pkgBasePriceTextBox
             // 
             this.pkgBasePriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgBasePrice", true));
-            this.pkgBasePriceTextBox.Location = new System.Drawing.Point(355, 57);
+            this.pkgBasePriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pkgBasePriceTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.pkgBasePriceTextBox.Location = new System.Drawing.Point(246, 73);
             this.pkgBasePriceTextBox.Name = "pkgBasePriceTextBox";
-            this.pkgBasePriceTextBox.Size = new System.Drawing.Size(200, 20);
+            this.pkgBasePriceTextBox.Size = new System.Drawing.Size(200, 24);
             this.pkgBasePriceTextBox.TabIndex = 3;
             this.pkgBasePriceTextBox.Tag = "Package Base Price";
             this.pkgBasePriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pkgBasePriceTextBox_KeyPress);
@@ -156,37 +186,45 @@
             // pkgDescTextBox
             // 
             this.pkgDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgDesc", true));
-            this.pkgDescTextBox.Location = new System.Drawing.Point(355, 83);
+            this.pkgDescTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pkgDescTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.pkgDescTextBox.Location = new System.Drawing.Point(246, 123);
             this.pkgDescTextBox.Name = "pkgDescTextBox";
-            this.pkgDescTextBox.Size = new System.Drawing.Size(200, 20);
+            this.pkgDescTextBox.Size = new System.Drawing.Size(339, 24);
             this.pkgDescTextBox.TabIndex = 5;
             // 
             // pkgEndDateDateTimePicker
             // 
+            this.pkgEndDateDateTimePicker.CalendarForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgEndDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.packageBindingSource, "PkgEndDate", true));
-            this.pkgEndDateDateTimePicker.Location = new System.Drawing.Point(355, 139);
+            this.pkgEndDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pkgEndDateDateTimePicker.Location = new System.Drawing.Point(246, 229);
             this.pkgEndDateDateTimePicker.Name = "pkgEndDateDateTimePicker";
             this.pkgEndDateDateTimePicker.ShowCheckBox = true;
-            this.pkgEndDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.pkgEndDateDateTimePicker.Size = new System.Drawing.Size(200, 24);
             this.pkgEndDateDateTimePicker.TabIndex = 7;
             // 
             // pkgNameTextBox
             // 
             this.pkgNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgName", true));
-            this.pkgNameTextBox.Location = new System.Drawing.Point(355, 29);
+            this.pkgNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pkgNameTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.pkgNameTextBox.Location = new System.Drawing.Point(246, 28);
             this.pkgNameTextBox.Name = "pkgNameTextBox";
-            this.pkgNameTextBox.Size = new System.Drawing.Size(200, 20);
+            this.pkgNameTextBox.Size = new System.Drawing.Size(200, 24);
             this.pkgNameTextBox.TabIndex = 9;
             this.pkgNameTextBox.Tag = "Package Name";
             this.pkgNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.pkgNameTextBox_Validating);
             // 
             // pkgStartDateDateTimePicker
             // 
+            this.pkgStartDateDateTimePicker.CalendarForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgStartDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.packageBindingSource, "PkgStartDate", true));
-            this.pkgStartDateDateTimePicker.Location = new System.Drawing.Point(355, 112);
+            this.pkgStartDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pkgStartDateDateTimePicker.Location = new System.Drawing.Point(246, 175);
             this.pkgStartDateDateTimePicker.Name = "pkgStartDateDateTimePicker";
             this.pkgStartDateDateTimePicker.ShowCheckBox = true;
-            this.pkgStartDateDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.pkgStartDateDateTimePicker.Size = new System.Drawing.Size(200, 24);
             this.pkgStartDateDateTimePicker.TabIndex = 11;
             // 
             // productBindingSource
@@ -196,10 +234,12 @@
             // prodNameComboBox
             // 
             this.prodNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "ProdName", true));
+            this.prodNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prodNameComboBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.prodNameComboBox.FormattingEnabled = true;
-            this.prodNameComboBox.Location = new System.Drawing.Point(355, 197);
+            this.prodNameComboBox.Location = new System.Drawing.Point(246, 361);
             this.prodNameComboBox.Name = "prodNameComboBox";
-            this.prodNameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.prodNameComboBox.Size = new System.Drawing.Size(121, 26);
             this.prodNameComboBox.TabIndex = 13;
             // 
             // supplierBindingSource
@@ -209,17 +249,21 @@
             // supNameComboBox
             // 
             this.supNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "SupName", true));
+            this.supNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supNameComboBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.supNameComboBox.FormattingEnabled = true;
-            this.supNameComboBox.Location = new System.Drawing.Point(355, 226);
+            this.supNameComboBox.Location = new System.Drawing.Point(246, 415);
             this.supNameComboBox.Name = "supNameComboBox";
-            this.supNameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.supNameComboBox.Size = new System.Drawing.Size(121, 26);
             this.supNameComboBox.TabIndex = 15;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(516, 334);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.Teal;
+            this.btnAdd.Location = new System.Drawing.Point(246, 505);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(84, 38);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -227,9 +271,11 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(225, 334);
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.Teal;
+            this.btnClear.Location = new System.Drawing.Point(27, 505);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(82, 38);
             this.btnClear.TabIndex = 17;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -238,7 +284,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(597, 586);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(supNameLabel);
