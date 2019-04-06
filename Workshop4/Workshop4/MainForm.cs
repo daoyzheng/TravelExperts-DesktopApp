@@ -13,12 +13,14 @@ namespace Workshop4 {
     public partial class MainForm : Form {
 
         // Form-level variables
+        private static bool homeFormOpened = false;
         private static bool agtFormOpened = false;
         private static bool pkgFormOpened = false;
         private static bool prodsFormOpened = false;
         private static bool suppsFormOpened = false;
 
         // Instantiate child forms
+        frmHome homeForm = new frmHome();
         frmAgtInfo agtForm = new frmAgtInfo();
         frmPackage pkgForm = new frmPackage();
         frmProducts prodsForm = new frmProducts();
@@ -40,12 +42,30 @@ namespace Workshop4 {
             pnlSuppBar.Visible = false;
 
             // Set the active font color
-            homeButton.ForeColor = Color.DodgerBlue;
+            homeButton.ForeColor = Color.MintCream;
             agentButton.ForeColor = Color.Black;
             packageButton.ForeColor = Color.Black;
             productButton.ForeColor = Color.Black;
             supplierButton.ForeColor = Color.Black;
 
+            // Reset control for all other forms
+            agtFormOpened = false;
+            pkgFormOpened = false;
+            prodsFormOpened = false;
+            suppsFormOpened = false;
+
+            if (homeFormOpened == false) {
+                // Hide all other forms
+                agtForm.Hide();
+                pkgForm.Hide();
+                prodsForm.Hide();
+                suppsForm.Hide();
+
+                homeForm.MdiParent = this;
+                homeForm.Dock = DockStyle.Fill;
+                homeForm.Show();
+                homeFormOpened = true;
+            }
         }
         private void agentButton_Click(object sender, EventArgs e) {
             // Set active bar
@@ -57,18 +77,20 @@ namespace Workshop4 {
             
             // Set the active font color
             homeButton.ForeColor = Color.Black;
-            agentButton.ForeColor = Color.DodgerBlue;
+            agentButton.ForeColor = Color.MintCream;
             packageButton.ForeColor = Color.Black;
             productButton.ForeColor = Color.Black;
             supplierButton.ForeColor = Color.Black;
 
             // Reset control for all other forms
+            homeFormOpened = false;
             pkgFormOpened = false;
             prodsFormOpened = false;
             suppsFormOpened = false;
 
             if (agtFormOpened == false) {
                 // Hide all other forms
+                homeForm.Hide();
                 pkgForm.Hide();
                 prodsForm.Hide();
                 suppsForm.Hide();
@@ -93,17 +115,19 @@ namespace Workshop4 {
             // Set the active font color
             homeButton.ForeColor = Color.Black;
             agentButton.ForeColor = Color.Black;
-            packageButton.ForeColor = Color.DodgerBlue;
+            packageButton.ForeColor = Color.MintCream;
             productButton.ForeColor = Color.Black;
             supplierButton.ForeColor = Color.Black;
 
             // Reset all other forms
+            homeFormOpened = false;
             prodsFormOpened = false;
             suppsFormOpened = false;
             agtFormOpened = false;
 
             if (pkgFormOpened == false) {
                 // Hide all other forms
+                homeForm.Hide();
                 agtForm.Hide();
                 prodsForm.Hide();
                 suppsForm.Hide();
@@ -127,16 +151,18 @@ namespace Workshop4 {
             homeButton.ForeColor = Color.Black;
             agentButton.ForeColor = Color.Black;
             packageButton.ForeColor = Color.Black;
-            productButton.ForeColor = Color.DodgerBlue;
+            productButton.ForeColor = Color.MintCream;
             supplierButton.ForeColor = Color.Black;
 
             // Reset all other forms
+            homeFormOpened = false;
             pkgFormOpened = false;
             suppsFormOpened = false;
             agtFormOpened = false;
 
             if (prodsFormOpened == false) {
                 // Hide all other forms
+                homeForm.Hide();
                 agtForm.Hide();
                 pkgForm.Hide();
                 suppsForm.Hide();
@@ -161,16 +187,18 @@ namespace Workshop4 {
             agentButton.ForeColor = Color.Black;
             packageButton.ForeColor = Color.Black;
             productButton.ForeColor = Color.Black;
-            supplierButton.ForeColor = Color.DodgerBlue;
+            supplierButton.ForeColor = Color.MintCream;
 
 
             // Reset all other forms
+            homeFormOpened = false;
             pkgFormOpened = false;
             prodsFormOpened = false;
             agtFormOpened = false;
 
             if (suppsFormOpened == false) {
                 // Hide all other forms
+                homeForm.Hide();
                 agtForm.Hide();
                 pkgForm.Hide();
                 prodsForm.Hide();
@@ -183,40 +211,40 @@ namespace Workshop4 {
         }
 
         private void homeButton_MouseEnter(object sender, EventArgs e) {
-            homeButton.BackColor = Color.LightGray;
+            homeButton.BackColor = Color.BurlyWood;
         }
         private void agentButton_MouseEnter(object sender, EventArgs e) {
-            agentButton.BackColor = Color.LightGray;
+            agentButton.BackColor = Color.BurlyWood;
         }
         private void packageButton_MouseEnter(object sender, EventArgs e) {
-            packageButton.BackColor = Color.LightGray;
+            packageButton.BackColor = Color.BurlyWood;
         }
         private void productButton_MouseEnter(object sender, EventArgs e) {
-            productButton.BackColor = Color.LightGray;
+            productButton.BackColor = Color.BurlyWood;
         }
         private void supplierButton_MouseEnter(object sender, EventArgs e) {
-            supplierButton.BackColor = Color.LightGray;
+            supplierButton.BackColor = Color.BurlyWood;
         }
 
         private void homeButton_MouseLeave(object sender, EventArgs e) {
             // Reset to default color
-            homeButton.BackColor = Color.White;
+            homeButton.BackColor = Color.LightSkyBlue;
         }
         private void agentButton_MouseLeave(object sender, EventArgs e) {
             // Reset to default color
-            agentButton.BackColor = Color.White;
+            agentButton.BackColor = Color.LightSkyBlue;
         }
         private void packageButton_MouseLeave(object sender, EventArgs e) {
             // Reset to default color
-            packageButton.BackColor = Color.White;
+            packageButton.BackColor = Color.LightSkyBlue;
         }
         private void productButton_MouseLeave(object sender, EventArgs e) {
             // Reset to default color
-            productButton.BackColor = Color.White;
+            productButton.BackColor = Color.LightSkyBlue;
         }
         private void supplierButton_MouseLeave(object sender, EventArgs e) {
             // Reset to default color
-            supplierButton.BackColor = Color.White;
+            supplierButton.BackColor = Color.LightSkyBlue;
         }
 
         private void btnSignIn_Click(object sender, EventArgs e) {
@@ -299,6 +327,25 @@ namespace Workshop4 {
 
         private void MainForm_Load(object sender, EventArgs e) {
             this.SetBevel(false);
+
+            // Set active bar
+            pnlHomeBar.Visible = true;
+            pnlAgtBar.Visible = false;
+            pnlPackBar.Visible = false;
+            pnlProdBar.Visible = false;
+            pnlSuppBar.Visible = false;
+
+            // Set the active font color
+            homeButton.ForeColor = Color.MintCream;
+            agentButton.ForeColor = Color.Black;
+            packageButton.ForeColor = Color.Black;
+            productButton.ForeColor = Color.Black;
+            supplierButton.ForeColor = Color.Black;
+
+            homeForm.MdiParent = this;
+            homeForm.Dock = DockStyle.Fill;
+            homeForm.Show();
+            homeFormOpened = true;
         }
     }
 }
