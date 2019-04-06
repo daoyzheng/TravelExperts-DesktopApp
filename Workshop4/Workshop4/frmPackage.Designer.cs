@@ -42,11 +42,13 @@
             this.pkgEndDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.pkgStartDateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.pkgNameComboBox = new System.Windows.Forms.ComboBox();
+            this.packageBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.productSupplierViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productSupplierViewModelDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packageBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             pkgAgencyCommissionLabel = new System.Windows.Forms.Label();
             pkgBasePriceLabel = new System.Windows.Forms.Label();
             pkgDescLabel = new System.Windows.Forms.Label();
@@ -56,8 +58,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productSupplierViewModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productSupplierViewModelDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // pkgAgencyCommissionLabel
@@ -148,6 +152,7 @@
             this.btnDeletePkg.TabIndex = 24;
             this.btnDeletePkg.Text = "Delete Packages";
             this.btnDeletePkg.UseVisualStyleBackColor = true;
+            this.btnDeletePkg.Click += new System.EventHandler(this.btnDeletePkg_Click);
             // 
             // supplierBindingSource
             // 
@@ -209,12 +214,17 @@
             // pkgNameComboBox
             // 
             this.pkgNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgName", true));
+            this.pkgNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.packageBindingSource, "PackageId", true));
             this.pkgNameComboBox.FormattingEnabled = true;
             this.pkgNameComboBox.Location = new System.Drawing.Point(436, 42);
             this.pkgNameComboBox.Name = "pkgNameComboBox";
             this.pkgNameComboBox.Size = new System.Drawing.Size(200, 21);
             this.pkgNameComboBox.TabIndex = 37;
             this.pkgNameComboBox.SelectedIndexChanged += new System.EventHandler(this.pkgNameComboBox_SelectedIndexChanged);
+            // 
+            // packageBindingSource1
+            // 
+            this.packageBindingSource1.DataSource = typeof(ClassEntites.Package);
             // 
             // productSupplierViewModelBindingSource
             // 
@@ -257,6 +267,10 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 85;
             // 
+            // packageBindingSource2
+            // 
+            this.packageBindingSource2.DataSource = typeof(ClassEntites.Package);
+            // 
             // frmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,8 +301,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productSupplierViewModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productSupplierViewModelDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +329,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.BindingSource packageBindingSource1;
+        private System.Windows.Forms.BindingSource packageBindingSource2;
     }
 }

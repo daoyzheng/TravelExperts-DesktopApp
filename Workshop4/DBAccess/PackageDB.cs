@@ -284,7 +284,7 @@ namespace DBAccess
                                     "AND (PkgStartDate = @PkgStartDate " +
                                     "OR PkgStartDate IS NULL AND @PkgStartDate IS NULL) " +
                                     "AND (PkgEndDate = @PkgEndDate " +
-                                    "OR PkgEndDate IS NULL AND @PkgStartDate IS NULL) " +
+                                    "OR PkgEndDate IS NULL AND @PkgEndDate IS NULL) " +
                                     "AND (PkgDesc = @PkgDesc " +
                                     "OR PkgDesc IS NULL AND @PkgDesc IS NULL) " +
                                     "AND PkgBasePrice = @PkgBasePrice " +
