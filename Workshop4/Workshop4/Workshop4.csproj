@@ -106,6 +106,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MdiHelper.cs" />
     <Compile Include="PackageButton.cs">
       <SubType>UserControl</SubType>
     </Compile>

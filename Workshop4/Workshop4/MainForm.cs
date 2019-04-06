@@ -20,7 +20,7 @@ namespace Workshop4 {
 
         // Instantiate child forms
         frmAgtInfo agtForm = new frmAgtInfo();
-        PackageMainForm pkgForm = new PackageMainForm();
+        frmPackage pkgForm = new frmPackage();
         frmProducts prodsForm = new frmProducts();
         frmSuppliers suppsForm = new frmSuppliers();
 
@@ -295,6 +295,10 @@ namespace Workshop4 {
             agtFormOpened = false;
 
             agtForm.Hide();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e) {
+            this.SetBevel(false);
         }
     }
 }

@@ -25,20 +25,20 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.supplierButton = new Workshop4.SupplierButton();
+            this.productButton = new Workshop4.ProductButton();
+            this.packageButton = new Workshop4.PackageButton();
+            this.homeButton = new Workshop4.HomeButton();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.lblAgtName = new System.Windows.Forms.Label();
             this.pnlAgtBar = new System.Windows.Forms.Panel();
+            this.agentButton = new Workshop4.AgentButton();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlSuppBar = new System.Windows.Forms.Panel();
             this.pnlProdBar = new System.Windows.Forms.Panel();
             this.pnlPackBar = new System.Windows.Forms.Panel();
             this.pnlHomeBar = new System.Windows.Forms.Panel();
-            this.supplierButton = new Workshop4.SupplierButton();
-            this.productButton = new Workshop4.ProductButton();
-            this.packageButton = new Workshop4.PackageButton();
-            this.homeButton = new Workshop4.HomeButton();
-            this.agentButton = new Workshop4.AgentButton();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,46 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(260, 661);
             this.pnlMenu.TabIndex = 0;
+            // 
+            // supplierButton
+            // 
+            this.supplierButton.Location = new System.Drawing.Point(10, 408);
+            this.supplierButton.Name = "supplierButton";
+            this.supplierButton.Size = new System.Drawing.Size(250, 44);
+            this.supplierButton.TabIndex = 16;
+            this.supplierButton.Click += new System.EventHandler(this.supplierButton_Click);
+            this.supplierButton.MouseEnter += new System.EventHandler(this.supplierButton_MouseEnter);
+            this.supplierButton.MouseLeave += new System.EventHandler(this.supplierButton_MouseLeave);
+            // 
+            // productButton
+            // 
+            this.productButton.Location = new System.Drawing.Point(10, 327);
+            this.productButton.Name = "productButton";
+            this.productButton.Size = new System.Drawing.Size(250, 44);
+            this.productButton.TabIndex = 15;
+            this.productButton.Click += new System.EventHandler(this.productButton_Click);
+            this.productButton.MouseEnter += new System.EventHandler(this.productButton_MouseEnter);
+            this.productButton.MouseLeave += new System.EventHandler(this.productButton_MouseLeave);
+            // 
+            // packageButton
+            // 
+            this.packageButton.Location = new System.Drawing.Point(10, 246);
+            this.packageButton.Name = "packageButton";
+            this.packageButton.Size = new System.Drawing.Size(250, 44);
+            this.packageButton.TabIndex = 14;
+            this.packageButton.Click += new System.EventHandler(this.packageButton_Click);
+            this.packageButton.MouseEnter += new System.EventHandler(this.packageButton_MouseEnter);
+            this.packageButton.MouseLeave += new System.EventHandler(this.packageButton_MouseLeave);
+            // 
+            // homeButton
+            // 
+            this.homeButton.Location = new System.Drawing.Point(10, 165);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(250, 44);
+            this.homeButton.TabIndex = 13;
+            this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
+            this.homeButton.MouseEnter += new System.EventHandler(this.homeButton_MouseEnter);
+            this.homeButton.MouseLeave += new System.EventHandler(this.homeButton_MouseLeave);
             // 
             // btnLogOut
             // 
@@ -100,6 +140,20 @@
             this.pnlAgtBar.Size = new System.Drawing.Size(10, 44);
             this.pnlAgtBar.TabIndex = 10;
             this.pnlAgtBar.Visible = false;
+            // 
+            // agentButton
+            // 
+            this.agentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.agentButton.ForeColor = System.Drawing.Color.Teal;
+            this.agentButton.Location = new System.Drawing.Point(10, 100);
+            this.agentButton.Margin = new System.Windows.Forms.Padding(5);
+            this.agentButton.Name = "agentButton";
+            this.agentButton.Size = new System.Drawing.Size(250, 44);
+            this.agentButton.TabIndex = 2;
+            this.agentButton.Visible = false;
+            this.agentButton.Click += new System.EventHandler(this.agentButton_Click);
+            this.agentButton.MouseEnter += new System.EventHandler(this.agentButton_MouseEnter);
+            this.agentButton.MouseLeave += new System.EventHandler(this.agentButton_MouseLeave);
             // 
             // btnSignIn
             // 
@@ -162,60 +216,6 @@
             this.pnlHomeBar.TabIndex = 3;
             this.pnlHomeBar.Visible = false;
             // 
-            // supplierButton
-            // 
-            this.supplierButton.Location = new System.Drawing.Point(10, 408);
-            this.supplierButton.Name = "supplierButton";
-            this.supplierButton.Size = new System.Drawing.Size(250, 44);
-            this.supplierButton.TabIndex = 16;
-            this.supplierButton.Click += new System.EventHandler(this.supplierButton_Click);
-            this.supplierButton.MouseEnter += new System.EventHandler(this.supplierButton_MouseEnter);
-            this.supplierButton.MouseLeave += new System.EventHandler(this.supplierButton_MouseLeave);
-            // 
-            // productButton
-            // 
-            this.productButton.Location = new System.Drawing.Point(10, 327);
-            this.productButton.Name = "productButton";
-            this.productButton.Size = new System.Drawing.Size(250, 44);
-            this.productButton.TabIndex = 15;
-            this.productButton.Click += new System.EventHandler(this.productButton_Click);
-            this.productButton.MouseEnter += new System.EventHandler(this.productButton_MouseEnter);
-            this.productButton.MouseLeave += new System.EventHandler(this.productButton_MouseLeave);
-            // 
-            // packageButton
-            // 
-            this.packageButton.Location = new System.Drawing.Point(10, 246);
-            this.packageButton.Name = "packageButton";
-            this.packageButton.Size = new System.Drawing.Size(250, 44);
-            this.packageButton.TabIndex = 14;
-            this.packageButton.Click += new System.EventHandler(this.packageButton_Click);
-            this.packageButton.MouseEnter += new System.EventHandler(this.packageButton_MouseEnter);
-            this.packageButton.MouseLeave += new System.EventHandler(this.packageButton_MouseLeave);
-            // 
-            // homeButton
-            // 
-            this.homeButton.Location = new System.Drawing.Point(10, 165);
-            this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(250, 44);
-            this.homeButton.TabIndex = 13;
-            this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
-            this.homeButton.MouseEnter += new System.EventHandler(this.homeButton_MouseEnter);
-            this.homeButton.MouseLeave += new System.EventHandler(this.homeButton_MouseLeave);
-            // 
-            // agentButton
-            // 
-            this.agentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.agentButton.ForeColor = System.Drawing.Color.Teal;
-            this.agentButton.Location = new System.Drawing.Point(10, 100);
-            this.agentButton.Margin = new System.Windows.Forms.Padding(5);
-            this.agentButton.Name = "agentButton";
-            this.agentButton.Size = new System.Drawing.Size(250, 44);
-            this.agentButton.TabIndex = 2;
-            this.agentButton.Visible = false;
-            this.agentButton.Click += new System.EventHandler(this.agentButton_Click);
-            this.agentButton.MouseEnter += new System.EventHandler(this.agentButton_MouseEnter);
-            this.agentButton.MouseLeave += new System.EventHandler(this.agentButton_MouseLeave);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,6 +227,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agent Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
