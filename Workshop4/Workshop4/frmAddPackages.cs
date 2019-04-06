@@ -193,12 +193,14 @@ namespace Workshop4 {
                 pkgStartDateDateTimePicker.Enabled = false;
                 pkgEndDateDateTimePicker.Enabled = false;
                 pkgAgencyCommissionTextBox.ReadOnly = true;
+            } else {
+                pkgBasePriceTextBox.ReadOnly = false;
+                pkgDescTextBox.ReadOnly = false;
+                pkgStartDateDateTimePicker.Enabled = true;
+                pkgEndDateDateTimePicker.Enabled = true;
+                pkgAgencyCommissionTextBox.ReadOnly = false;
+
             }
-        }
-
-        private void prodNameLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

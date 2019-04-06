@@ -142,7 +142,6 @@
             prodNameLabel.Size = new System.Drawing.Size(97, 20);
             prodNameLabel.TabIndex = 12;
             prodNameLabel.Text = "Prod Name";
-            prodNameLabel.Click += new System.EventHandler(this.prodNameLabel_Click);
             // 
             // supNameLabel
             // 

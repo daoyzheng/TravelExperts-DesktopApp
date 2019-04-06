@@ -296,10 +296,5 @@ namespace Workshop4 {
 
             agtForm.Hide();
         }
-
-        private void packageButton_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
