@@ -38,9 +38,9 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(58, 176);
+            this.panel1.Location = new System.Drawing.Point(66, 172);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(597, 334);
+            this.panel1.Size = new System.Drawing.Size(726, 433);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -48,7 +48,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(589, 320);
+            this.label2.Size = new System.Drawing.Size(718, 432);
             this.label2.TabIndex = 0;
             this.label2.Text = resources.GetString("label2.Text");
             // 
@@ -76,7 +76,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(242, 119);
+            this.label3.Location = new System.Drawing.Point(334, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(206, 31);
             this.label3.TabIndex = 2;
@@ -84,7 +84,9 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(720, 177);
+            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(1, 3);
+            this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.monthCalendar1.Location = new System.Drawing.Point(760, 64);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 3;
             // 
@@ -92,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(987, 575);
+            this.ClientSize = new System.Drawing.Size(987, 631);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
