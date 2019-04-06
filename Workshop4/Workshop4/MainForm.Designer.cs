@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.agentButton = new Workshop4.AgentButton();
             this.supplierButton = new Workshop4.SupplierButton();
             this.productButton = new Workshop4.ProductButton();
             this.packageButton = new Workshop4.PackageButton();
@@ -32,7 +33,6 @@
             this.btnLogOut = new System.Windows.Forms.Button();
             this.lblAgtName = new System.Windows.Forms.Label();
             this.pnlAgtBar = new System.Windows.Forms.Panel();
-            this.agentButton = new Workshop4.AgentButton();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlSuppBar = new System.Windows.Forms.Panel();
@@ -46,6 +46,7 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.White;
+            this.pnlMenu.Controls.Add(this.agentButton);
             this.pnlMenu.Controls.Add(this.supplierButton);
             this.pnlMenu.Controls.Add(this.productButton);
             this.pnlMenu.Controls.Add(this.packageButton);
@@ -53,7 +54,6 @@
             this.pnlMenu.Controls.Add(this.btnLogOut);
             this.pnlMenu.Controls.Add(this.lblAgtName);
             this.pnlMenu.Controls.Add(this.pnlAgtBar);
-            this.pnlMenu.Controls.Add(this.agentButton);
             this.pnlMenu.Controls.Add(this.btnSignIn);
             this.pnlMenu.Controls.Add(this.pictureBox1);
             this.pnlMenu.Controls.Add(this.pnlSuppBar);
@@ -65,6 +65,20 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(260, 661);
             this.pnlMenu.TabIndex = 0;
+            // 
+            // agentButton
+            // 
+            this.agentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.agentButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.agentButton.Location = new System.Drawing.Point(10, 100);
+            this.agentButton.Margin = new System.Windows.Forms.Padding(5);
+            this.agentButton.Name = "agentButton";
+            this.agentButton.Size = new System.Drawing.Size(250, 44);
+            this.agentButton.TabIndex = 17;
+            this.agentButton.Visible = false;
+            this.agentButton.Click += new System.EventHandler(this.agentButton_Click);
+            this.agentButton.MouseEnter += new System.EventHandler(this.agentButton_MouseEnter);
+            this.agentButton.MouseLeave += new System.EventHandler(this.agentButton_MouseLeave);
             // 
             // supplierButton
             // 
@@ -140,20 +154,6 @@
             this.pnlAgtBar.Size = new System.Drawing.Size(10, 44);
             this.pnlAgtBar.TabIndex = 10;
             this.pnlAgtBar.Visible = false;
-            // 
-            // agentButton
-            // 
-            this.agentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.agentButton.ForeColor = System.Drawing.Color.Teal;
-            this.agentButton.Location = new System.Drawing.Point(10, 100);
-            this.agentButton.Margin = new System.Windows.Forms.Padding(5);
-            this.agentButton.Name = "agentButton";
-            this.agentButton.Size = new System.Drawing.Size(250, 44);
-            this.agentButton.TabIndex = 2;
-            this.agentButton.Visible = false;
-            this.agentButton.Click += new System.EventHandler(this.agentButton_Click);
-            this.agentButton.MouseEnter += new System.EventHandler(this.agentButton_MouseEnter);
-            this.agentButton.MouseLeave += new System.EventHandler(this.agentButton_MouseLeave);
             // 
             // btnSignIn
             // 
@@ -244,7 +244,6 @@
         private System.Windows.Forms.Panel pnlProdBar;
         private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private AgentButton agentButton;
         private System.Windows.Forms.Panel pnlAgtBar;
         private System.Windows.Forms.Label lblAgtName;
         private System.Windows.Forms.Button btnLogOut;
@@ -252,5 +251,6 @@
         private PackageButton packageButton;
         private ProductButton productButton;
         private SupplierButton supplierButton;
+        private AgentButton agentButton;
     }
 }

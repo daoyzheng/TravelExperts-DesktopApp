@@ -65,7 +65,7 @@ namespace Workshop4 {
             supNameComboBox.DataSource = Suppliers;
 
             pkgNameTextBox.Text = SelectedPackage.PkgName;
-            pkgBasePriceTextBox.Text = SelectedPackage.PkgBasePrice.ToString("C");
+            pkgBasePriceTextBox.Text = SelectedPackage.PkgBasePrice.ToString();
 
             if (SelectedPackage.PkgDesc == null)
                 pkgDescTextBox.Text = string.Empty;
@@ -92,12 +92,7 @@ namespace Workshop4 {
                 pkgEndDateDateTimePicker.Value = endDate;
             }
 
-            if (SelectedPackage.PkgAgencyCommission == null)
-                pkgAgencyCommissionTextBox.Text = string.Empty;
-            else {
-                decimal agencyCommission = SelectedPackage.PkgAgencyCommission ?? -1;
-                pkgAgencyCommissionTextBox.Text = agencyCommission.ToString("C");
-            }
+            pkgAgencyCommissionTextBox.Text = SelectedPackage.PkgAgencyCommission.ToString();
 
             prodNameComboBox.SelectedValue = SelectedProductsSupplier.ProductId;
             supNameComboBox.SelectedValue = SelectedProductsSupplier.SupplierId;

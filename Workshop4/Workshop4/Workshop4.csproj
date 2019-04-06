@@ -204,10 +204,10 @@
       <DependentUpon>SupplierButton.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\ClassEntites.Agent.datasource" />
-    <None Include="Properties\DataSources\ClassEntites.DummyPackage.datasource" />
     <None Include="Properties\DataSources\ClassEntites.Package.datasource" />
     <None Include="Properties\DataSources\ClassEntites.Product.datasource" />
     <None Include="Properties\DataSources\ClassEntites.ProductsSupplier.datasource" />
+    <None Include="Properties\DataSources\ClassEntites.ProductSupplierViewModel.datasource" />
     <None Include="Properties\DataSources\ClassEntites.Supplier.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
