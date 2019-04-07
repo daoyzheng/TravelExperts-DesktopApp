@@ -172,7 +172,6 @@
             // supNameComboBox
             // 
             this.supNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supNameComboBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.supNameComboBox.FormattingEnabled = true;
             this.supNameComboBox.Location = new System.Drawing.Point(246, 138);
             this.supNameComboBox.Name = "supNameComboBox";
@@ -182,7 +181,6 @@
             // prodNameComboBox
             // 
             this.prodNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodNameComboBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.prodNameComboBox.FormattingEnabled = true;
             this.prodNameComboBox.Location = new System.Drawing.Point(246, 96);
             this.prodNameComboBox.Name = "prodNameComboBox";
@@ -192,7 +190,6 @@
             // pkgAgencyCommissionTextBox
             // 
             this.pkgAgencyCommissionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pkgAgencyCommissionTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgAgencyCommissionTextBox.Location = new System.Drawing.Point(246, 315);
             this.pkgAgencyCommissionTextBox.Name = "pkgAgencyCommissionTextBox";
             this.pkgAgencyCommissionTextBox.Size = new System.Drawing.Size(237, 24);
@@ -202,7 +199,6 @@
             // pkgBasePriceTextBox
             // 
             this.pkgBasePriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pkgBasePriceTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgBasePriceTextBox.Location = new System.Drawing.Point(246, 271);
             this.pkgBasePriceTextBox.Name = "pkgBasePriceTextBox";
             this.pkgBasePriceTextBox.Size = new System.Drawing.Size(237, 24);
@@ -213,7 +209,6 @@
             // pkgDescTextBox
             // 
             this.pkgDescTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pkgDescTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgDescTextBox.Location = new System.Drawing.Point(246, 362);
             this.pkgDescTextBox.Multiline = true;
             this.pkgDescTextBox.Name = "pkgDescTextBox";
@@ -222,7 +217,7 @@
             // 
             // pkgEndDateDateTimePicker
             // 
-            this.pkgEndDateDateTimePicker.CalendarForeColor = System.Drawing.Color.DarkSlateGray;
+            this.pkgEndDateDateTimePicker.CalendarForeColor = System.Drawing.SystemColors.WindowText;
             this.pkgEndDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pkgEndDateDateTimePicker.Location = new System.Drawing.Point(246, 225);
             this.pkgEndDateDateTimePicker.Name = "pkgEndDateDateTimePicker";
@@ -234,7 +229,6 @@
             // pkgNameTextBox
             // 
             this.pkgNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pkgNameTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgNameTextBox.Location = new System.Drawing.Point(246, 56);
             this.pkgNameTextBox.Name = "pkgNameTextBox";
             this.pkgNameTextBox.Size = new System.Drawing.Size(237, 24);
@@ -243,7 +237,7 @@
             // 
             // pkgStartDateDateTimePicker
             // 
-            this.pkgStartDateDateTimePicker.CalendarForeColor = System.Drawing.Color.DarkSlateGray;
+            this.pkgStartDateDateTimePicker.CalendarForeColor = System.Drawing.SystemColors.WindowText;
             this.pkgStartDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pkgStartDateDateTimePicker.Location = new System.Drawing.Point(246, 180);
             this.pkgStartDateDateTimePicker.Name = "pkgStartDateDateTimePicker";

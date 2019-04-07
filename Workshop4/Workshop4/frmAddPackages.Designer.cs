@@ -154,7 +154,6 @@
             // 
             this.pkgAgencyCommissionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgAgencyCommission", true));
             this.pkgAgencyCommissionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pkgAgencyCommissionTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgAgencyCommissionTextBox.Location = new System.Drawing.Point(246, 315);
             this.pkgAgencyCommissionTextBox.Name = "pkgAgencyCommissionTextBox";
             this.pkgAgencyCommissionTextBox.Size = new System.Drawing.Size(237, 24);
@@ -165,7 +164,6 @@
             // 
             this.pkgBasePriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgBasePrice", true));
             this.pkgBasePriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pkgBasePriceTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgBasePriceTextBox.Location = new System.Drawing.Point(246, 272);
             this.pkgBasePriceTextBox.Name = "pkgBasePriceTextBox";
             this.pkgBasePriceTextBox.Size = new System.Drawing.Size(237, 24);
@@ -177,7 +175,6 @@
             // 
             this.pkgDescTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgDesc", true));
             this.pkgDescTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pkgDescTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgDescTextBox.Location = new System.Drawing.Point(246, 357);
             this.pkgDescTextBox.Multiline = true;
             this.pkgDescTextBox.Name = "pkgDescTextBox";
@@ -186,7 +183,7 @@
             // 
             // pkgEndDateDateTimePicker
             // 
-            this.pkgEndDateDateTimePicker.CalendarForeColor = System.Drawing.Color.DarkSlateGray;
+            this.pkgEndDateDateTimePicker.CalendarForeColor = System.Drawing.SystemColors.WindowText;
             this.pkgEndDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.packageBindingSource, "PkgEndDate", true));
             this.pkgEndDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pkgEndDateDateTimePicker.Location = new System.Drawing.Point(246, 226);
@@ -199,7 +196,6 @@
             // 
             this.pkgNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.packageBindingSource, "PkgName", true));
             this.pkgNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pkgNameTextBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.pkgNameTextBox.Location = new System.Drawing.Point(246, 56);
             this.pkgNameTextBox.Name = "pkgNameTextBox";
             this.pkgNameTextBox.Size = new System.Drawing.Size(237, 26);
@@ -209,7 +205,7 @@
             // 
             // pkgStartDateDateTimePicker
             // 
-            this.pkgStartDateDateTimePicker.CalendarForeColor = System.Drawing.Color.DarkSlateGray;
+            this.pkgStartDateDateTimePicker.CalendarForeColor = System.Drawing.SystemColors.WindowText;
             this.pkgStartDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.packageBindingSource, "PkgStartDate", true));
             this.pkgStartDateDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pkgStartDateDateTimePicker.Location = new System.Drawing.Point(246, 184);
@@ -226,7 +222,6 @@
             // 
             this.prodNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "ProdName", true));
             this.prodNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodNameComboBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.prodNameComboBox.FormattingEnabled = true;
             this.prodNameComboBox.Location = new System.Drawing.Point(246, 99);
             this.prodNameComboBox.Name = "prodNameComboBox";
@@ -241,7 +236,6 @@
             // 
             this.supNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "SupName", true));
             this.supNameComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supNameComboBox.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.supNameComboBox.FormattingEnabled = true;
             this.supNameComboBox.Location = new System.Drawing.Point(246, 141);
             this.supNameComboBox.Name = "supNameComboBox";

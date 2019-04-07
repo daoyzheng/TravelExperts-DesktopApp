@@ -48,5 +48,38 @@ namespace Workshop4 {
                 DialogResult = DialogResult.None;
             }
         }
+
+        private void txtFirstName_GotFocus(object sender, EventArgs e) {
+            txtFirstName.ForeColor = Color.Black;
+            txtFirstName.Text = "";
+        }
+        private void txtFirstName_LostFocus(object sender, EventArgs e) {
+            if (string.IsNullOrWhiteSpace(txtFirstName.Text)) {
+                txtFirstName.ForeColor = Color.Gray;
+                txtFirstName.Text = "First Name";
+            }
+
+        }
+
+        private void txtLastName_GotFocus(object sender, EventArgs e) {
+            txtLastName.ForeColor = Color.Black;
+            txtLastName.Text = "";
+        }
+        private void txtLastName_LostFocus(object sender, EventArgs e) {
+            if (string.IsNullOrWhiteSpace(txtLastName.Text)) {
+                txtLastName.ForeColor = Color.Gray;
+                txtLastName.Text = "Last Name";
+            }
+
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e) {
+            txtFirstName.ForeColor = Color.Gray;
+            txtFirstName.Text = "First Name";
+
+            txtLastName.ForeColor = Color.Gray;
+            txtLastName.Text = "Last Name";
+
+        }
     }
 }
