@@ -140,7 +140,7 @@ namespace DBAccess
         // Method to update an existing Supplier record in the database.
         // This method compares the 'old' product which was 'SELECT'ed 
         // originally against the product record at the time of 'UPDATE'ing
-        // to ensure that no chnages have occurred. In other words, this is
+        // to ensure that no changes have occurred. In other words, this is
         // a concurrency check prior to updating the record.
         public static bool UpdateSupplier(Supplier oldSupplier, Supplier newSupplier)
         {
@@ -178,6 +178,11 @@ namespace DBAccess
         public static bool DeleteSupplier(Supplier supplier)
         {
             bool success = true;
+
+            // Delete SupplierContacts record for the supplier first
+            if (IsInSupplierContacts(supplier))
+                DeleteSupplierContacts(supplier);            
+
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
             string deleteStatement = "DELETE FROM Suppliers " +
@@ -188,6 +193,89 @@ namespace DBAccess
 
             deleteCommand.Parameters.AddWithValue("@SupplierId", supplier.SupplierId);
             deleteCommand.Parameters.AddWithValue("@SupName", supplier.SupName);
+
+            try
+            {
+                conn.Open();
+                int count = deleteCommand.ExecuteNonQuery();
+                if (count == 0)
+                    success = false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return success;
+        }
+
+        private static bool IsInSupplierContacts(Supplier supplier)
+        {
+            bool result = false;
+
+            List<SupplierContact> suppliercontacts = new List<SupplierContact>();
+            suppliercontacts = GetSupplierContacts();
+
+            foreach(SupplierContact suppliercontact in suppliercontacts)
+            {
+                if (suppliercontact.SupplierId == supplier.SupplierId)
+                    result = true;
+            }
+            return result;
+        }
+
+        private static List<SupplierContact> GetSupplierContacts()
+        {
+            List<SupplierContact> suppliercontacts = new List<SupplierContact>();
+
+            SqlConnection conn = TravelExpertsDB.GetConnection();
+
+            // create a sql select statement
+            string selectStatement =
+                "SELECT SupplierContactId, SupplierId " +
+                "FROM SupplierContacts";
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
+
+            try
+            {
+                conn.Open();// open connection
+
+                SqlDataReader sr = selectCommand.ExecuteReader();
+
+                while (sr.Read()) // product record exists
+                {
+                    SupplierContact suppliercontact = new SupplierContact();
+                    suppliercontact.SupplierContactId = (int)sr["SupplierContactId"];
+                    suppliercontact.SupplierId = (int)sr["SupplierId"];
+                    suppliercontacts.Add(suppliercontact);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return suppliercontacts;
+        }
+
+        public static bool DeleteSupplierContacts(Supplier supplier)
+        {
+            bool success = true;
+            SqlConnection conn = TravelExpertsDB.GetConnection();
+
+            string deleteStatement = "DELETE FROM SupplierContacts " +
+                                     "WHERE SupplierId = @SupplierId";
+
+            SqlCommand deleteCommand = new SqlCommand(deleteStatement, conn);
+
+            deleteCommand.Parameters.AddWithValue("@SupplierId", supplier.SupplierId);
 
             try
             {

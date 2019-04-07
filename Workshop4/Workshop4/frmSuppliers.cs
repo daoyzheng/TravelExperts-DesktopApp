@@ -23,20 +23,19 @@ namespace Workshop4 {
             List<Supplier> suppliers = new List<Supplier>();
 
             // assign suppliers to return of GetSuppliers nethod call
-            suppliers = SupplierDB.GetSuppliers();
+            //suppliers = SupplierDB.GetSuppliers();
+            suppliers = (SupplierDB.GetSuppliers()).OrderBy(s => s.SupplierId).ToList();
 
             // bind suppliers list to combo box
             cmbSuppliers.DataSource = suppliers;
 
-            txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
-
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            // close this form
-            this.Close();
-        }
+        //private void btnExit_Click(object sender, EventArgs e)
+        //{
+        //    // close this form
+        //    this.Close();
+        //}
 
         private void cmbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -55,7 +54,6 @@ namespace Workshop4 {
 
             txtSupplierId.Text   = (supplier.SupplierId).ToString();
             txtSupplierName.Text = supplier.SupName;
-            txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -69,6 +67,11 @@ namespace Workshop4 {
             // validate input
             if (Validator.IsPresent(txtSupplierName))
             {
+                if ((txtSupplierName.Text.Length > 255))
+                {
+                    MessageBox.Show("The Supplier Name is too long (>255). Please adjust.");
+                    return;
+                }
                 // text boxes validated
                 // now check that the entered Supplier Name does not already exist in the database
                 foreach (Supplier supp in suppliers)
@@ -85,6 +88,8 @@ namespace Workshop4 {
 
                 // Find largest SupplierID
                 int maxId = SupplierDB.FindMaxSupplierId(suppliers);
+                // Find the index the corresponds to largest ID
+
 
                 // create Supplier object to be added
                 Supplier supplier = new Supplier();
@@ -92,10 +97,13 @@ namespace Workshop4 {
                 supplier.SupplierId = ++maxId;
                 supplier.SupName = txtSupplierName.Text;
 
-                txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
-
                 int newSupplierId = SupplierDB.AddSupplier(supplier);
-                DisplaySuppliers(cmbSuppliers.SelectedIndex - 1);
+                // assign suppliers to return of GetSuppliers method call
+                List<Supplier> newList = SupplierDB.GetSuppliers();
+                suppliers = newList.OrderBy(s => s.SupplierId).ToList();
+
+                int numSuppliers = suppliers.Count();
+                DisplaySuppliers(numSuppliers - 1);
             }
         }
         public void DisplaySuppliers(int sIndex)
@@ -104,14 +112,12 @@ namespace Workshop4 {
             List<Supplier> suppliers = new List<Supplier>();
 
             // assign suppliers to return of GetSuppliers method call
-            suppliers = SupplierDB.GetSuppliers();
+            suppliers = (SupplierDB.GetSuppliers()).OrderBy(s=>s.SupplierId).ToList();
             // bind suppliers list to combo box
             cmbSuppliers.DataSource = suppliers;
 
             txtSupplierId.Text = (suppliers[sIndex].SupplierId).ToString();
             txtSupplierName.Text = suppliers[sIndex].SupName;
-
-            txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
 
             cmbSuppliers.SelectedIndex = sIndex;
         }
@@ -123,6 +129,14 @@ namespace Workshop4 {
             supplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
             supplier.SupName = txtSupplierName.Text;
 
+            if (SupplierDB.IsInProductsSuppliers(supplier))
+            {
+                MessageBox.Show("This supplier is already being used in " +
+                    " the Products_Suppliers table and you may not delete it.");
+                return;
+            }
+
+
             bool result = SupplierDB.DeleteSupplier(supplier);
 
             DisplaySuppliers(cmbSuppliers.SelectedIndex - 1);
@@ -130,7 +144,6 @@ namespace Workshop4 {
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            txtIndex.Text = cmbSuppliers.SelectedIndex.ToString();
             Supplier supplier = new Supplier();
 
             // declare products List variable and instantiate new List<Supplier> object

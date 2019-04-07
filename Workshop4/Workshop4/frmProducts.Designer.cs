@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.btnExit = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -34,20 +33,7 @@
             this.lblProducts = new System.Windows.Forms.Label();
             this.cmbProducts = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtIndex = new System.Windows.Forms.TextBox();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // btnExit
-            // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(634, 176);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(115, 64);
-            this.btnExit.TabIndex = 21;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click_1);
             // 
             // btnUpdate
             // 
@@ -138,45 +124,26 @@
             this.cmbProducts.IntegralHeight = false;
             this.cmbProducts.Location = new System.Drawing.Point(27, 273);
             this.cmbProducts.Name = "cmbProducts";
-            this.cmbProducts.Size = new System.Drawing.Size(722, 40);
+            this.cmbProducts.Size = new System.Drawing.Size(923, 40);
             this.cmbProducts.TabIndex = 12;
             this.cmbProducts.SelectedIndexChanged += new System.EventHandler(this.cmbProducts_SelectedIndexChanged_1);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(235, 13);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(529, 29);
+            this.label2.Size = new System.Drawing.Size(408, 37);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Products Management Form Under Construction";
-            // 
-            // txtIndex
-            // 
-            this.txtIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIndex.Location = new System.Drawing.Point(780, 273);
-            this.txtIndex.Name = "txtIndex";
-            this.txtIndex.Size = new System.Drawing.Size(100, 35);
-            this.txtIndex.TabIndex = 22;
-            // 
-            // txtId
-            // 
-            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(579, 68);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(100, 35);
-            this.txtId.TabIndex = 23;
+            this.label2.Text = "Product Management Form";
             // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 692);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.txtIndex);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
@@ -198,7 +165,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
@@ -209,7 +175,5 @@
         private System.Windows.Forms.Label lblProducts;
         private System.Windows.Forms.ComboBox cmbProducts;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtIndex;
-        private System.Windows.Forms.TextBox txtId;
     }
 }
