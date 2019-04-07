@@ -12,6 +12,10 @@ using System.Windows.Forms;
 
 namespace Workshop4 {
     public partial class frmSuppliers : Form {
+        // Form-level variable
+        public MainForm mainForm { get; set; }
+        public Agent loggedInAgt { get; set; }
+
         public frmSuppliers()
         {
             InitializeComponent();

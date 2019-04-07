@@ -25,6 +25,12 @@ namespace Workshop4 {
         List<PackagesProductsSuppliers> pkgProdSuppList = 
             PackagesProductsSuppliersDB.GetPackagesProductsSuppliers();
 
+        // Store agent information
+        public Agent loggedInAgt { get; set; }
+
+        // Get mainform reference
+        public MainForm mainForm { get; set; }
+
         public frmPackage() {
             InitializeComponent();
         }
@@ -104,77 +110,86 @@ namespace Workshop4 {
         }
 
         private void btnAddPkg_Click(object sender, EventArgs e) {
-            frmAddPackages frmAddPackages = new frmAddPackages();
-            frmAddPackages.products = productsList;
-            frmAddPackages.suppliers = suppliersList;
-            frmAddPackages.packages = packageList;
-            frmAddPackages.pkgProdSupps = pkgProdSuppList;
-            DialogResult result = frmAddPackages.ShowDialog();
-            if (result == DialogResult.OK) {
-                if (frmAddPackages.PkgInserted == true) {
-                    packageList.Add(frmAddPackages.Package);
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null,null);
+            } else {
+                frmAddPackages frmAddPackages = new frmAddPackages();
+                frmAddPackages.products = productsList;
+                frmAddPackages.suppliers = suppliersList;
+                frmAddPackages.packages = packageList;
+                frmAddPackages.pkgProdSupps = pkgProdSuppList;
+                DialogResult result = frmAddPackages.ShowDialog();
+                if (result == DialogResult.OK) {
+                    if (frmAddPackages.PkgInserted == true) {
+                        packageList.Add(frmAddPackages.Package);
+                    }
+
+                    if (frmAddPackages.ProdSuppInserted == true) {
+                        prodSuppList.Add(frmAddPackages.productsSupplier);
+                    }
+
+                    pkgProdSuppList.Add(frmAddPackages.pkgProdSupp);
+
+                    // Reload Combo box
+                    refreshComboBox();
+
+                    // Select the Last index
+                    int index = packageList.Count() - 1;
+                    pkgNameComboBox.SelectedIndex = index;
                 }
-
-                if (frmAddPackages.ProdSuppInserted == true) {
-                    prodSuppList.Add(frmAddPackages.productsSupplier);
-                }
-
-                pkgProdSuppList.Add(frmAddPackages.pkgProdSupp);
-
-                // Reload Combo box
-                refreshComboBox();
-
-                // Select the Last index
-                int index = packageList.Count() - 1;
-                pkgNameComboBox.SelectedIndex = index;
             }
         }
 
         private void btnUpdatePkg_Click(object sender, EventArgs e) {
-            // Get Selected Package Id
-            int pkgId = (int)pkgNameComboBox.SelectedValue;
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null, null);
+            } else {
+                // Get Selected Package Id
+                int pkgId = (int)pkgNameComboBox.SelectedValue;
 
-            // Get Selected Package Object
-            var selectedPkg = packageList.SingleOrDefault(p => p.PackageId == pkgId);
+                // Get Selected Package Object
+                var selectedPkg = packageList.SingleOrDefault(p => p.PackageId == pkgId);
 
-            // Get Data from datagridview
-            int prodSuppId = (int)productSupplierViewModelDataGridView.CurrentRow.Cells[0].Value;
-            var selectedProdSupp = prodSuppList.SingleOrDefault(ps => ps.ProductSupplierId == prodSuppId);
+                // Get Data from datagridview
+                int prodSuppId = (int)productSupplierViewModelDataGridView.CurrentRow.Cells[0].Value;
+                var selectedProdSupp = prodSuppList.SingleOrDefault(ps => ps.ProductSupplierId == prodSuppId);
 
-            var selectedPkgProdSupp = pkgProdSuppList.SingleOrDefault(pps => pps.ProductSupplierId == prodSuppId &&
-                                                                    pps.PackageId == pkgId);
+                var selectedPkgProdSupp = pkgProdSuppList.SingleOrDefault(pps => pps.ProductSupplierId == prodSuppId &&
+                                                                        pps.PackageId == pkgId);
 
-            frmUpdatePackages frmUpdatePackages = new frmUpdatePackages();
-            // Assign reference to update form
-            frmUpdatePackages.SelectedPackage = selectedPkg;
-            frmUpdatePackages.SelectedProductsSupplier = selectedProdSupp;
-            frmUpdatePackages.SelectedPkgProdSupp = selectedPkgProdSupp;
+                frmUpdatePackages frmUpdatePackages = new frmUpdatePackages();
+                // Assign reference to update form
+                frmUpdatePackages.SelectedPackage = selectedPkg;
+                frmUpdatePackages.SelectedProductsSupplier = selectedProdSupp;
+                frmUpdatePackages.SelectedPkgProdSupp = selectedPkgProdSupp;
 
-            // Assign list of all tables to update form
-            frmUpdatePackages.Products = productsList;
-            frmUpdatePackages.Suppliers = suppliersList;
-            frmUpdatePackages.Packages = packageList;
-            frmUpdatePackages.PkgProdSupps = pkgProdSuppList;
+                // Assign list of all tables to update form
+                frmUpdatePackages.Products = productsList;
+                frmUpdatePackages.Suppliers = suppliersList;
+                frmUpdatePackages.Packages = packageList;
+                frmUpdatePackages.PkgProdSupps = pkgProdSuppList;
 
-            DialogResult result = frmUpdatePackages.ShowDialog();
-            if (result == DialogResult.OK) {
-                selectedPkg = frmUpdatePackages.SelectedPackage;
-                selectedPkgProdSupp = frmUpdatePackages.SelectedPkgProdSupp;
-                if (frmUpdatePackages.ProdSuppInserted) {
-                    prodSuppList.Add(frmUpdatePackages.SelectedProductsSupplier);
+                DialogResult result = frmUpdatePackages.ShowDialog();
+                if (result == DialogResult.OK) {
+                    selectedPkg = frmUpdatePackages.SelectedPackage;
+                    selectedPkgProdSupp = frmUpdatePackages.SelectedPkgProdSupp;
+                    if (frmUpdatePackages.ProdSuppInserted) {
+                        prodSuppList.Add(frmUpdatePackages.SelectedProductsSupplier);
+                    }
+
+                    // Refresh DataGridView
+                    // Reload Combo box
+                    refreshComboBox();
+
+                    // Change combo box to the selected Package
+                    pkgNameComboBox.SelectedValue = selectedPkg.PackageId;
+
+                } else if (result == DialogResult.Retry) {
+                    // Reload from database
+                    reloadData();
+                    refreshComboBox();
                 }
 
-                // Refresh DataGridView
-                // Reload Combo box
-                refreshComboBox();
-
-                // Change combo box to the selected Package
-                pkgNameComboBox.SelectedValue = selectedPkg.PackageId;
-
-            } else if (result == DialogResult.Retry) {
-                // Reload from database
-                reloadData();
-                refreshComboBox();
             }
         }
 
@@ -195,44 +210,48 @@ namespace Workshop4 {
         }
 
         private void btnDeletePkg_Click(object sender, EventArgs e) {
-            // Get Selected Package Id
-            int pkgId = (int)pkgNameComboBox.SelectedValue;
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null, null);
+            } else { 
+                // Get Selected Package Id
+                int pkgId = (int)pkgNameComboBox.SelectedValue;
 
-            // Get Selected Package Object
-            var selectedPkg = packageList.SingleOrDefault(p => p.PackageId == pkgId);
+                // Get Selected Package Object
+                var selectedPkg = packageList.SingleOrDefault(p => p.PackageId == pkgId);
 
-            // Get Data from datagridview
-            int prodSuppId = (int)productSupplierViewModelDataGridView.CurrentRow.Cells[0].Value;
-            var selectedProdSupp = prodSuppList.SingleOrDefault(ps => ps.ProductSupplierId == prodSuppId);
+                // Get Data from datagridview
+                int prodSuppId = (int)productSupplierViewModelDataGridView.CurrentRow.Cells[0].Value;
+                var selectedProdSupp = prodSuppList.SingleOrDefault(ps => ps.ProductSupplierId == prodSuppId);
 
-            var selectedPkgProdSupp = pkgProdSuppList.SingleOrDefault(pps => pps.ProductSupplierId == prodSuppId &&
-                                                                    pps.PackageId == pkgId);
+                var selectedPkgProdSupp = pkgProdSuppList.SingleOrDefault(pps => pps.ProductSupplierId == prodSuppId &&
+                                                                        pps.PackageId == pkgId);
 
-            int pkgIdCount = pkgProdSuppList.Where(pps => pps.PackageId == pkgId).Count();
-            if (pkgIdCount == 1) {
-                // If the packageId is the last one inside the Package_Products_Supplier table
-                // Then we delete that package in the Package Table
-                try {
-                    deletePkgProdSupp(selectedPkgProdSupp);
-                    if (!PackageDB.DeletePackage(selectedPkg)) {
-                        MessageBox.Show("Another user has updated or " +
-                            "deleted that Package.", "Database Error");
-                        // Refresh data
-                        reloadData();
-                        refreshComboBox();
-                    } else {
-                        int index = pkgNameComboBox.Items.IndexOf(selectedPkg);
-                        packageList.Remove(selectedPkg);
-                        pkgNameComboBox.SelectedIndex = index - 1;
-                        refreshComboBox();
+                int pkgIdCount = pkgProdSuppList.Where(pps => pps.PackageId == pkgId).Count();
+                if (pkgIdCount == 1) {
+                    // If the packageId is the last one inside the Package_Products_Supplier table
+                    // Then we delete that package in the Package Table
+                    try {
+                        deletePkgProdSupp(selectedPkgProdSupp);
+                        if (!PackageDB.DeletePackage(selectedPkg)) {
+                            MessageBox.Show("Another user has updated or " +
+                                "deleted that Package.", "Database Error");
+                            // Refresh data
+                            reloadData();
+                            refreshComboBox();
+                        } else {
+                            int index = pkgNameComboBox.Items.IndexOf(selectedPkg);
+                            packageList.Remove(selectedPkg);
+                            pkgNameComboBox.SelectedIndex = index - 1;
+                            refreshComboBox();
+                        }
+                    } catch (Exception ex) {
+                        MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
                     }
-                } catch (Exception ex) {
-                    MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
+                } else {
+                    deletePkgProdSupp(selectedPkgProdSupp);
+                    // If there are 2 or more packageIds inside Package_Products_Supplier, only delete
+                    // from the package_products_supplier table, not the Package table
                 }
-            } else {
-                deletePkgProdSupp(selectedPkgProdSupp);
-                // If there are 2 or more packageIds inside Package_Products_Supplier, only delete
-                // from the package_products_supplier table, not the Package table
             }
         }
 
