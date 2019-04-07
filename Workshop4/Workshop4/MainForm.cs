@@ -300,24 +300,26 @@ namespace Workshop4 {
             // Reset Global loggedInAgt object
             loggedInAgt = null;
 
-            // Redirect to package page for now
-            pkgForm.Show();
-            pkgForm.MdiParent = this;
+            // Redirect to home page 
+            homeForm.Show();
+            homeForm.MdiParent = this;
             // Set active bar
-            pnlHomeBar.Visible = false;
+            pnlHomeBar.Visible = true;
             pnlAgtBar.Visible = false;
-            pnlPackBar.Visible = true;
+            pnlPackBar.Visible = false;
             pnlProdBar.Visible = false;
             pnlSuppBar.Visible = false;
 
             // Set the active font color
-            homeButton.ForeColor = Color.Black;
+            homeButton.ForeColor = Color.DodgerBlue;
             agentButton.ForeColor = Color.Black;
-            packageButton.ForeColor = Color.DodgerBlue;
+            packageButton.ForeColor = Color.Black;
             productButton.ForeColor = Color.Black;
             supplierButton.ForeColor = Color.Black;
-            
+
             // Reset all other forms
+            homeFormOpened = true;
+            pkgFormOpened = false;
             prodsFormOpened = false;
             suppsFormOpened = false;
             agtFormOpened = false;

@@ -253,7 +253,7 @@
             this.productSupplierViewModelDataGridView.Location = new System.Drawing.Point(528, 186);
             this.productSupplierViewModelDataGridView.Name = "productSupplierViewModelDataGridView";
             this.productSupplierViewModelDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.productSupplierViewModelDataGridView.Size = new System.Drawing.Size(413, 146);
+            this.productSupplierViewModelDataGridView.Size = new System.Drawing.Size(400, 146);
             this.productSupplierViewModelDataGridView.TabIndex = 37;
             // 
             // panel1

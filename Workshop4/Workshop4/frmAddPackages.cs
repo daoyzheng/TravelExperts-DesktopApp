@@ -202,5 +202,14 @@ namespace Workshop4 {
 
             }
         }
+
+        private void btnClear_Click(object sender, EventArgs e) {
+            pkgNameTextBox.Text = string.Empty;
+            prodNameComboBox.SelectedIndex = 0;
+            supNameComboBox.SelectedIndex = 0;
+            pkgBasePriceTextBox.Text = string.Empty;
+            pkgAgencyCommissionTextBox.Text = string.Empty;
+            pkgDescTextBox.Text = string.Empty;
+        }
     }
 }

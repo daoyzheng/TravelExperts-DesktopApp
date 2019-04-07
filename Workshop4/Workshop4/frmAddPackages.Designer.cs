@@ -63,7 +63,7 @@
             pkgAgencyCommissionLabel.AutoSize = true;
             pkgAgencyCommissionLabel.BackColor = System.Drawing.Color.Transparent;
             pkgAgencyCommissionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            pkgAgencyCommissionLabel.Location = new System.Drawing.Point(42, 319);
+            pkgAgencyCommissionLabel.Location = new System.Drawing.Point(39, 319);
             pkgAgencyCommissionLabel.Name = "pkgAgencyCommissionLabel";
             pkgAgencyCommissionLabel.Size = new System.Drawing.Size(156, 20);
             pkgAgencyCommissionLabel.TabIndex = 0;
@@ -85,7 +85,7 @@
             pkgDescLabel.AutoSize = true;
             pkgDescLabel.BackColor = System.Drawing.Color.Transparent;
             pkgDescLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            pkgDescLabel.Location = new System.Drawing.Point(105, 357);
+            pkgDescLabel.Location = new System.Drawing.Point(102, 357);
             pkgDescLabel.Name = "pkgDescLabel";
             pkgDescLabel.Size = new System.Drawing.Size(93, 20);
             pkgDescLabel.TabIndex = 4;
@@ -140,7 +140,7 @@
             supNameLabel.AutoSize = true;
             supNameLabel.BackColor = System.Drawing.Color.Transparent;
             supNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            supNameLabel.Location = new System.Drawing.Point(81, 147);
+            supNameLabel.Location = new System.Drawing.Point(78, 147);
             supNameLabel.Name = "supNameLabel";
             supNameLabel.Size = new System.Drawing.Size(117, 20);
             supNameLabel.TabIndex = 14;
@@ -276,6 +276,7 @@
             this.btnClear.TabIndex = 17;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // frmAddPackages
             // 

@@ -224,5 +224,60 @@ namespace Workshop4 {
         private void pkgEndDateDateTimePicker_ValueChanged(object sender, EventArgs e) {
             pkgEndDateDateTimePicker.Format = DateTimePickerFormat.Long;
         }
+
+        private void btnReset_Click(object sender, EventArgs e) {
+            pkgNameTextBox.Text = OldPackage.PkgName;
+            pkgBasePriceTextBox.Text = OldPackage.PkgBasePrice.ToString();
+
+            if (OldPackage.PkgDesc == null)
+                pkgDescTextBox.Text = string.Empty;
+            else
+                pkgDescTextBox.Text = OldPackage.PkgDesc;
+
+            DateTime startDate = OldPackage.PkgStartDate ?? DateTime.MinValue;
+            if (startDate == DateTime.MinValue) {
+                pkgStartDateDateTimePicker.Format = DateTimePickerFormat.Custom;
+                pkgStartDateDateTimePicker.CustomFormat = " ";
+                pkgStartDateDateTimePicker.Checked = false;
+            } else {
+                pkgStartDateDateTimePicker.Format = DateTimePickerFormat.Long;
+                pkgStartDateDateTimePicker.Value = startDate;
+            }
+
+            DateTime endDate = OldPackage.PkgEndDate ?? DateTime.MinValue;
+            if (endDate == DateTime.MinValue) {
+                pkgEndDateDateTimePicker.Format = DateTimePickerFormat.Custom;
+                pkgEndDateDateTimePicker.CustomFormat = " ";
+                pkgEndDateDateTimePicker.Checked = false;
+            } else {
+                pkgEndDateDateTimePicker.Format = DateTimePickerFormat.Long;
+                pkgEndDateDateTimePicker.Value = endDate;
+            }
+
+            pkgAgencyCommissionTextBox.Text = OldPackage.PkgAgencyCommission.ToString();
+
+            prodNameComboBox.SelectedValue = OldProductsSupplier.ProductId;
+            supNameComboBox.SelectedValue = OldProductsSupplier.SupplierId;
+
+        }
+
+        private void pkgAgencyCommissionTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            // e.KeyChar is the character pressed
+            // e.Handled - boolean flag that says "I am done"
+            if (!char.IsDigit(e.KeyChar) &&
+                !char.IsControl(e.KeyChar) &&
+                e.KeyChar != '.') {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1)) {
+                e.Handled = true;
+            }
+        }
+
+        private void pkgBasePriceTextBox_KeyPress(object sender, KeyPressEventArgs e) {
+            pkgAgencyCommissionTextBox_KeyPress(sender, e);
+        }
     }
 }
