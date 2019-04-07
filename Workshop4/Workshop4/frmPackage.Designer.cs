@@ -51,6 +51,8 @@
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.packageBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.packageBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
             pkgAgencyCommissionLabel = new System.Windows.Forms.Label();
             pkgBasePriceLabel = new System.Windows.Forms.Label();
             pkgDescLabel = new System.Windows.Forms.Label();
@@ -254,7 +256,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.productSupplierViewModelDataGridView.DataSource = this.productSupplierViewModelBindingSource;
-            this.productSupplierViewModelDataGridView.Location = new System.Drawing.Point(528, 186);
+            this.productSupplierViewModelDataGridView.Location = new System.Drawing.Point(527, 223);
             this.productSupplierViewModelDataGridView.Name = "productSupplierViewModelDataGridView";
             this.productSupplierViewModelDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.productSupplierViewModelDataGridView.Size = new System.Drawing.Size(400, 146);
@@ -322,6 +324,35 @@
             // 
             this.packageBindingSource2.DataSource = typeof(ClassEntites.Package);
             // 
+            // btnNext
+            // 
+            this.btnNext.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnNext.FlatAppearance.BorderSize = 0;
+            this.btnNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Location = new System.Drawing.Point(761, 131);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 1;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnPrev.Enabled = false;
+            this.btnPrev.FlatAppearance.BorderSize = 0;
+            this.btnPrev.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.btnPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrev.Location = new System.Drawing.Point(621, 131);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(75, 23);
+            this.btnPrev.TabIndex = 39;
+            this.btnPrev.Text = "Previous";
+            this.btnPrev.UseVisualStyleBackColor = false;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
             // frmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,6 +360,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(989, 684);
+            this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.productSupplierViewModelDataGridView);
             this.Controls.Add(pkgNameLabel);
@@ -387,5 +420,7 @@
         private System.Windows.Forms.BindingSource packageBindingSource2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrev;
     }
 }

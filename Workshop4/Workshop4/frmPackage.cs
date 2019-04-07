@@ -47,6 +47,27 @@ namespace Workshop4 {
                 // Get Selected Package ID
                 int pkgId = (int)pkgNameComboBox.SelectedValue;
 
+                // Check if the first item in combo box is selected
+                Package firstPkg = (Package)pkgNameComboBox.Items[0];
+                int firstPkgId = firstPkg.PackageId;
+                if (firstPkgId == pkgId) {
+                    btnPrev.Enabled = false;
+                } else {
+                    btnPrev.Enabled = true;
+                }
+
+                // Check if the last item in combo box is selected
+                int lastIndex = pkgNameComboBox.Items.Count - 1;
+                Package lastPkg = (Package)pkgNameComboBox.Items[lastIndex];
+                int lastPkgId = lastPkg.PackageId;
+                if (lastPkgId == pkgId) {
+                    btnNext.Enabled = false;
+                } else {
+                    btnNext.Enabled = true;
+                }
+
+
+
                 // Get Selected Package Object from a list of all packages
                 Package pkgObj = packageList.SingleOrDefault(p => p.PackageId == pkgId);
 
@@ -270,6 +291,37 @@ namespace Workshop4 {
                 }
             } catch (Exception ex) {
                 MessageBox.Show("Error: " + ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e) {
+            // Get the last index so that next doesn't go out of bound
+            int lastIndex = pkgNameComboBox.Items.Count - 1;
+            int currentIndex = pkgNameComboBox.SelectedIndex;
+            if (currentIndex + 1 == lastIndex) {
+                btnNext.Enabled = false;
+                currentIndex++;
+                pkgNameComboBox.SelectedIndex = currentIndex;
+            } else if (currentIndex < lastIndex) {
+                btnPrev.Enabled = true;
+                btnNext.Enabled = true;
+                currentIndex++;
+                pkgNameComboBox.SelectedIndex = currentIndex;
+            }
+
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e) {
+            int currentIndex = pkgNameComboBox.SelectedIndex;
+            if (currentIndex - 1 == 0) {
+                btnPrev.Enabled = false;
+                currentIndex--;
+                pkgNameComboBox.SelectedIndex = currentIndex;
+            } else if (currentIndex > 0) {
+                btnPrev.Enabled = true;
+                btnNext.Enabled = true;
+                currentIndex--;
+                pkgNameComboBox.SelectedIndex = currentIndex;
             }
         }
     }
