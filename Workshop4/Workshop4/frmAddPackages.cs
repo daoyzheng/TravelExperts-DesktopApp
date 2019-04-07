@@ -154,13 +154,23 @@ namespace Workshop4 {
                             supNameComboBox.Text + " \nalready exists", "Record Exists");
                         DialogResult = DialogResult.None;
                     } else {
-                        PackagesProductsSuppliers pps = new PackagesProductsSuppliers();
-                        pps.PackageId = Package.PackageId;
-                        pps.ProductSupplierId = productsSupplier.ProductSupplierId;
-                        // Insert into database
-                        PackagesProductsSuppliersDB.AddPackagesProductsSuppliers(pps);
-                        pkgProdSupp = pps;
-                        DialogResult = DialogResult.OK;
+                        // Verify against database
+                        PackagesProductsSuppliers pkgPS = PackagesProductsSuppliersDB.GetPackagesProductsSuppliersByPkgIdAndProductSupplierId(Package.PackageId,productsSupplier.ProductSupplierId);
+                        if (pkgPS == null) {
+                            PackagesProductsSuppliers pps = new PackagesProductsSuppliers();
+                            pps.PackageId = Package.PackageId;
+                            pps.ProductSupplierId = productsSupplier.ProductSupplierId;
+                            // Insert into database
+                            PackagesProductsSuppliersDB.AddPackagesProductsSuppliers(pps);
+                            pkgProdSupp = pps;
+                            DialogResult = DialogResult.OK;
+                        } else {
+                            MessageBox.Show("Package:  " + Package.PkgName + " with \n" +
+                                "Product Name:  " + prodNameComboBox.Text + "\nSupplier Name:  " +
+                                supNameComboBox.Text + " \nalready exists", "Record Exists");
+                            pkgProdSupp = pkgPS;
+                            DialogResult = DialogResult.OK;
+                        }
                     }
                 } else {
                     DialogResult = DialogResult.None;
