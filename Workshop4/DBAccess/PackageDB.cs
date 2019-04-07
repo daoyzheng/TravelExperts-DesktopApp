@@ -84,6 +84,68 @@ namespace DBAccess
 
         }// end of GetPackage
 
+        public static Package GetPackageByName(string pkgName) {
+            Package package = null;
+
+            SqlConnection connection = TravelExpertsDB.GetConnection();// create the connection
+
+            // create a  command string
+            string selectQuery = "SELECT PackageId, PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission " +
+                "FROM Packages " +
+                "WHERE PkgName = @pkgName";
+
+            // connect to the database and execute the command
+            SqlCommand cmd = new SqlCommand(selectQuery, connection);
+
+            cmd.Parameters.AddWithValue("@pkgName", pkgName);
+
+            try
+            {
+                connection.Open();// open connection
+                //read one row from database with the specific value
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read()) // we have a package
+                {
+                    //create the Package array
+                    package = new Package();
+                    package.PackageId = (int)reader["PackageId"];
+                    package.PkgName = reader["PkgName"].ToString();
+                    if (reader["PkgStartDate"] is DBNull)
+                        package.PkgStartDate = null;
+                    else
+                        package.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]);
+
+                    if (reader["PkgEndDate"] is DBNull)
+                        package.PkgEndDate = null;
+                    else
+                        package.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]);
+
+                    if (reader["PkgDesc"] is DBNull)
+                        package.PkgDesc = null;
+                    else
+                        package.PkgDesc = reader["PkgDesc"].ToString();
+
+                    package.PkgBasePrice = (decimal)reader["PkgBasePrice"];
+
+                    if (reader["PkgAgencyCommission"] is DBNull)
+                        package.PkgAgencyCommission = null;
+                    else
+                        package.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
+
+                }// end of while
+            }// end of try
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();//close connection
+            }
+            return package;
+
+        }
+
         public static Package GetPackage(int packageId)
         {
 

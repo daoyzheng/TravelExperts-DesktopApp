@@ -52,63 +52,72 @@ namespace Workshop4 {
                 bool ValidPrice = true;
                 bool DateValid = true;
                 var pkg = packages.SingleOrDefault(p => p.PkgName.ToLower() == pkgName.ToLower());
+                
                 if (pkg != null) {
                     Package = pkg;
                     PkgInserted = false;
                 } else {
-                    Package newPkg = new Package();
-                    if (Validator.IsPresent(pkgBasePriceTextBox)) {
-                        basePrice = Convert.ToDecimal(pkgBasePriceTextBox.Text);
-                        newPkg.PkgBasePrice = basePrice;
+                    // Verify against database
+                    Package pkgExist = PackageDB.GetPackageByName(pkgName);
 
-                        newPkg.PkgName = pkgName;
+                    if (pkgExist == null) {
+                        Package newPkg = new Package();
+                        if (Validator.IsPresent(pkgBasePriceTextBox)) {
+                            basePrice = Convert.ToDecimal(pkgBasePriceTextBox.Text);
+                            newPkg.PkgBasePrice = basePrice;
 
-                        if (string.IsNullOrWhiteSpace(pkgAgencyCommissionTextBox.Text)) {
-                            newPkg.PkgAgencyCommission = null;
-                        } else {
-                            newPkg.PkgAgencyCommission = Convert.ToDecimal(pkgAgencyCommissionTextBox.Text);
-                        }
+                            newPkg.PkgName = pkgName;
 
-                        if (string.IsNullOrWhiteSpace(pkgDescTextBox.Text)) {
-                            newPkg.PkgDesc = null;
-                        } else {
-                            newPkg.PkgDesc = pkgDescTextBox.Text;
-                        }
+                            if (string.IsNullOrWhiteSpace(pkgAgencyCommissionTextBox.Text)) {
+                                newPkg.PkgAgencyCommission = null;
+                            } else {
+                                newPkg.PkgAgencyCommission = Convert.ToDecimal(pkgAgencyCommissionTextBox.Text);
+                            }
 
-                        if (pkgStartDateDateTimePicker.Checked == false &&
-                            pkgEndDateDateTimePicker.Checked == false) {
-                            newPkg.PkgStartDate = null;
-                            newPkg.PkgEndDate = null;
-                        } else if (pkgStartDateDateTimePicker.Checked == true &&
-                            pkgEndDateDateTimePicker.Checked == false) {
-                            // Package End Date has not been provided yet
-                            newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value.Date;
-                            newPkg.PkgEndDate = null;
-                        } else if (pkgStartDateDateTimePicker.Checked == false &&
-                            pkgEndDateDateTimePicker.Checked == true) {
-                            MessageBox.Show("Must Provide a Valid Start Date");
-                            DateValid = false;
-                            DialogResult = DialogResult.None;
-                        } else {
-                            if (DateTime.Compare(pkgStartDateDateTimePicker.Value, pkgEndDateDateTimePicker.Value) >= 0) {
-                                MessageBox.Show("Start Date must be earlier than End Date");
+                            if (string.IsNullOrWhiteSpace(pkgDescTextBox.Text)) {
+                                newPkg.PkgDesc = null;
+                            } else {
+                                newPkg.PkgDesc = pkgDescTextBox.Text;
+                            }
+
+                            if (pkgStartDateDateTimePicker.Checked == false &&
+                                pkgEndDateDateTimePicker.Checked == false) {
+                                newPkg.PkgStartDate = null;
+                                newPkg.PkgEndDate = null;
+                            } else if (pkgStartDateDateTimePicker.Checked == true &&
+                                pkgEndDateDateTimePicker.Checked == false) {
+                                // Package End Date has not been provided yet
+                                newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value.Date;
+                                newPkg.PkgEndDate = null;
+                            } else if (pkgStartDateDateTimePicker.Checked == false &&
+                                pkgEndDateDateTimePicker.Checked == true) {
+                                MessageBox.Show("Must Provide a Valid Start Date");
                                 DateValid = false;
                                 DialogResult = DialogResult.None;
                             } else {
-                                newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value.Date;
-                                newPkg.PkgEndDate = pkgEndDateDateTimePicker.Value.Date;
+                                if (DateTime.Compare(pkgStartDateDateTimePicker.Value, pkgEndDateDateTimePicker.Value) >= 0) {
+                                    MessageBox.Show("Start Date must be earlier than End Date");
+                                    DateValid = false;
+                                    DialogResult = DialogResult.None;
+                                } else {
+                                    newPkg.PkgStartDate = pkgStartDateDateTimePicker.Value.Date;
+                                    newPkg.PkgEndDate = pkgEndDateDateTimePicker.Value.Date;
+                                }
                             }
+                            if (DateValid) {
+                                // Add package to database
+                                int pkgId = PackageDB.AddPackage(newPkg);
+                                newPkg.PackageId = pkgId;
+                                Package = newPkg;
+                                PkgInserted = true;
+                            }
+                        } else {
+                            ValidPrice = false;
+                            DialogResult = DialogResult.None;
                         }
-                        if (DateValid) {
-                            // Add package to database
-                            int pkgId = PackageDB.AddPackage(newPkg);
-                            newPkg.PackageId = pkgId;
-                            Package = newPkg;
-                            PkgInserted = true;
-                        }
-                    } else {
-                        ValidPrice = false;
-                        DialogResult = DialogResult.None;
+                    } else { // Package with pkgName exists in database
+                        Package = pkgExist;
+                        PkgInserted = true;
                     }
                 }        
                 if (ValidPrice && DateValid) {
@@ -194,12 +203,21 @@ namespace Workshop4 {
                 pkgEndDateDateTimePicker.Enabled = false;
                 pkgAgencyCommissionTextBox.ReadOnly = true;
             } else {
-                pkgBasePriceTextBox.ReadOnly = false;
-                pkgDescTextBox.ReadOnly = false;
-                pkgStartDateDateTimePicker.Enabled = true;
-                pkgEndDateDateTimePicker.Enabled = true;
-                pkgAgencyCommissionTextBox.ReadOnly = false;
-
+                // Verify against database
+                Package pkgExist = PackageDB.GetPackageByName(tb.Text);
+                if (pkgExist == null) {
+                    pkgBasePriceTextBox.ReadOnly = false;
+                    pkgDescTextBox.ReadOnly = false;
+                    pkgStartDateDateTimePicker.Enabled = true;
+                    pkgEndDateDateTimePicker.Enabled = true;
+                    pkgAgencyCommissionTextBox.ReadOnly = false;
+                } else {
+                    pkgBasePriceTextBox.ReadOnly = true;
+                    pkgDescTextBox.ReadOnly = true;
+                    pkgStartDateDateTimePicker.Enabled = false;
+                    pkgEndDateDateTimePicker.Enabled = false;
+                    pkgAgencyCommissionTextBox.ReadOnly = true;
+                }
             }
         }
 
