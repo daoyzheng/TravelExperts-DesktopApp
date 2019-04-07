@@ -247,7 +247,7 @@ namespace Workshop4 {
             supplierButton.BackColor = Color.LightSkyBlue;
         }
 
-        private void btnSignIn_Click(object sender, EventArgs e) {
+        public void btnSignIn_Click(object sender, EventArgs e) {
             frmLogin loginForm = new frmLogin();
             DialogResult result = loginForm.ShowDialog();
             if (result == DialogResult.OK) {
@@ -263,6 +263,9 @@ namespace Workshop4 {
 
                 // Assign to global agent logged in variable
                 loggedInAgt = loginForm.loggedInAgt;
+                pkgForm.loggedInAgt = loggedInAgt;
+                prodsForm.loggedInAgt = loggedInAgt;
+                suppsForm.loggedInAgt = loggedInAgt;
 
                 // Set welcome message for agent
                 string agtName = $"{loggedInAgt.AgtFirstName} {loggedInAgt.AgtLastName}";
@@ -300,24 +303,26 @@ namespace Workshop4 {
             // Reset Global loggedInAgt object
             loggedInAgt = null;
 
-            // Redirect to package page for now
-            pkgForm.Show();
-            pkgForm.MdiParent = this;
+            // Redirect to home page 
+            homeForm.Show();
+            homeForm.MdiParent = this;
             // Set active bar
-            pnlHomeBar.Visible = false;
+            pnlHomeBar.Visible = true;
             pnlAgtBar.Visible = false;
-            pnlPackBar.Visible = true;
+            pnlPackBar.Visible = false;
             pnlProdBar.Visible = false;
             pnlSuppBar.Visible = false;
 
             // Set the active font color
-            homeButton.ForeColor = Color.Black;
+            homeButton.ForeColor = Color.DodgerBlue;
             agentButton.ForeColor = Color.Black;
-            packageButton.ForeColor = Color.DodgerBlue;
+            packageButton.ForeColor = Color.Black;
             productButton.ForeColor = Color.Black;
             supplierButton.ForeColor = Color.Black;
-            
+
             // Reset all other forms
+            homeFormOpened = true;
+            pkgFormOpened = false;
             prodsFormOpened = false;
             suppsFormOpened = false;
             agtFormOpened = false;
@@ -327,6 +332,11 @@ namespace Workshop4 {
 
         private void MainForm_Load(object sender, EventArgs e) {
             this.SetBevel(false);
+
+            // Pass reference to child forms
+            pkgForm.mainForm = this;
+            prodsForm.mainForm = this;
+            suppsForm.mainForm = this;
 
             // Set active bar
             pnlHomeBar.Visible = true;

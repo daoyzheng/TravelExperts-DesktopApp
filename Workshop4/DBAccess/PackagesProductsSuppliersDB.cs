@@ -53,6 +53,44 @@ namespace DBAccess
             return packagesProductsSuppliers; //returning List
         }//List of PPS end
 
+        public static PackagesProductsSuppliers GetPackagesProductsSuppliersByPkgIdAndProductSupplierId(int pkgId, int prodSuppId) {
+            PackagesProductsSuppliers pps = null;
+            SqlConnection connection = TravelExpertsDB.GetConnection(); //Connecting to TRavel Experts Database
+
+            string select = "Select * FROM Packages_Products_Suppliers " + //selecting PackageId and Product Supplier ID
+                            "WHERE PackageId = @pkgId " +
+                            "AND ProductSupplierId = @prodSuppId";
+
+            SqlCommand sqlCommand = new SqlCommand(select, connection);
+
+            sqlCommand.Parameters.AddWithValue("@pkgId", pkgId);
+            sqlCommand.Parameters.AddWithValue("@prodSuppId", prodSuppId);
+
+            try 
+	        {	        
+		        connection.Open();//opening connection 
+
+                SqlDataReader read = sqlCommand.ExecuteReader();
+
+                if (read.Read())
+                {
+                    pps = new PackagesProductsSuppliers();
+                    pps.PackageId = (int)read["PackageId"];
+                    pps.ProductSupplierId = (int)read["ProductSupplierId"];
+                }
+	        }
+	        catch (Exception ex)//catching all exeptions
+	        {
+
+		        throw ex;
+	        }
+            finally
+            {
+                connection.Close();//closing connection
+            }
+            return pps; //returning List
+        }
+
         // Add to Database
         public static void AddPackagesProductsSuppliers(PackagesProductsSuppliers packagesProductsSuppliers) {
             string insertStatement = "INSERT INTO Packages_Products_Suppliers (PackageId, ProductSupplierId) " +
