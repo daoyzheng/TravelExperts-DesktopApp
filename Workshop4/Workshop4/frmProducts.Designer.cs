@@ -134,6 +134,7 @@
             // 
             this.cmbProducts.BackColor = System.Drawing.Color.White;
             this.cmbProducts.DropDownHeight = 310;
+            this.cmbProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProducts.FormattingEnabled = true;
             this.cmbProducts.IntegralHeight = false;
