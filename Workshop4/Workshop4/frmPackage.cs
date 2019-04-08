@@ -151,7 +151,14 @@ namespace Workshop4 {
             if (loggedInAgt == null) {
                 mainForm.btnSignIn_Click(null,null);
             } else {
+                // Get Selected Package Id
+                int pkgId = (int)pkgNameComboBox.SelectedValue;
+
+                // Get Selected Package Object
+                var selectedPkg = packageList.SingleOrDefault(p => p.PackageId == pkgId);
+
                 frmAddPackages frmAddPackages = new frmAddPackages();
+                frmAddPackages.SelectedPkg = selectedPkg;
                 frmAddPackages.products = productsList;
                 frmAddPackages.suppliers = suppliersList;
                 frmAddPackages.packages = packageList;

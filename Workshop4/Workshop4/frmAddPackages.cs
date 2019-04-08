@@ -15,6 +15,7 @@ namespace Workshop4 {
         public bool PkgInserted { get; set; }
         public bool ProdSuppInserted { get; set; }
 
+        public Package SelectedPkg { get; set; }
         public ProductsSupplier productsSupplier { get; set; }
         public Package Package { get; set; }
         public PackagesProductsSuppliers pkgProdSupp { get; set; }
@@ -37,6 +38,8 @@ namespace Workshop4 {
             supNameComboBox.DisplayMember = "SupName";
             supNameComboBox.ValueMember = "SupplierId";
             supNameComboBox.DataSource = suppliers.OrderBy(s => s.SupName).ToList();
+
+            pkgNameTextBox.Text = SelectedPkg.PkgName;
         }
 
         private void btnAdd_Click(object sender, EventArgs e) {
