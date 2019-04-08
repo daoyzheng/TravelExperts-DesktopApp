@@ -171,8 +171,8 @@ namespace Workshop4 {
                     // Reload Combo box
                     refreshComboBox();
 
-                    // Select the Last index
-                    int index = packageList.Count() - 1;
+                    // Select the current package index
+                    int index = packageList.IndexOf(frmAddPackages.Package);
                     pkgNameComboBox.SelectedIndex = index;
                 }
             }
