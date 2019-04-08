@@ -8,6 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DBAccess {
+    /*
+    * Term 2 Threaded Project 
+    * Author : Dao
+    * Date : March 19,2019
+    * Course Name : Threaded Project for OOSD
+    * Module : PROJ-207-OOSD
+    * Purpose :
+    */
     public static class AgentDB {
         // Get Agent details by Agent First Name and Last Name
         public static List<Agent> GetAllAgents () {
