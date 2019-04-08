@@ -149,7 +149,7 @@
             this.btnReset.Location = new System.Drawing.Point(123, 526);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(72, 26);
-            this.btnReset.TabIndex = 35;
+            this.btnReset.TabIndex = 10;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -164,7 +164,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(411, 526);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(72, 26);
-            this.btnUpdate.TabIndex = 34;
+            this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -176,7 +176,7 @@
             this.supNameComboBox.Location = new System.Drawing.Point(246, 138);
             this.supNameComboBox.Name = "supNameComboBox";
             this.supNameComboBox.Size = new System.Drawing.Size(237, 26);
-            this.supNameComboBox.TabIndex = 33;
+            this.supNameComboBox.TabIndex = 3;
             // 
             // prodNameComboBox
             // 
@@ -185,7 +185,7 @@
             this.prodNameComboBox.Location = new System.Drawing.Point(246, 96);
             this.prodNameComboBox.Name = "prodNameComboBox";
             this.prodNameComboBox.Size = new System.Drawing.Size(237, 26);
-            this.prodNameComboBox.TabIndex = 31;
+            this.prodNameComboBox.TabIndex = 2;
             // 
             // pkgAgencyCommissionTextBox
             // 
@@ -193,7 +193,7 @@
             this.pkgAgencyCommissionTextBox.Location = new System.Drawing.Point(246, 315);
             this.pkgAgencyCommissionTextBox.Name = "pkgAgencyCommissionTextBox";
             this.pkgAgencyCommissionTextBox.Size = new System.Drawing.Size(237, 24);
-            this.pkgAgencyCommissionTextBox.TabIndex = 19;
+            this.pkgAgencyCommissionTextBox.TabIndex = 7;
             this.pkgAgencyCommissionTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pkgAgencyCommissionTextBox_KeyPress);
             // 
             // pkgBasePriceTextBox
@@ -202,7 +202,7 @@
             this.pkgBasePriceTextBox.Location = new System.Drawing.Point(246, 271);
             this.pkgBasePriceTextBox.Name = "pkgBasePriceTextBox";
             this.pkgBasePriceTextBox.Size = new System.Drawing.Size(237, 24);
-            this.pkgBasePriceTextBox.TabIndex = 21;
+            this.pkgBasePriceTextBox.TabIndex = 6;
             this.pkgBasePriceTextBox.Tag = "Package Base Price";
             this.pkgBasePriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pkgBasePriceTextBox_KeyPress);
             // 
@@ -213,7 +213,7 @@
             this.pkgDescTextBox.Multiline = true;
             this.pkgDescTextBox.Name = "pkgDescTextBox";
             this.pkgDescTextBox.Size = new System.Drawing.Size(237, 118);
-            this.pkgDescTextBox.TabIndex = 23;
+            this.pkgDescTextBox.TabIndex = 8;
             // 
             // pkgEndDateDateTimePicker
             // 
@@ -223,7 +223,7 @@
             this.pkgEndDateDateTimePicker.Name = "pkgEndDateDateTimePicker";
             this.pkgEndDateDateTimePicker.ShowCheckBox = true;
             this.pkgEndDateDateTimePicker.Size = new System.Drawing.Size(237, 26);
-            this.pkgEndDateDateTimePicker.TabIndex = 25;
+            this.pkgEndDateDateTimePicker.TabIndex = 5;
             this.pkgEndDateDateTimePicker.ValueChanged += new System.EventHandler(this.pkgEndDateDateTimePicker_ValueChanged);
             // 
             // pkgNameTextBox
@@ -232,7 +232,7 @@
             this.pkgNameTextBox.Location = new System.Drawing.Point(246, 56);
             this.pkgNameTextBox.Name = "pkgNameTextBox";
             this.pkgNameTextBox.Size = new System.Drawing.Size(237, 24);
-            this.pkgNameTextBox.TabIndex = 27;
+            this.pkgNameTextBox.TabIndex = 1;
             this.pkgNameTextBox.Tag = "Package Name";
             // 
             // pkgStartDateDateTimePicker
@@ -243,7 +243,7 @@
             this.pkgStartDateDateTimePicker.Name = "pkgStartDateDateTimePicker";
             this.pkgStartDateDateTimePicker.ShowCheckBox = true;
             this.pkgStartDateDateTimePicker.Size = new System.Drawing.Size(237, 26);
-            this.pkgStartDateDateTimePicker.TabIndex = 29;
+            this.pkgStartDateDateTimePicker.TabIndex = 4;
             this.pkgStartDateDateTimePicker.ValueChanged += new System.EventHandler(this.pkgStartDateDateTimePicker_ValueChanged);
             // 
             // frmUpdatePackages

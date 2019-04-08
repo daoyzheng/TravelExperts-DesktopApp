@@ -157,7 +157,7 @@
             this.pkgAgencyCommissionTextBox.Location = new System.Drawing.Point(246, 315);
             this.pkgAgencyCommissionTextBox.Name = "pkgAgencyCommissionTextBox";
             this.pkgAgencyCommissionTextBox.Size = new System.Drawing.Size(237, 24);
-            this.pkgAgencyCommissionTextBox.TabIndex = 1;
+            this.pkgAgencyCommissionTextBox.TabIndex = 7;
             this.pkgAgencyCommissionTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pkgAgencyCommissionTextBox_KeyPress);
             // 
             // pkgBasePriceTextBox
@@ -167,7 +167,7 @@
             this.pkgBasePriceTextBox.Location = new System.Drawing.Point(246, 272);
             this.pkgBasePriceTextBox.Name = "pkgBasePriceTextBox";
             this.pkgBasePriceTextBox.Size = new System.Drawing.Size(237, 24);
-            this.pkgBasePriceTextBox.TabIndex = 3;
+            this.pkgBasePriceTextBox.TabIndex = 6;
             this.pkgBasePriceTextBox.Tag = "Package Base Price";
             this.pkgBasePriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pkgBasePriceTextBox_KeyPress);
             // 
@@ -179,7 +179,7 @@
             this.pkgDescTextBox.Multiline = true;
             this.pkgDescTextBox.Name = "pkgDescTextBox";
             this.pkgDescTextBox.Size = new System.Drawing.Size(237, 102);
-            this.pkgDescTextBox.TabIndex = 5;
+            this.pkgDescTextBox.TabIndex = 8;
             // 
             // pkgEndDateDateTimePicker
             // 
@@ -190,7 +190,7 @@
             this.pkgEndDateDateTimePicker.Name = "pkgEndDateDateTimePicker";
             this.pkgEndDateDateTimePicker.ShowCheckBox = true;
             this.pkgEndDateDateTimePicker.Size = new System.Drawing.Size(237, 26);
-            this.pkgEndDateDateTimePicker.TabIndex = 7;
+            this.pkgEndDateDateTimePicker.TabIndex = 5;
             // 
             // pkgNameTextBox
             // 
@@ -199,7 +199,7 @@
             this.pkgNameTextBox.Location = new System.Drawing.Point(246, 56);
             this.pkgNameTextBox.Name = "pkgNameTextBox";
             this.pkgNameTextBox.Size = new System.Drawing.Size(237, 26);
-            this.pkgNameTextBox.TabIndex = 9;
+            this.pkgNameTextBox.TabIndex = 1;
             this.pkgNameTextBox.Tag = "Package Name";
             this.pkgNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.pkgNameTextBox_Validating);
             // 
@@ -212,7 +212,7 @@
             this.pkgStartDateDateTimePicker.Name = "pkgStartDateDateTimePicker";
             this.pkgStartDateDateTimePicker.ShowCheckBox = true;
             this.pkgStartDateDateTimePicker.Size = new System.Drawing.Size(237, 26);
-            this.pkgStartDateDateTimePicker.TabIndex = 11;
+            this.pkgStartDateDateTimePicker.TabIndex = 4;
             // 
             // productBindingSource
             // 
@@ -226,7 +226,7 @@
             this.prodNameComboBox.Location = new System.Drawing.Point(246, 99);
             this.prodNameComboBox.Name = "prodNameComboBox";
             this.prodNameComboBox.Size = new System.Drawing.Size(237, 26);
-            this.prodNameComboBox.TabIndex = 13;
+            this.prodNameComboBox.TabIndex = 2;
             // 
             // supplierBindingSource
             // 
@@ -240,7 +240,7 @@
             this.supNameComboBox.Location = new System.Drawing.Point(246, 141);
             this.supNameComboBox.Name = "supNameComboBox";
             this.supNameComboBox.Size = new System.Drawing.Size(237, 26);
-            this.supNameComboBox.TabIndex = 15;
+            this.supNameComboBox.TabIndex = 3;
             // 
             // btnAdd
             // 
@@ -252,7 +252,7 @@
             this.btnAdd.Location = new System.Drawing.Point(411, 530);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(72, 26);
-            this.btnAdd.TabIndex = 16;
+            this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -267,7 +267,7 @@
             this.btnClear.Location = new System.Drawing.Point(123, 530);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(72, 26);
-            this.btnClear.TabIndex = 17;
+            this.btnClear.TabIndex = 10;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
