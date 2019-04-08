@@ -72,52 +72,56 @@ namespace Workshop4 {
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // declare suppliers List variable and instantiate new List<Supplier> object
-            List<Supplier> suppliers = new List<Supplier>();
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null, null);
+            } else {
+                // declare suppliers List variable and instantiate new List<Supplier> object
+                List<Supplier> suppliers = new List<Supplier>();
 
-            // assign suppliers to return of GetSuppliers method call
-            suppliers = SupplierDB.GetSuppliers();
+                // assign suppliers to return of GetSuppliers method call
+                suppliers = SupplierDB.GetSuppliers();
 
-            // validate input
-            if (Validator.IsPresent(txtSupplierName))
-            {
-                if ((txtSupplierName.Text.Length > 255))
+                // validate input
+                if (Validator.IsPresent(txtSupplierName))
                 {
-                    MessageBox.Show("The Supplier Name is too long (>255). Please adjust.");
-                    return;
-                }
-                // text boxes validated
-                // now check that the entered Supplier Name does not already exist in the database
-                foreach (Supplier supp in suppliers)
-                {
-                    if (txtSupplierName.Text != "" && supp.SupName == txtSupplierName.Text)
+                    if ((txtSupplierName.Text.Length > 255))
                     {
-                        MessageBox.Show("The Supplier Name already exists in the database");
+                        MessageBox.Show("The Supplier Name is too long (>255). Please adjust.");
                         return;
                     }
+                    // text boxes validated
+                    // now check that the entered Supplier Name does not already exist in the database
+                    foreach (Supplier supp in suppliers)
+                    {
+                        if (txtSupplierName.Text != "" && supp.SupName == txtSupplierName.Text)
+                        {
+                            MessageBox.Show("The Supplier Name already exists in the database");
+                            return;
+                        }
+                    }
+
+                    // business logic here is to determine the largest SupplierId in the database
+                    // and then assign this value + 1, to the new Supplier entry
+
+                    // Find largest SupplierID
+                    int maxId = SupplierDB.FindMaxSupplierId(suppliers);
+                    // Find the index the corresponds to largest ID
+
+
+                    // create Supplier object to be added
+                    Supplier supplier = new Supplier();
+
+                    supplier.SupplierId = ++maxId;
+                    supplier.SupName = txtSupplierName.Text;
+
+                    int newSupplierId = SupplierDB.AddSupplier(supplier);
+                    // assign suppliers to return of GetSuppliers method call
+                    List<Supplier> newList = SupplierDB.GetSuppliers();
+                    suppliers = newList.OrderBy(s => s.SupplierId).ToList();
+
+                    int numSuppliers = suppliers.Count();
+                    DisplaySuppliers(numSuppliers - 1);
                 }
-
-                // business logic here is to determine the largest SupplierId in the database
-                // and then assign this value + 1, to the new Supplier entry
-
-                // Find largest SupplierID
-                int maxId = SupplierDB.FindMaxSupplierId(suppliers);
-                // Find the index the corresponds to largest ID
-
-
-                // create Supplier object to be added
-                Supplier supplier = new Supplier();
-
-                supplier.SupplierId = ++maxId;
-                supplier.SupName = txtSupplierName.Text;
-
-                int newSupplierId = SupplierDB.AddSupplier(supplier);
-                // assign suppliers to return of GetSuppliers method call
-                List<Supplier> newList = SupplierDB.GetSuppliers();
-                suppliers = newList.OrderBy(s => s.SupplierId).ToList();
-
-                int numSuppliers = suppliers.Count();
-                DisplaySuppliers(numSuppliers - 1);
             }
         }
         public void DisplaySuppliers(int sIndex)
@@ -138,49 +142,57 @@ namespace Workshop4 {
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // create Supplier object to be deleted
-            Supplier supplier = new Supplier();
-            supplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
-            supplier.SupName = txtSupplierName.Text;
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null, null);
+            } else {
+                // create Supplier object to be deleted
+                Supplier supplier = new Supplier();
+                supplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
+                supplier.SupName = txtSupplierName.Text;
 
-            if (SupplierDB.IsInProductsSuppliers(supplier))
-            {
-                MessageBox.Show("This supplier is already being used in " +
-                    " the Products_Suppliers table and you may not delete it.");
-                return;
+                if (SupplierDB.IsInProductsSuppliers(supplier))
+                {
+                    MessageBox.Show("This supplier is already being used in " +
+                        " the Products_Suppliers table and you may not delete it.");
+                    return;
+                }
+
+
+                bool result = SupplierDB.DeleteSupplier(supplier);
+
+                DisplaySuppliers(cmbSuppliers.SelectedIndex - 1);
             }
-
-
-            bool result = SupplierDB.DeleteSupplier(supplier);
-
-            DisplaySuppliers(cmbSuppliers.SelectedIndex - 1);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Supplier supplier = new Supplier();
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null, null);
+            } else {
+                Supplier supplier = new Supplier();
 
-            // declare products List variable and instantiate new List<Supplier> object
-            List<Supplier> suppliers = new List<Supplier>();
-            suppliers = SupplierDB.GetSuppliers();
-            supplier = suppliers[cmbSuppliers.SelectedIndex];
+                // declare products List variable and instantiate new List<Supplier> object
+                List<Supplier> suppliers = new List<Supplier>();
+                suppliers = SupplierDB.GetSuppliers();
+                supplier = suppliers[cmbSuppliers.SelectedIndex];
 
-            // check if product to be updated already exists in Products_Suppliers
-            // table and if so, the user may not update it.
+                // check if product to be updated already exists in Products_Suppliers
+                // table and if so, the user may not update it.
 
-            if (SupplierDB.IsInProductsSuppliers(supplier))
-            {
-                MessageBox.Show("This supplier is already being used in " +
-                    " the Products_Suppliers table and you may not update it.");
-                return;
+                if (SupplierDB.IsInProductsSuppliers(supplier))
+                {
+                    MessageBox.Show("This supplier is already being used in " +
+                        " the Products_Suppliers table and you may not update it.");
+                    return;
+                }
+
+                Supplier newSupplier = new Supplier();
+                newSupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
+                newSupplier.SupName = txtSupplierName.Text;
+
+                bool result = SupplierDB.UpdateSupplier(supplier, newSupplier);
+                DisplaySuppliers(cmbSuppliers.SelectedIndex);
             }
-
-            Supplier newSupplier = new Supplier();
-            newSupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
-            newSupplier.SupName = txtSupplierName.Text;
-
-            bool result = SupplierDB.UpdateSupplier(supplier, newSupplier);
-            DisplaySuppliers(cmbSuppliers.SelectedIndex);
         }
     }
 }

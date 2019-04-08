@@ -32,11 +32,11 @@ namespace Workshop4 {
             // Load combo boxes
             prodNameComboBox.DisplayMember = "ProdName";
             prodNameComboBox.ValueMember = "ProductId";
-            prodNameComboBox.DataSource = products;
+            prodNameComboBox.DataSource = products.OrderBy(p => p.ProdName).ToList();
 
             supNameComboBox.DisplayMember = "SupName";
             supNameComboBox.ValueMember = "SupplierId";
-            supNameComboBox.DataSource = suppliers;
+            supNameComboBox.DataSource = suppliers.OrderBy(s => s.SupName).ToList();
         }
 
         private void btnAdd_Click(object sender, EventArgs e) {

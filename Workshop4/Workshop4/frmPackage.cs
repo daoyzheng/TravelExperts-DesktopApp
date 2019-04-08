@@ -66,8 +66,6 @@ namespace Workshop4 {
                     btnNext.Enabled = true;
                 }
 
-
-
                 // Get Selected Package Object from a list of all packages
                 Package pkgObj = packageList.SingleOrDefault(p => p.PackageId == pkgId);
 
@@ -78,7 +76,7 @@ namespace Workshop4 {
                 var pkgProductSupplier = pkgProdSuppList.Where(pps => pps.PackageId == pkgId).ToList();
 
                 // Join the product supplier table to products table and supplier table
-                var productSupplierTable = from pps in pkgProductSupplier
+                var productSupplierViewModels = (from pps in pkgProductSupplier
                                 join ps in prodSuppList
                                 on pps.ProductSupplierId equals ps.ProductSupplierId
                                 join p in productsList
@@ -89,12 +87,31 @@ namespace Workshop4 {
                                     ProductSupplierId = ps.ProductSupplierId,
                                     ProdName = p.ProdName,
                                     SuppName = s.SupName
-                                };
-
-                var productSupplierViewModel = productSupplierTable.ToList();
+                                }).ToList();
 
                 // Bind List to data grid
-                productSupplierViewModelDataGridView.DataSource = productSupplierViewModel;
+                productSupplierViewModelDataGridView.DataSource = null;
+                productSupplierViewModelDataGridView.DataSource = productSupplierViewModels;
+
+                // Populate products combo box related to current package
+                var productTable = from pps in pkgProductSupplier
+                                   join ps in prodSuppList
+                                   on pps.ProductSupplierId equals ps.ProductSupplierId
+                                   join p in productsList
+                                   on ps.ProductId equals p.ProductId
+                                   select new Product {
+                                       ProductId = (int)ps.ProductId,
+                                       ProdName = p.ProdName
+                                   };
+                // remove duplicate
+                var prodList = productTable.GroupBy(p => p.ProductId).Select(p => p.First()).ToList();
+                prodList.Insert(0, new Product {
+                    ProductId = -1,
+                    ProdName = "--All--"
+                });
+                prodNameComboBox.DisplayMember = "ProdName";
+                prodNameComboBox.ValueMember = "ProductId";
+                prodNameComboBox.DataSource = prodList;
             }
         }
 
@@ -322,6 +339,141 @@ namespace Workshop4 {
                 btnNext.Enabled = true;
                 currentIndex--;
                 pkgNameComboBox.SelectedIndex = currentIndex;
+            }
+        }
+
+        private void prodNameComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            productSupplierViewModelDataGridView.DataSource = null;
+            // Get Selected Package ID
+            int pkgId = (int)pkgNameComboBox.SelectedValue;
+
+            // Get Selected product ID
+            int prodId = (int)prodNameComboBox.SelectedValue;
+
+            if (prodId == -1) {
+                supNameComboBox.Enabled = false;
+                supNameComboBox.Text = "--All--";
+                // Get associated product supplier
+                var pkgProductSupplier = pkgProdSuppList.Where(pps => pps.PackageId == pkgId).ToList();
+
+                // Join the product supplier table to products table and supplier table
+                var productSupplierViewModels = (from pps in pkgProductSupplier
+                                join ps in prodSuppList
+                                on pps.ProductSupplierId equals ps.ProductSupplierId
+                                join p in productsList
+                                on ps.ProductId equals p.ProductId
+                                join s in suppliersList
+                                on ps.SupplierId equals s.SupplierId
+                                select new ProductSupplierViewModel {
+                                    ProductSupplierId = ps.ProductSupplierId,
+                                    ProdName = p.ProdName,
+                                    SuppName = s.SupName
+                                }).ToList();
+
+                productSupplierViewModelDataGridView.DataSource = productSupplierViewModels;
+            } else {
+                // Get associated product supplier
+                var pkgProductSupplier = pkgProdSuppList.Where(pps => pps.PackageId == pkgId).ToList();
+
+                // Join the product supplier table to products table and supplier table
+                var productSupplierViewModels = (from pps in pkgProductSupplier
+                                join ps in prodSuppList
+                                on pps.ProductSupplierId equals ps.ProductSupplierId
+                                join p in productsList
+                                on ps.ProductId equals p.ProductId
+                                join s in suppliersList
+                                on ps.SupplierId equals s.SupplierId
+                                where p.ProductId == prodId
+                                select new ProductSupplierViewModel {
+                                    ProductSupplierId = ps.ProductSupplierId,
+                                    ProdName = p.ProdName,
+                                    SuppName = s.SupName
+                                }).ToList();
+
+                productSupplierViewModelDataGridView.DataSource = null;
+                productSupplierViewModelDataGridView.DataSource = productSupplierViewModels;
+
+                // Populate Suppliers combo box related to current package and product
+                var supplierTable =  from pps in pkgProductSupplier
+                                     join ps in prodSuppList
+                                     on pps.ProductSupplierId equals ps.ProductSupplierId
+                                     join p in productsList
+                                     on ps.ProductId equals p.ProductId
+                                     join s in suppliersList
+                                     on ps.SupplierId equals s.SupplierId
+                                     where p.ProductId == prodId
+                                     select new Supplier {
+                                         SupplierId = s.SupplierId,
+                                         SupName = s.SupName
+                                     };
+
+                var suppList = supplierTable.GroupBy(s => s.SupplierId).Select(s => s.First()).ToList();
+
+                suppList.Insert(0, new Supplier {
+                    SupplierId = -1,
+                    SupName = "--All--"
+                });
+                supNameComboBox.Enabled = true;
+                supNameComboBox.DisplayMember = "SupName";
+                supNameComboBox.ValueMember = "SupplierId";
+                supNameComboBox.DataSource = suppList;
+            }
+        }
+
+        private void supNameComboBox_SelectedIndexChanged(object sender, EventArgs e) {
+            // Get Selected Package ID
+            int pkgId = (int)pkgNameComboBox.SelectedValue;
+
+            // Get Selected product ID
+            int prodId = (int)prodNameComboBox.SelectedValue;
+
+            // Get Selected supplier ID
+            int suppId = (int)supNameComboBox.SelectedValue;
+
+            if (suppId == -1) {
+                // Get associated product supplier
+                var pkgProductSupplier = pkgProdSuppList.Where(pps => pps.PackageId == pkgId).ToList();
+
+                // Join the product supplier table to products table and supplier table
+                var productSupplierViewModels = (from pps in pkgProductSupplier
+                                join ps in prodSuppList
+                                on pps.ProductSupplierId equals ps.ProductSupplierId
+                                join p in productsList
+                                on ps.ProductId equals p.ProductId
+                                join s in suppliersList
+                                on ps.SupplierId equals s.SupplierId
+                                where p.ProductId == prodId
+                                select new ProductSupplierViewModel {
+                                    ProductSupplierId = ps.ProductSupplierId,
+                                    ProdName = p.ProdName,
+                                    SuppName = s.SupName
+                                }).ToList();
+
+                productSupplierViewModelDataGridView.DataSource = null;
+                productSupplierViewModelDataGridView.DataSource = productSupplierViewModels;
+
+            } else {
+                // Get associated product supplier
+                var pkgProductSupplier = pkgProdSuppList.Where(pps => pps.PackageId == pkgId).ToList();
+
+                // Join the product supplier table to products table and supplier table
+                var productSupplierViewModels = (from pps in pkgProductSupplier
+                                join ps in prodSuppList
+                                on pps.ProductSupplierId equals ps.ProductSupplierId
+                                join p in productsList
+                                on ps.ProductId equals p.ProductId
+                                join s in suppliersList
+                                on ps.SupplierId equals s.SupplierId
+                                where p.ProductId == prodId && s.SupplierId == suppId
+                                select new ProductSupplierViewModel {
+                                    ProductSupplierId = ps.ProductSupplierId,
+                                    ProdName = p.ProdName,
+                                    SuppName = s.SupName
+                                }).ToList();
+
+                productSupplierViewModelDataGridView.DataSource = null;
+                productSupplierViewModelDataGridView.DataSource = productSupplierViewModels;
+
             }
         }
     }

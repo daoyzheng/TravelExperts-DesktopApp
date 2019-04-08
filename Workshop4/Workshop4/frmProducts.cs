@@ -65,54 +65,62 @@ namespace Workshop4 {
 
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            // declare suppliers List variable and instantiate new List<Supplier> object
-            List<Product> products = new List<Product>();
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null, null);
+            } else {
+                // declare suppliers List variable and instantiate new List<Supplier> object
+                List<Product> products = new List<Product>();
 
-            // assign suppliers to return of GetSuppliers method call
-            products = ProductDB.GetProducts();
+                // assign suppliers to return of GetSuppliers method call
+                products = ProductDB.GetProducts();
 
-            // validate input
-            if (Validator.IsPresent(txtProductName))
-            {
-                // text boxes validated
-                // now check that the entered Product Name does not already exist in the database
-                foreach (Product prod in products)
+                // validate input
+                if (Validator.IsPresent(txtProductName))
                 {
-                    if (txtProductName.Text != "" && prod.ProdName == txtProductName.Text)
+                    // text boxes validated
+                    // now check that the entered Product Name does not already exist in the database
+                    foreach (Product prod in products)
                     {
-                        MessageBox.Show("This Product Name already exists in the database.");
-                        return;
+                        if (txtProductName.Text != "" && prod.ProdName == txtProductName.Text)
+                        {
+                            MessageBox.Show("This Product Name already exists in the database.");
+                            return;
+                        }
                     }
-                }
-                // create Product object to be added
-                Product product = new Product();
-                product.ProdName = txtProductName.Text;
+                    // create Product object to be added
+                    Product product = new Product();
+                    product.ProdName = txtProductName.Text;
 
-                int newProductId = ProductDB.AddProduct(product);
-                DisplayProducts(cmbProducts.SelectedIndex + 1);
+                    int newProductId = ProductDB.AddProduct(product);
+                    DisplayProducts(cmbProducts.SelectedIndex + 1);
+                }
             }
         }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            // create Product object to be deleted
-            Product product = new Product();
-            product.ProductId = Convert.ToInt32(txtProductId.Text);
-            product.ProdName = txtProductName.Text;
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null, null);
+            } else {
+                // create Product object to be deleted
+                Product product = new Product();
+                product.ProductId = Convert.ToInt32(txtProductId.Text);
+                product.ProdName = txtProductName.Text;
 
-            // check if product to be deleted already exists in Products_Suppliers
-            // table and if so, the user may not delete it.
+                // check if product to be deleted already exists in Products_Suppliers
+                // table and if so, the user may not delete it.
 
-            if (ProductDB.IsInProductsSuppliers(product))
-            {
-                MessageBox.Show("This product is already being used in " +
-                    " the Products_Suppliers table and you may not delete it.");
-                return;
+                if (ProductDB.IsInProductsSuppliers(product))
+                {
+                    MessageBox.Show("This product is already being used in " +
+                        " the Products_Suppliers table and you may not delete it.");
+                    return;
+                }
+
+                bool result = ProductDB.DeleteProduct(product);
+
+                DisplayProducts(cmbProducts.SelectedIndex - 1);
             }
-
-            bool result = ProductDB.DeleteProduct(product);
-
-            DisplayProducts(cmbProducts.SelectedIndex - 1);
         }
 
         //private void btnExit_Click_1(object sender, EventArgs e)
@@ -141,29 +149,33 @@ namespace Workshop4 {
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Product product = new Product();
+            if (loggedInAgt == null) {
+                mainForm.btnSignIn_Click(null, null);
+            } else {
+                Product product = new Product();
 
-            // declare products List variable and instantiate new List<Supplier> object
-            List<Product> products = new List<Product>();
-            products = ProductDB.GetProducts();
-            product = products[cmbProducts.SelectedIndex];
+                // declare products List variable and instantiate new List<Supplier> object
+                List<Product> products = new List<Product>();
+                products = ProductDB.GetProducts();
+                product = products[cmbProducts.SelectedIndex];
 
-            // check if product to be updated already exists in Products_Suppliers
-            // table and if so, the user may not update it.
+                // check if product to be updated already exists in Products_Suppliers
+                // table and if so, the user may not update it.
 
-            if (ProductDB.IsInProductsSuppliers(product))
-            {
-                MessageBox.Show("This product is already being used in " +
-                    " the Products_Suppliers table and you may not update it.");
-                return;
+                if (ProductDB.IsInProductsSuppliers(product))
+                {
+                    MessageBox.Show("This product is already being used in " +
+                        " the Products_Suppliers table and you may not update it.");
+                    return;
+                }
+
+                Product newProduct = new Product();
+                newProduct.ProductId = Convert.ToInt32(txtProductId.Text);
+                newProduct.ProdName = txtProductName.Text;
+
+                bool result = ProductDB.UpdateProduct(product, newProduct);
+                DisplayProducts(cmbProducts.SelectedIndex);
             }
-
-            Product newProduct = new Product();
-            newProduct.ProductId = Convert.ToInt32(txtProductId.Text);
-            newProduct.ProdName = txtProductName.Text;
-
-            bool result = ProductDB.UpdateProduct(product, newProduct);
-            DisplayProducts(cmbProducts.SelectedIndex);
         }
     }
 }
