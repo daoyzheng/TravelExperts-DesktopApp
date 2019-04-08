@@ -139,8 +139,9 @@
             this.cmbProducts.FormattingEnabled = true;
             this.cmbProducts.IntegralHeight = false;
             this.cmbProducts.Location = new System.Drawing.Point(162, 405);
+            this.cmbProducts.MaximumSize = new System.Drawing.Size(750, 0);
             this.cmbProducts.Name = "cmbProducts";
-            this.cmbProducts.Size = new System.Drawing.Size(924, 37);
+            this.cmbProducts.Size = new System.Drawing.Size(750, 37);
             this.cmbProducts.TabIndex = 12;
             this.cmbProducts.SelectedIndexChanged += new System.EventHandler(this.cmbProducts_SelectedIndexChanged_1);
             // 
