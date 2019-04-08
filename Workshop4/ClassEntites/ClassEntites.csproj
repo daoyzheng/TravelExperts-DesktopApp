@@ -49,6 +49,7 @@
     <Compile Include="ProductSupplierViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Supplier.cs" />
+    <Compile Include="SupplierContact.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />

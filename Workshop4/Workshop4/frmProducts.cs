@@ -24,7 +24,6 @@ namespace Workshop4 {
 
         private void cmbProducts_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            txtIndex.Text = cmbProducts.SelectedIndex.ToString();
             Product product = new Product();
 
             // declare suppliers List variable and instantiate new List<Supplier> object
@@ -80,7 +79,6 @@ namespace Workshop4 {
                 product.ProdName = txtProductName.Text;
 
                 int newProductId = ProductDB.AddProduct(product);
-                txtId.Text = newProductId.ToString();
                 DisplayProducts(cmbProducts.SelectedIndex + 1);
             }
         }
@@ -107,11 +105,11 @@ namespace Workshop4 {
             DisplayProducts(cmbProducts.SelectedIndex - 1);
         }
 
-        private void btnExit_Click_1(object sender, EventArgs e)
-        {
-            // close this form
-            this.Close();
-        }
+        //private void btnExit_Click_1(object sender, EventArgs e)
+        //{
+        //    // close this form
+        //    this.Close();
+        //}
         public void DisplayProducts(int sIndex)
         {
             // declare suppliers List variable and instantiate new List<Supplier> object
@@ -133,7 +131,6 @@ namespace Workshop4 {
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            txtIndex.Text = cmbProducts.SelectedIndex.ToString();
             Product product = new Product();
 
             // declare products List variable and instantiate new List<Supplier> object
