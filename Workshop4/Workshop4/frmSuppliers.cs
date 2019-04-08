@@ -107,14 +107,14 @@ namespace Workshop4 {
                     supplier.SupplierId = ++maxId;
                     supplier.SupName = txtSupplierName.Text;
 
-                    int newSupplierId = SupplierDB.AddSupplier(supplier);
+                    // problem below because Add Supplier should not return Id
+                    bool result = SupplierDB.AddSupplier(supplier);
                     // assign suppliers to return of GetSuppliers method call
                     List<Supplier> newList = SupplierDB.GetSuppliers();
                     suppliers = newList.OrderBy(s => s.SupplierId).ToList();
 
                     // find index of new object in the sorted list
-
-                    int indSorted = SupplierDB.FindIndexofId(suppliers, newSupplierId);
+                    int indSorted = SupplierDB.FindIndexofId(suppliers, supplier.SupplierId);
 
                     // int numSuppliers = suppliers.Count();
                     DisplaySuppliers(indSorted);

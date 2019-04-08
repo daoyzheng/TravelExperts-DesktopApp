@@ -114,9 +114,9 @@ namespace DBAccess
 
         // Method to add a new product to the Suppliers table of Travel Experts
         // and return the auto-generated SupplierId.
-        public static int AddSupplier(Supplier supplier)
+        public static bool AddSupplier(Supplier supplier)
         {
-            int supplierid = 0;
+            bool success = true;
 
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
@@ -146,7 +146,7 @@ namespace DBAccess
             {
                 conn.Close();
             }
-            return supplierid;
+            return success;
         }
 
         // Method to update an existing Supplier record in the database.
