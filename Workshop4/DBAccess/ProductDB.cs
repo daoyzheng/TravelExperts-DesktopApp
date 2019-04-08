@@ -2,7 +2,7 @@
 * 
 * Author: Tim Leslie
 * Date: March 25, 2019.
-* Course: CPRG 217 Rapid OOSD Threaded Project
+* Course: CPRG 217 OOSD Threaded Project
 * Assignment: Workshop 4
 * Purpose: This is a Product database class definition and forms part of the CPRG 217
 * Threaded Project Workshop 4. This class contains several public static methods
