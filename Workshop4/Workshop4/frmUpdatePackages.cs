@@ -198,13 +198,34 @@ namespace Workshop4 {
 
                     // Update Packages_Products_Supplier table                     
                     try {
-                        SelectedPkgProdSupp.ProductSupplierId = SelectedProductsSupplier.ProductSupplierId;
-                        if (!PackagesProductsSuppliersDB.UpdatePackagesProductsSuppliers(OldPkgProdSupp, SelectedPkgProdSupp)) {
-                            MessageBox.Show("Another user has updated or " +
-                                "deleted that Package.", "Database Error");
-                            DialogResult = DialogResult.Retry;
+                        // If there already exists a same packageId and ProductSupplierId combination
+                        var pkgProdSuppTable = PkgProdSupps.SingleOrDefault(p => p.PackageId == SelectedPackage.PackageId
+                            && p.ProductSupplierId == SelectedProductsSupplier.ProductSupplierId);
+
+                        if (pkgProdSuppTable != null) {
+                            MessageBox.Show("Package:  " + SelectedPackage.PkgName + " with \n" +
+                                "Product Name:  " + prodNameComboBox.Text + "\nSupplier Name:  " +
+                                supNameComboBox.Text + " \nalready exists", "Record Exists");
+                            DialogResult = DialogResult.None;
                         } else {
-                            DialogResult = DialogResult.OK;
+                            // Verify against database
+                            PackagesProductsSuppliers pkgPS = PackagesProductsSuppliersDB.GetPackagesProductsSuppliersByPkgIdAndProductSupplierId(SelectedPackage.PackageId,SelectedProductsSupplier.ProductSupplierId);
+                            if (pkgPS == null) {
+                                SelectedPkgProdSupp.ProductSupplierId = SelectedProductsSupplier.ProductSupplierId;
+                                if (!PackagesProductsSuppliersDB.UpdatePackagesProductsSuppliers(OldPkgProdSupp, SelectedPkgProdSupp)) {
+                                    MessageBox.Show("Another user has updated or " +
+                                        "deleted that Package.", "Database Error");
+                                    DialogResult = DialogResult.Retry;
+                                } else {
+                                    DialogResult = DialogResult.OK;
+                                }
+                            } else {
+                                MessageBox.Show("Package:  " + SelectedPackage.PkgName + " with \n" +
+                                    "Product Name:  " + prodNameComboBox.Text + "\nSupplier Name:  " +
+                                    supNameComboBox.Text + " \nalready exists", "Record Exists");
+                                SelectedPkgProdSupp = pkgPS;
+                                DialogResult = DialogResult.OK;
+                            }
                         }
                     } catch (Exception ex) {
                         MessageBox.Show(ex.Message, ex.GetType().ToString());
