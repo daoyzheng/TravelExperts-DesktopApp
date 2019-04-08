@@ -302,6 +302,9 @@ namespace Workshop4 {
 
             // Reset Global loggedInAgt object
             loggedInAgt = null;
+            pkgForm.loggedInAgt = null;
+            prodsForm.loggedInAgt = null;
+            suppsForm.loggedInAgt = null;
 
             // Redirect to home page 
             homeForm.Show();
