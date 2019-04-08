@@ -4,7 +4,7 @@
 * Date: March 25, 2019.
 * Course: CPRG 217 Rapid OOSD Threaded Project
 * Assignment: Workshop 4
-* Purpose: This is a Supplier database class definition and forms part of the CPRG 214
+* Purpose: This is a Supplier database class definition and forms part of the CPRG 217
 * Threaded Project Workshop 4. This class contains several public static methods
 * which allow manipulation of the Suppliers table and Supplier entity class.
 * 
