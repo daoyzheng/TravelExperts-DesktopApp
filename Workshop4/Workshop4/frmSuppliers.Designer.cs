@@ -45,7 +45,7 @@
             this.label1.Location = new System.Drawing.Point(60, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(347, 31);
+            this.label1.Size = new System.Drawing.Size(531, 47);
             this.label1.TabIndex = 0;
             this.label1.Text = "Supplier Management Page";
             // 
@@ -57,7 +57,7 @@
             this.cmbSuppliers.IntegralHeight = false;
             this.cmbSuppliers.Location = new System.Drawing.Point(108, 263);
             this.cmbSuppliers.Name = "cmbSuppliers";
-            this.cmbSuppliers.Size = new System.Drawing.Size(723, 26);
+            this.cmbSuppliers.Size = new System.Drawing.Size(723, 37);
             this.cmbSuppliers.TabIndex = 1;
             this.cmbSuppliers.SelectedIndexChanged += new System.EventHandler(this.cmbSuppliers_SelectedIndexChanged);
             // 
@@ -68,7 +68,7 @@
             this.lblSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSuppliers.Location = new System.Drawing.Point(105, 235);
             this.lblSuppliers.Name = "lblSuppliers";
-            this.lblSuppliers.Size = new System.Drawing.Size(79, 20);
+            this.lblSuppliers.Size = new System.Drawing.Size(122, 29);
             this.lblSuppliers.TabIndex = 2;
             this.lblSuppliers.Text = "Suppliers:";
             // 
@@ -79,7 +79,7 @@
             this.lblSupplierId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSupplierId.Location = new System.Drawing.Point(233, 128);
             this.lblSupplierId.Name = "lblSupplierId";
-            this.lblSupplierId.Size = new System.Drawing.Size(92, 20);
+            this.lblSupplierId.Size = new System.Drawing.Size(139, 29);
             this.lblSupplierId.TabIndex = 3;
             this.lblSupplierId.Text = "Supplier ID:";
             // 
@@ -90,7 +90,7 @@
             this.lblSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSupplierName.Location = new System.Drawing.Point(208, 187);
             this.lblSupplierName.Name = "lblSupplierName";
-            this.lblSupplierName.Size = new System.Drawing.Size(117, 20);
+            this.lblSupplierName.Size = new System.Drawing.Size(181, 29);
             this.lblSupplierName.TabIndex = 4;
             this.lblSupplierName.Text = "Supplier Name:";
             // 
@@ -101,7 +101,7 @@
             this.txtSupplierId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierId.Location = new System.Drawing.Point(357, 124);
             this.txtSupplierId.Name = "txtSupplierId";
-            this.txtSupplierId.Size = new System.Drawing.Size(114, 26);
+            this.txtSupplierId.Size = new System.Drawing.Size(114, 35);
             this.txtSupplierId.TabIndex = 5;
             // 
             // txtSupplierName
@@ -109,7 +109,7 @@
             this.txtSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierName.Location = new System.Drawing.Point(357, 184);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(250, 26);
+            this.txtSupplierName.Size = new System.Drawing.Size(250, 35);
             this.txtSupplierName.TabIndex = 6;
             // 
             // btnAdd
@@ -169,7 +169,7 @@
             // 
             // frmSuppliers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

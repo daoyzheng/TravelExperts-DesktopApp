@@ -7,9 +7,9 @@
 * Purpose: This is a Product class definition and forms part of the CPRG 217
 * Threaded Project Workshop 4.
 *
-*********************************************************************************/using System;
-using ClassEntites;
+*********************************************************************************/
 using System;
+using ClassEntites;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;

@@ -70,6 +70,17 @@ namespace DBAccess
             }
             return tempMax;
         }
+
+        public static int FindIndexofId(List<Product> products, int id)
+        {
+            int tmpIndex = 0;
+            for(int i = 0; i < products.Count; i++)
+            {
+                if (products[i].ProductId == id)
+                    tmpIndex = i;
+            }
+            return tmpIndex;
+        }
         // Method to return a Product object for the given productId.
         public static Product GetProduct(int productid)
         {

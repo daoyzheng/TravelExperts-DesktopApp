@@ -7,10 +7,10 @@
 * Purpose: This is a Product class definition and forms part of the CPRG 217
 * Threaded Project Workshop 4.
 *
-*********************************************************************************/using System;
+*********************************************************************************/
+using System;
 using ClassEntites;
 using DBAccess;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,10 +59,7 @@ namespace Workshop4 {
             List<Supplier> suppliers = new List<Supplier>();
 
             // assign suppliers to return of GetSuppliers method call
-            suppliers = SupplierDB.GetSuppliers();
-
-            // bind suppliers list to combo box
-            // cmbSuppliers.DataSource = suppliers;
+            suppliers = (SupplierDB.GetSuppliers()).OrderBy(s => s.SupplierId).ToList(); ;
 
             supplier = suppliers[cmbSuppliers.SelectedIndex];
 
@@ -102,15 +99,11 @@ namespace Workshop4 {
 
                     // business logic here is to determine the largest SupplierId in the database
                     // and then assign this value + 1, to the new Supplier entry
-
                     // Find largest SupplierID
                     int maxId = SupplierDB.FindMaxSupplierId(suppliers);
-                    // Find the index the corresponds to largest ID
 
-
-                    // create Supplier object to be added
+                    // create Supplier object to be added with new Id
                     Supplier supplier = new Supplier();
-
                     supplier.SupplierId = ++maxId;
                     supplier.SupName = txtSupplierName.Text;
 
@@ -119,17 +112,23 @@ namespace Workshop4 {
                     List<Supplier> newList = SupplierDB.GetSuppliers();
                     suppliers = newList.OrderBy(s => s.SupplierId).ToList();
 
-                    int numSuppliers = suppliers.Count();
-                    DisplaySuppliers(numSuppliers - 1);
+                    // find index of new object in the sorted list
+
+                    int indSorted = SupplierDB.FindIndexofId(suppliers, newSupplierId);
+
+                    // int numSuppliers = suppliers.Count();
+                    DisplaySuppliers(indSorted);
                 }
             }
         }
+
+
         public void DisplaySuppliers(int sIndex)
         {
             // declare suppliers List variable and instantiate new List<Supplier> object
             List<Supplier> suppliers = new List<Supplier>();
 
-            // assign suppliers to return of GetSuppliers method call
+            // assign suppliers to return of SORTED GetSuppliers method call
             suppliers = (SupplierDB.GetSuppliers()).OrderBy(s=>s.SupplierId).ToList();
             // bind suppliers list to combo box
             cmbSuppliers.DataSource = suppliers;
@@ -173,7 +172,7 @@ namespace Workshop4 {
 
                 // declare products List variable and instantiate new List<Supplier> object
                 List<Supplier> suppliers = new List<Supplier>();
-                suppliers = SupplierDB.GetSuppliers();
+                suppliers = SupplierDB.GetSuppliers().OrderBy(s => s.SupplierId).ToList();
                 supplier = suppliers[cmbSuppliers.SelectedIndex];
 
                 // check if product to be updated already exists in Products_Suppliers

@@ -7,10 +7,10 @@
 * Purpose: This is a Product class definition and forms part of the CPRG 217
 * Threaded Project Workshop 4.
 *
-*********************************************************************************/using System;
+*********************************************************************************/
+using System;
 using ClassEntites;
 using DBAccess;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -77,6 +77,11 @@ namespace Workshop4 {
                 // validate input
                 if (Validator.IsPresent(txtProductName))
                 {
+                    if ((txtProductName.Text.Length > 50))
+                    {
+                        MessageBox.Show("The Supplier Name is too long (>50). Please adjust.");
+                        return;
+                    }
                     // text boxes validated
                     // now check that the entered Product Name does not already exist in the database
                     foreach (Product prod in products)
@@ -91,8 +96,14 @@ namespace Workshop4 {
                     Product product = new Product();
                     product.ProdName = txtProductName.Text;
 
-                    int newProductId = ProductDB.AddProduct(product);
-                    DisplayProducts(cmbProducts.SelectedIndex + 1);
+                    int newProductId = ProductDB.AddProduct(product); // retrieve auto-generated ProductId
+
+                    products = ProductDB.GetProducts();
+                    // find the List index of the newly created entry
+                    int addIndex = ProductDB.FindIndexofId(products, newProductId);
+
+                    // what is the list index of the newly added product
+                    DisplayProducts(addIndex);
                 }
             }
         }
@@ -123,11 +134,6 @@ namespace Workshop4 {
             }
         }
 
-        //private void btnExit_Click_1(object sender, EventArgs e)
-        //{
-        //    // close this form
-        //    this.Close();
-        //}
         public void DisplayProducts(int sIndex)
         {
             // declare suppliers List variable and instantiate new List<Supplier> object

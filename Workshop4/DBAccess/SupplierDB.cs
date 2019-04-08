@@ -100,6 +100,18 @@ namespace DBAccess
             return supplier;
         }
 
+        public static int FindIndexofId(List<Supplier> suppliers, int id)
+        {
+            int tmpIndex = 0;
+            for (int i = 0; i < suppliers.Count; i++)
+            {
+                if (suppliers[i].SupplierId == id)
+                    tmpIndex = i;
+            }
+            return tmpIndex;
+        }
+
+
         // Method to add a new product to the Suppliers table of Travel Experts
         // and return the auto-generated SupplierId.
         public static int AddSupplier(Supplier supplier)
