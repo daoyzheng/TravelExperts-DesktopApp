@@ -58,11 +58,11 @@ namespace Workshop4 {
             // Populate combo boxes
             prodNameComboBox.DisplayMember = "ProdName";
             prodNameComboBox.ValueMember = "ProductId";
-            prodNameComboBox.DataSource = Products;
+            prodNameComboBox.DataSource = Products.OrderBy(p => p.ProdName).ToList();
 
             supNameComboBox.DisplayMember = "SupName";
             supNameComboBox.ValueMember = "SupplierId";
-            supNameComboBox.DataSource = Suppliers;
+            supNameComboBox.DataSource = Suppliers.OrderBy(s => s.SupName).ToList();
 
             pkgNameTextBox.Text = SelectedPackage.PkgName;
             pkgBasePriceTextBox.Text = SelectedPackage.PkgBasePrice.ToString();
