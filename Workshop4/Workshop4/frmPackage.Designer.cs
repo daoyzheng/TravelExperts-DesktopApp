@@ -30,6 +30,11 @@
             System.Windows.Forms.Label pkgEndDateLabel;
             System.Windows.Forms.Label pkgStartDateLabel;
             System.Windows.Forms.Label pkgNameLabel;
+            System.Windows.Forms.Label prodNameLabel;
+            System.Windows.Forms.Label supNameLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAddPkg = new System.Windows.Forms.Button();
             this.btnUpdatePkg = new System.Windows.Forms.Button();
             this.btnDeletePkg = new System.Windows.Forms.Button();
@@ -53,12 +58,16 @@
             this.packageBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
+            this.prodNameComboBox = new System.Windows.Forms.ComboBox();
+            this.supNameComboBox = new System.Windows.Forms.ComboBox();
             pkgAgencyCommissionLabel = new System.Windows.Forms.Label();
             pkgBasePriceLabel = new System.Windows.Forms.Label();
             pkgDescLabel = new System.Windows.Forms.Label();
             pkgEndDateLabel = new System.Windows.Forms.Label();
             pkgStartDateLabel = new System.Windows.Forms.Label();
             pkgNameLabel = new System.Windows.Forms.Label();
+            prodNameLabel = new System.Windows.Forms.Label();
+            supNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.packageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productSupplierViewModelDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productSupplierViewModelBindingSource)).BeginInit();
@@ -128,6 +137,24 @@
             pkgNameLabel.Size = new System.Drawing.Size(55, 20);
             pkgNameLabel.TabIndex = 36;
             pkgNameLabel.Text = "Name:";
+            // 
+            // prodNameLabel
+            // 
+            prodNameLabel.AutoSize = true;
+            prodNameLabel.Location = new System.Drawing.Point(572, 169);
+            prodNameLabel.Name = "prodNameLabel";
+            prodNameLabel.Size = new System.Drawing.Size(63, 13);
+            prodNameLabel.TabIndex = 39;
+            prodNameLabel.Text = "Prod Name:";
+            // 
+            // supNameLabel
+            // 
+            supNameLabel.AutoSize = true;
+            supNameLabel.Location = new System.Drawing.Point(758, 169);
+            supNameLabel.Name = "supNameLabel";
+            supNameLabel.Size = new System.Drawing.Size(60, 13);
+            supNameLabel.TabIndex = 40;
+            supNameLabel.Text = "Sup Name:";
             // 
             // btnAddPkg
             // 
@@ -258,30 +285,40 @@
             this.productSupplierViewModelDataGridView.DataSource = this.productSupplierViewModelBindingSource;
             this.productSupplierViewModelDataGridView.Location = new System.Drawing.Point(527, 223);
             this.productSupplierViewModelDataGridView.Name = "productSupplierViewModelDataGridView";
+            this.productSupplierViewModelDataGridView.ReadOnly = true;
             this.productSupplierViewModelDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.productSupplierViewModelDataGridView.Size = new System.Drawing.Size(400, 146);
+            this.productSupplierViewModelDataGridView.Size = new System.Drawing.Size(450, 230);
             this.productSupplierViewModelDataGridView.TabIndex = 37;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "ProductSupplierId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ProductSupplierId";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Product Supplier ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 116;
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 104;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "ProdName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ProdName";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Product Name";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 82;
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 92;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "SuppName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "SuppName";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Supplier Name";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 85;
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 93;
             // 
             // productSupplierViewModelBindingSource
             // 
@@ -353,6 +390,25 @@
             this.btnPrev.UseVisualStyleBackColor = false;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
+            // prodNameComboBox
+            // 
+            this.prodNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productBindingSource, "ProdName", true));
+            this.prodNameComboBox.FormattingEnabled = true;
+            this.prodNameComboBox.Location = new System.Drawing.Point(575, 185);
+            this.prodNameComboBox.Name = "prodNameComboBox";
+            this.prodNameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.prodNameComboBox.TabIndex = 40;
+            this.prodNameComboBox.SelectedIndexChanged += new System.EventHandler(this.prodNameComboBox_SelectedIndexChanged);
+            // 
+            // supNameComboBox
+            // 
+            this.supNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.supplierBindingSource, "SupName", true));
+            this.supNameComboBox.FormattingEnabled = true;
+            this.supNameComboBox.Location = new System.Drawing.Point(761, 185);
+            this.supNameComboBox.Name = "supNameComboBox";
+            this.supNameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.supNameComboBox.TabIndex = 41;
+            // 
             // frmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +416,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(989, 684);
+            this.Controls.Add(supNameLabel);
+            this.Controls.Add(this.supNameComboBox);
+            this.Controls.Add(prodNameLabel);
+            this.Controls.Add(this.prodNameComboBox);
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.panel1);
@@ -413,14 +473,16 @@
         private System.Windows.Forms.ComboBox pkgNameComboBox;
         private System.Windows.Forms.BindingSource productSupplierViewModelBindingSource;
         private System.Windows.Forms.DataGridView productSupplierViewModelDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.BindingSource packageBindingSource1;
         private System.Windows.Forms.BindingSource packageBindingSource2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.ComboBox prodNameComboBox;
+        private System.Windows.Forms.ComboBox supNameComboBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
