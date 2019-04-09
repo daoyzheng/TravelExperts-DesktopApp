@@ -60,7 +60,7 @@
             this.cmbSuppliers.Location = new System.Drawing.Point(108, 263);
             this.cmbSuppliers.MaximumSize = new System.Drawing.Size(750, 0);
             this.cmbSuppliers.Name = "cmbSuppliers";
-            this.cmbSuppliers.Size = new System.Drawing.Size(750, 37);
+            this.cmbSuppliers.Size = new System.Drawing.Size(499, 37);
             this.cmbSuppliers.TabIndex = 1;
             this.cmbSuppliers.SelectedIndexChanged += new System.EventHandler(this.cmbSuppliers_SelectedIndexChanged);
             // 
