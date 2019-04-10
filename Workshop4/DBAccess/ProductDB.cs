@@ -22,6 +22,7 @@ namespace DBAccess
 {
     public class ProductDB
     {
+        // This method will return a list of Product objects from the database. (T. Leslie)
         public static List<Product> GetProducts()
         {
             List<Product> products = new List<Product>();
@@ -60,6 +61,8 @@ namespace DBAccess
             return products;
         }
 
+
+        // This method will return the maximum ProductId within a List of products. (T. Leslie)
         public static int FindMaxProductId(List<Product> products)
         {
             int tempMax = 0;
@@ -71,6 +74,7 @@ namespace DBAccess
             return tempMax;
         }
 
+        // This method will return the index for a given id within a list of Products. (T. Leslie)
         public static int FindIndexofId(List<Product> products, int id)
         {
             int tmpIndex = 0;
@@ -81,7 +85,8 @@ namespace DBAccess
             }
             return tmpIndex;
         }
-        // Method to return a Product object for the given productId.
+
+        // Method to return a Product object for the given ProductId. (T. Leslie)
         public static Product GetProduct(int productid)
         {
             Product product = null;
@@ -122,7 +127,7 @@ namespace DBAccess
         }
 
         // Method to add a new product to the Products table of Travel Experts
-        // and return the auto-generated ProductId.
+        // and return the auto-generated ProductId. (T. Leslie)
         public static int AddProduct(Product product)
         {
             int productid = 0;
@@ -142,10 +147,6 @@ namespace DBAccess
                 // insertCommand.ExecuteNonQuery();
                 productid = Convert.ToInt32(insertCommand.ExecuteScalar());
 
-                //string selectStatement = "SELECT SCOPE_IDENTITY()"; // extract the ProductId for the newly added product
-                //SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
-                //productid = Convert.ToInt32(selectCommand.ExecuteScalar()); // execute the sql command expecting the single id result
-
             }
             catch (Exception ex)
             {
@@ -161,8 +162,8 @@ namespace DBAccess
         // Method to update an existing Product record in the database.
         // This method compares the 'old' product which was 'SELECT'ed 
         // originally against the product record at the time of 'UPDATE'ing
-        // to ensure that no chnages have occurred. In other words, this is
-        // a concurrency check prior to updating the record.
+        // to ensure that no changes have occurred. In other words, this is
+        // a concurrency check prior to updating the record. (T. Leslie)
         public static bool UpdateProduct(Product oldProduct, Product newProduct)
         {
             bool success = true;
@@ -196,6 +197,8 @@ namespace DBAccess
             }
             return success;
         }
+
+        // This method will delete the passed Product from the TravelExperts database. (T. Leslie)
         public static bool DeleteProduct(Product product)
         {
             bool success = true;
@@ -207,7 +210,7 @@ namespace DBAccess
             SqlCommand deleteCommand = new SqlCommand(deleteStatement, conn);
 
             deleteCommand.Parameters.AddWithValue("@ProductId", product.ProductId);
-            deleteCommand.Parameters.AddWithValue("@ProdName", product.ProdName);
+            // deleteCommand.Parameters.AddWithValue("@ProdName", product.ProdName);
 
             try
             {
@@ -226,6 +229,8 @@ namespace DBAccess
             }
             return success;
         }
+
+        // This method returns true if the passed Product object exists in this Product table. (T. Leslie)
         public static bool IsInProductsSuppliers(Product product)
         {
             bool result = false;

@@ -4,8 +4,8 @@
 * Date: March 25, 2019.
 * Course: CPRG 217 Rapid OOSD Threaded Project
 * Assignment: Workshop 4
-* Purpose: This is a Product class definition and forms part of the CPRG 217
-* Threaded Project Workshop 4.
+* Purpose: This is a collection of methods for the Product Management form and
+* is part of the CPRG 217 Threaded Project Workshop 4.
 *
 *********************************************************************************/
 using System;
@@ -62,7 +62,6 @@ namespace Workshop4 {
             // bind products list to combo box
             cmbProducts.DataSource = products;
         }
-
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
             if (loggedInAgt == null) {

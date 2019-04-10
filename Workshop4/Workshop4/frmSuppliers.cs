@@ -4,8 +4,8 @@
 * Date: March 25, 2019.
 * Course: CPRG 217 Rapid OOSD Threaded Project
 * Assignment: Workshop 4
-* Purpose: This is a Product class definition and forms part of the CPRG 217
-* Threaded Project Workshop 4.
+* Purpose: This is a collection of event methods for the Supplier Management
+* form and forms part of the CPRG 217 Threaded Project Workshop 4.
 *
 *********************************************************************************/
 using System;
@@ -44,13 +44,6 @@ namespace Workshop4 {
             cmbSuppliers.DataSource = suppliers;
 
         }
-
-        //private void btnExit_Click(object sender, EventArgs e)
-        //{
-        //    // close this form
-        //    this.Close();
-        //}
-
         private void cmbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
             Supplier supplier = new Supplier();

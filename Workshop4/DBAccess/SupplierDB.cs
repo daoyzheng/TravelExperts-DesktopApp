@@ -23,6 +23,7 @@ namespace DBAccess
     
     public class SupplierDB
     {
+        // This method returns a list of Supplier objects from the database. (T. Leslie)
         public static List<Supplier> GetSuppliers()
         {
             List<Supplier> suppliers = new List<Supplier>();
@@ -42,11 +43,17 @@ namespace DBAccess
 
                 SqlDataReader sr = selectCommand.ExecuteReader();
 
-                while (sr.Read()) // product record exists
+                while (sr.Read()) // while product record exists
                 {
-                    Supplier supplier = new Supplier();
+                    Supplier supplier = new Supplier(); // instantiate Supplier object
+                    // set properties of new object from database record
                     supplier.SupplierId = (int)sr["SupplierId"];
-                    supplier.SupName = sr["SupName"].ToString();
+
+                    if (sr["SupName"] is DBNull)
+                        supplier.SupName = null;
+                    else
+                        supplier.SupName = (string)(sr["SupName"]);
+
                     suppliers.Add(supplier);
                 }
             }
@@ -60,7 +67,8 @@ namespace DBAccess
             }
             return suppliers;
         }
-        // Method to return a Supplier object for the given supplierid.
+
+        // Method to return a Supplier object for the given supplierid. (T. Leslie)
         public static Supplier GetSupplier(int supplierid)
         {
             Supplier supplier = null;
@@ -86,7 +94,10 @@ namespace DBAccess
                 {
                     supplier = new Supplier();
                     supplier.SupplierId = (int)sr["SupplierId"];
-                    supplier.SupName = sr["SupName"].ToString();
+                    if (sr["SupName"] is DBNull)
+                        supplier.SupName = null;
+                    else
+                        supplier.SupName = (string)(sr["SupName"]);
                 }
             }
             catch (Exception ex)
@@ -99,7 +110,8 @@ namespace DBAccess
             }
             return supplier;
         }
-
+        
+        // Method returns the index of a given Supplier object in a list of objects. (T. Leslie)
         public static int FindIndexofId(List<Supplier> suppliers, int id)
         {
             int tmpIndex = 0;
@@ -113,7 +125,7 @@ namespace DBAccess
 
 
         // Method to add a new product to the Suppliers table of Travel Experts
-        // and return the auto-generated SupplierId.
+        // and return the auto-generated SupplierId. (T. Leslie)
         public static bool AddSupplier(Supplier supplier)
         {
             bool success = true;
@@ -134,10 +146,7 @@ namespace DBAccess
 
                 insertCommand.ExecuteNonQuery();
 
-                //string selectStatement = "SELECT IDENT_CURRENT('SupplierId') FROM Suppliers"; // extract the SupplierId for the newly added product
-                //SqlCommand selectCommand = new SqlCommand(selectStatement, conn);
-                //supplierid = Convert.ToInt32(selectCommand.ExecuteScalar()); // execute the sql command expecting the single id result
-            }
+           }
             catch (Exception ex)
             {
                 throw ex;
@@ -187,6 +196,8 @@ namespace DBAccess
             }
             return success;
         }
+
+        // Method to delete the passed supplier from the database. (T. Leslie)
         public static bool DeleteSupplier(Supplier supplier)
         {
             bool success = true;
@@ -197,10 +208,12 @@ namespace DBAccess
 
             SqlConnection conn = TravelExpertsDB.GetConnection();
 
+            // prepare a delete statement
             string deleteStatement = "DELETE FROM Suppliers " +
                                      "WHERE SupplierId = @SupplierId " +
                                      "AND SupName = @SupName";
 
+            // prepare a delete command
             SqlCommand deleteCommand = new SqlCommand(deleteStatement, conn);
 
             deleteCommand.Parameters.AddWithValue("@SupplierId", supplier.SupplierId);
@@ -224,6 +237,7 @@ namespace DBAccess
             return success;
         }
 
+        // Method to check if passed supplier is in the List of SupplierContacts. (T. Leslie)
         private static bool IsInSupplierContacts(Supplier supplier)
         {
             bool result = false;
@@ -239,6 +253,7 @@ namespace DBAccess
             return result;
         }
 
+        // Method to return a List of SupplierContacts. (T. Leslie)
         private static List<SupplierContact> GetSupplierContacts()
         {
             List<SupplierContact> suppliercontacts = new List<SupplierContact>();
@@ -263,6 +278,11 @@ namespace DBAccess
                     SupplierContact suppliercontact = new SupplierContact();
                     suppliercontact.SupplierContactId = (int)sr["SupplierContactId"];
                     suppliercontact.SupplierId = (int)sr["SupplierId"];
+                    if (sr["SupplierId"] is DBNull)
+                        suppliercontact.SupplierId = null;
+                    else
+                        suppliercontact.SupplierId = (int)(sr["SupplierId"]);
+
                     suppliercontacts.Add(suppliercontact);
                 }
             }
@@ -277,6 +297,8 @@ namespace DBAccess
             return suppliercontacts;
         }
 
+
+        // Method to delete a SupplierContact record for a given supplier. (T. Leslie)
         public static bool DeleteSupplierContacts(Supplier supplier)
         {
             bool success = true;
@@ -306,6 +328,8 @@ namespace DBAccess
             }
             return success;
         }
+
+        // Method to check if a supplier is in the Products_Suppliers table.
         public static bool IsInProductsSuppliers(Supplier supplier)
         {
             bool result = false;
@@ -319,6 +343,7 @@ namespace DBAccess
             return result;
         }
 
+        // Method to find the maximum SupplierId in a List of suppliers. (T. Leslie)
         public static int FindMaxSupplierId(List<Supplier> suppliers)            
         {
             int maxId = 0;
