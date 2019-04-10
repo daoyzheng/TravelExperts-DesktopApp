@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Workshop4 {
+    /// <summary>
+    /// Author: Dao 
+    /// Purpose: Update Packages and Product Suppliers
+    /// </summary>
     public partial class frmUpdatePackages : Form {
         public bool ProdSuppInserted { get; set; }
 

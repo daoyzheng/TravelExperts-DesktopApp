@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Workshop4 {
+    /// <summary>
+    /// Author: Dao 
+    /// Purpose: Add Packages and Product Suppliers
+    /// </summary>
     public partial class frmAddPackages : Form {
         public bool PkgInserted { get; set; }
         public bool ProdSuppInserted { get; set; }
