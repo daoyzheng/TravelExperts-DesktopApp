@@ -2,12 +2,12 @@
 * 
 * Author: Tim Leslie
 * Date: March 25, 2019.
-* Course: CPRG 217 OOSD Threaded Project
+* Course: CPRG 207 OOSD Threaded Project
 * Assignment: Workshop 4
-* Purpose: This is a ProductSupplier class definition and forms part of the CPRG 217
-* Threaded Project Workshop 4.
+* Purpose: This is a ProductSupplier class definition and forms part of
+* the CPRG 207 Threaded Project Workshop 4.
 *
-*********************************************************************************/using System;
+*********************************************************************************/
 using System;
 using System.Collections.Generic;
 using System.Linq;

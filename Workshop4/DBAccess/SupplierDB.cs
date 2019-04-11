@@ -2,11 +2,11 @@
 * 
 * Author: Tim Leslie
 * Date: March 25, 2019.
-* Course: CPRG 217  OOSD Threaded Project
+* Course: CPRG 207  OOSD Threaded Project
 * Assignment: Workshop 4
-* Purpose: This is a Supplier database class definition and forms part of the CPRG 217
-* Threaded Project Workshop 4. This class contains several public static methods
-* which allow manipulation of the Suppliers table and Supplier entity class.
+* Purpose: This is a collection of methods to manage the Supplier class objects
+* and interaction with the databse and forms part of the CPRG 207
+* Threaded Project Workshop 4.
 * 
 ****************************************************************************************/
 using ClassEntites;
@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace DBAccess
 {
-    
+    // class contains database interaction methods for the Supplier entities
     public class SupplierDB
     {
         // This method returns a list of Supplier objects from the database. (T. Leslie)

@@ -2,11 +2,12 @@
 * 
 * Author: Tim Leslie
 * Date: March 25, 2019.
-* Course: CPRG 217 OOSD Threaded Project
+* Course: CPRG 207 OOSD Threaded Project
 * Assignment: Workshop 4
-* Purpose: This is a Product database class definition and forms part of the CPRG 217
-* Threaded Project Workshop 4. This class contains several public static methods
-* which allow manipulation of the Products table and Product entity class.
+* Purpose: This is a collection of methods that manages Product entities and interaction
+* with the database and forms part of the CPRG 207 Threaded Project Workshop 4.
+* This class contains several public static methods which allows manipulation of the
+* Products table and Product entity class.
 * 
 ****************************************************************************************/
 using ClassEntites;
