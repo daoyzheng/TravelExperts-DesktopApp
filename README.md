@@ -16,4 +16,24 @@ The application provided a graphical interface for viewing and modifying the dat
 
 ### Home 
 
-<img src="screenshots/home.jpg" alt="home">
+<img src="screenshots/home.JPG" alt="home">
+
+### Packages
+Agent is able create, modify or delete travel packages and product suppliers in database through this user interface only if Agent has logged in. 
+<img src="screenshots/packages.JPG" alt="packages">
+
+### Log in 
+Travel agent is able to login via agent first name and last name. Agent name is verified against the agent table in database.
+<img src="screenshots/login.JPG" alt="login">
+
+### Agent Profile
+Travel agent profile is dynamically retrieved from the database base on Travel agents' login credentials.
+
+<img src="screenshots/agent_profile.JPG" alt="agent_profile">
+
+### Products and Suppliers
+Agent is able to create, modify or delete products/suppliers from the database 
+
+| Products | Suppliers   |
+| ------------- | ------------- |
+| <img src="screenshots/products.JPG" alt="products">  | <img src="screenshots/suppliers.JPG" alt="suppliers">  |
