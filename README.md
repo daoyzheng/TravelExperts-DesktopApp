@@ -1,5 +1,4 @@
-# Workshop-4
-Workshop 4 for .NET C#
+# TravelExperts-Desktop Application
 
 ## Team Members
 - Haley
