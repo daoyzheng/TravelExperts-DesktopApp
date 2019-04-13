@@ -23,6 +23,10 @@ Agent is able create, modify or delete travel packages and product suppliers in 
 
 <img src="screenshots/packages.JPG" alt="packages">
 
+Update packages form fields are auto filled with the package information selected from the Packages form
+
+<img src="screenshots/update_pkg.JPG" alt="update_pakages">
+
 ### Log in 
 Travel agent is able to login via agent first name and last name. Agent name is verified against the agent table in database.
 
