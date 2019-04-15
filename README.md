@@ -19,7 +19,7 @@ The application provided a graphical interface for viewing and modifying the dat
 <img src="screenshots/home.JPG" alt="home">
 
 ### Packages
-Agent is able create, modify or delete travel packages and product suppliers in database through this user interface only if Agent has logged in. 
+Agent is able to create, modify or delete travel packages and product suppliers in database through this user interface only if Agent has logged in. 
 
 <img src="screenshots/packages.JPG" alt="packages">
 
